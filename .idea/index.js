@@ -9,11 +9,12 @@ const led6 = new Gpio(18, 'out');
 const led7 = new Gpio(17, 'out');
 const led8 = new Gpio(15, 'out');
 const led9 = new Gpio(14, 'out');
+const ledMain = new Gpio(4, 'out');
 const ledStart = new Gpio(11, 'out');
 const ledStop = new Gpio(25, 'out');
 const ledRecord = new Gpio(9, 'out');
 
-const fan = new Gpio(3, 'out')
+const fan = new Gpio(3, 'out');
 
 const button1 = new Gpio(16, 'in', 'both');
 const button2 = new Gpio(19, 'in', 'both');
