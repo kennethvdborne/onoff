@@ -40,7 +40,7 @@ button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => {led8.writeSync(value);
     console.log("button 8");});
 button9.watch((err, value) => {led9.writeSync(value);
-    console.log(button9.toString());});
+    led8.writeSync(value);});
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
