@@ -47,6 +47,7 @@ button9.watch((err, value) => {led9.writeSync(value);
     led7.writeSync(value);
     console.log("button 9");
     fan.writeSync(value);
+    ledMain.writeSync(value);
 });
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
