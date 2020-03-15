@@ -29,7 +29,7 @@ const buttonStart = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
-fan.writeSync(1);
+
 
 button1.watch((err, value) => {led1.writeSync(value);
     console.log(button1.toString());});
@@ -46,6 +46,7 @@ button9.watch((err, value) => {led9.writeSync(value);
     led8.writeSync(value);
     led7.writeSync(value);
     console.log("button 9");
+    fan.writeSync(value);
 });
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
