@@ -46,7 +46,9 @@ buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
 function startup() {
     led1.writeSync(1);
+    sleep(3000);
     led2.writeSync(1);
+    sleep(3000);
     led3.writeSync(1);
 }
 
