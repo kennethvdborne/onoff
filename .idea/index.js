@@ -68,7 +68,8 @@ function blink(led, ledPrev) {
 function startup() {
 
     for (i = 0; i < leds.length; i++) {
-        setTimeout(blink(leds[i], leds[i-1]), 1000)
+        var prev = i - 1;
+        setTimeout(blink(leds[i], leds[prev]), 1000)
     }
 
 
