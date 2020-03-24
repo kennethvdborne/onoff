@@ -37,9 +37,7 @@ button5.watch((err, value) => led5.writeSync(value));
 button6.watch((err, value) => led6.writeSync(value));
 button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
-button9.watch((err, value) => {led9.writeSync(value);
-    console.log(value + " *** " + value.toString());
-});
+button9.watch((err, value) => led9.writeSync(value));
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
@@ -59,19 +57,15 @@ var leds = [
     led9
 ];
 
-
-function blink(led) {
-    led.writeSync(1);
-}
-
 function startup() {
-
-    for (i = 0; i < leds.length; i++) {
-        setTimeout(blink, 1000, leds[i]);
-        leds[i].writeSync(0);
+    function blink(led) {
+        led.writeSync(1);
     }
 
-
+    for (i = 0; i < leds.length; i++) {
+        setTimeout(blink, 2000, leds[i]);
+        leds[i].writeSync(0);
+    }
 }
 
 startup();
