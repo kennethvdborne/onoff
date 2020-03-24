@@ -60,19 +60,15 @@ var leds = [
 ];
 
 
-function blink(led, ledPrev) {
+function blink(led) {
     led.writeSync(1);
-    if(ledPrev !== null) {
-        ledPrev.writeSync(0);
-    }
-
 }
 
 function startup() {
 
     for (i = 0; i < leds.length; i++) {
-        var prev = i - 1;
-        setTimeout(blink(leds[i], leds[prev]), 1000)
+        setTimeout(blink(leds[i]), 1000);
+        leds[i].writeSync(0);
     }
 
 
