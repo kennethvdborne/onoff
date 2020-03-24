@@ -38,8 +38,14 @@ button6.watch((err, value) => led6.writeSync(value));
 button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
-buttonStart.watch((err, value) => ledStart.writeSync(value));
-buttonStop.watch((err, value) => ledStop.writeSync(value));
+buttonStart.watch((err, value) => {
+    ledStart.writeSync(value);
+    fan.writeSync(1);
+});
+buttonStop.watch((err, value) => {
+    ledStop.writeSync(value);
+    fan.writeSync(0);
+});
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
 var leds = [
