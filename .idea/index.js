@@ -67,7 +67,7 @@ function blink(led) {
 function startup() {
 
     for (i = 0; i < leds.length; i++) {
-        setTimeout(blink(leds[i]), 1000);
+        setTimeout(blink, 1000, leds[i]);
         leds[i].writeSync(0);
     }
 
