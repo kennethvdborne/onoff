@@ -60,13 +60,11 @@ var leds = [
 ];
 
 function startup() {
-    function loop(gpio) {
+    async function loop(gpio) {
         gpio.write(1);
         await sleep(500);
     }
-
     leds.forEach(led => loop(led));
-
 }
 
 startup();
