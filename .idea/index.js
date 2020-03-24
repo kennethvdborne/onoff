@@ -61,9 +61,9 @@ var leds = [
 
 function startup() {
     function loop(gpio) {
-        gpio.writeSync(1);
+        gpio.write(1);
     }
-    
+
     leds.forEach(led => setTimeout(loop(led), 500));
 
 }
