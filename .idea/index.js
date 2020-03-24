@@ -59,19 +59,19 @@ var leds = [
     led9
 ];
 
+
+function blink(led, ledPrev) {
+    led.writeSync(1);
+    ledPrev.writeSync(0);
+}
+
 function startup() {
-    try {
-        async function loop(led) {
-            led.write(1);
-            await sleep(1000);
-            led.write(0);
-        }
-        
-        leds.forEach(led => loop(led));
+
+    for (i = 0; i < leds.length; i++) {
+        setTimeout(blink(leds[i], leds[i-1]), 1000)
     }
-    catch(err) {
-        //Unhandled
-    }
+
+
 }
 
 startup();
