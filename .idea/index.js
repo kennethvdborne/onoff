@@ -44,4 +44,11 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
+function startup() {
+    led1.writeSync(1);
+    led2.writeSync(1);
+    led3.writeSync(1);
+}
+
+startup();
 console.log('End of node file');
