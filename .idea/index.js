@@ -44,27 +44,28 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
-var buttons = [
-    buttonStart,
-    buttonStop,
-    buttonRecord,
-    button1,
-    button2,
-    button3,
-    button4,
-    button5,
-    button6,
-    button7,
-    button8,
-    button9
+var leds = [
+    ledStart,
+    ledStop,
+    ledRecord,
+    led1,
+    led2,
+    led3,
+    led4,
+    led5,
+    led6,
+    led7,
+    led8,
+    led9
 ];
 
 function startup() {
-    buttons.forEach(button => setTimeout(loop(button), 500));
-    
     function loop(gpio) {
         gpio.writeSync(1);
     }
+    
+    leds.forEach(led => setTimeout(loop(led), 500));
+
 }
 
 startup();
