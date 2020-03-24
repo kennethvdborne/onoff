@@ -62,7 +62,10 @@ var leds = [
 
 function blink(led, ledPrev) {
     led.writeSync(1);
-    ledPrev.writeSync(0);
+    if(ledPrev !== null) {
+        ledPrev.writeSync(0);
+    }
+
 }
 
 function startup() {
