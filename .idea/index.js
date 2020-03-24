@@ -16,8 +16,6 @@ const ledRecord = new Gpio(9, 'out');
 
 const fan = new Gpio(3, 'out');
 
-fan.writeSync(0);
-
 const button1 = new Gpio(16, 'in', 'both');
 const button2 = new Gpio(19, 'in', 'both');
 const button3 = new Gpio(13, 'in', 'both');
@@ -31,25 +29,16 @@ const buttonStart = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
-
-
-button1.watch((err, value) => {led1.writeSync(value);
-    console.log(button1.toString());});
+button1.watch((err, value) => led1.writeSync(value));
 button2.watch((err, value) => led2.writeSync(value));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
 button5.watch((err, value) => led5.writeSync(value));
 button6.watch((err, value) => led6.writeSync(value));
 button7.watch((err, value) => led7.writeSync(value));
-button8.watch((err, value) => {led8.writeSync(value);
-    console.log("button 8");
-    led7.writeSync(value);});
+button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => {led9.writeSync(value);
-    led8.writeSync(value);
-    led7.writeSync(value);
-    console.log("button 9");
-    fan.writeSync(1);
-    ledMain.writeSync(value);
+    console.log(value + " *** " + value.toString());
 });
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
