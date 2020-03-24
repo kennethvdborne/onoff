@@ -58,21 +58,6 @@ var leds = [
 ];
 
 function startup() {
-
-    function blink(led) {
-        led.writeSync(1);
-    }
-
-    setTimeout(blink, 2000, led1);
-    led1.writeSync(0);
-
-    setTimeout(blink, 2000, led2);
-    led2.writeSync(0);
-
-    for (i = 0; i < leds.length; i++) {
-        setTimeout(blink, 2000, leds[i]);
-        leds[i].writeSync(0);
-    }
 }
 
 startup();
