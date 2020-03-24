@@ -60,12 +60,20 @@ var leds = [
 ];
 
 function startup() {
-    async function loop(gpio) {
-        gpio.write(1);
-        await sleep(500);
+    try {
+        async function loop(led) {
+            led.write(1);
+            await sleep(1000);
+            led.write(0);
+        }
+        
+        leds.forEach(led => loop(led));
     }
-    leds.forEach(led => loop(led));
+    catch(err) {
+        //Unhandled
+    }
 }
 
 startup();
+
 console.log('End of node file');
