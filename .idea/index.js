@@ -45,6 +45,7 @@ buttonStart.watch((err, value) => {
 buttonStop.watch((err, value) => {
     ledStop.writeSync(value);
     fan.writeSync(0);
+    myLoop();
 });
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
@@ -66,7 +67,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 function http() {
     var request = new XMLHttpRequest();
 
-    request.open('GET', 'http://192.168.0.249:8080/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true);
+    request.open('GET', url + '/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true);
     request.onload = function() {
         console.log("worked............");
     }
@@ -74,6 +75,20 @@ function http() {
 
     request.send();
 }
+
+var i = 1;                  //  set your counter to 1
+
+function myLoop() {         //  create a loop function
+    setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+        console.log('hello');   //  your code here
+        i++;                    //  increment the counter
+        if (i < 10) {           //  if the counter < 10, call the loop function
+            myLoop();             //  ..  again which will trigger another
+        }                       //  ..  setTimeout()
+    }, 3000)
+}
+
+myLoop();
 
 
 
