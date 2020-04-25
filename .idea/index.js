@@ -62,7 +62,7 @@ var leds = [
     led8,
     led9
 ];
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 function http() {
     var request = new XMLHttpRequest();
 
