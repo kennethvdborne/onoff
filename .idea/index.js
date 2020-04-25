@@ -76,6 +76,4 @@ function http() {
 
 
 
-startup();
-
 console.log('End of node file');
