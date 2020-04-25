@@ -66,10 +66,11 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 function http() {
     var request = new XMLHttpRequest();
 
-    request.open('GET', 'https://192.168.0.249/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true);
+    request.open('GET', 'https://192.168.0.249:8080/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true);
     request.onload = function() {
         console.log("worked............");
     }
+    console.log("busy...........")
 
     request.send();
 }
