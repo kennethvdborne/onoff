@@ -88,7 +88,6 @@ function myLoop() {         //  create a loop function
     }, 3000)
 }
 
-myLoop();
 
 
 
