@@ -40,7 +40,7 @@ button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
 buttonStart.watch((err, value) => {
     ledStart.writeSync(value);
-    fan.writeSync(1);
+    http();
 });
 buttonStop.watch((err, value) => {
     ledStop.writeSync(value);
@@ -63,8 +63,18 @@ var leds = [
     led9
 ];
 
-function startup() {
+function http() {
+    var request = new XMLHttpRequest()
+
+    request.open('GET', 'https://localhost:8080/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true)
+    request.onload = function() {
+        console.log("worked............")
+    }
+
+    request.send()
 }
+
+
 
 startup();
 
