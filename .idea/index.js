@@ -27,7 +27,7 @@ const button8 = new Gpio(0, 'in', 'both');
 const button9 = new Gpio(7, 'in', 'both');
 const buttonStart = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: 10});
-const buttonRecord = new Gpio(26, 'in', 'both');
+const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: 10});
 
 button1.watch((err, value) => led1.writeSync(value));
 button2.watch((err, value) => led2.writeSync(value));
