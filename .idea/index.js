@@ -129,4 +129,5 @@ function endBlink() { //function to stop blinking
 }
 
 setTimeout(endBlink, 5000); //stop blinking after 5 seconds
+fan.writeSync(1);
 console.log('End of node file');
