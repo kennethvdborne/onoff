@@ -14,7 +14,7 @@ const ledStart = new Gpio(11, 'out');
 const ledStop = new Gpio(25, 'out');
 const ledRecord = new Gpio(9, 'out');
 
-const fan = new Gpio(3, 'out');
+const fan = new Gpio(2, 'out');
 
 const button1 = new Gpio(16, 'in', 'both');
 const button2 = new Gpio(19, 'in', 'both');
