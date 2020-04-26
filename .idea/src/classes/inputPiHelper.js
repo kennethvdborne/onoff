@@ -1,7 +1,7 @@
 class InputPiHelper {
 
     method() {
-        console.log("yes........");
+        console.log("yes........" + tim);
     }
 
 }

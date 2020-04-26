@@ -1,5 +1,11 @@
 const Gpio = require('onoff').Gpio;
 
+var debounceTime = 100;
+var recordMode = false;
+var playMode = false;
+var pauseMode = false;
+
+//Initializing Output
 const led1 = new Gpio(10, 'out');
 const led2 = new Gpio(24, 'out');
 const led3 = new Gpio(23, 'out');
@@ -13,23 +19,24 @@ const ledMain = new Gpio(4, 'out');
 const ledStart = new Gpio(11, 'out');
 const ledStop = new Gpio(25, 'out');
 const ledRecord = new Gpio(9, 'out');
-
 const fan = new Gpio(2, 'out');
 
-const button1 = new Gpio(16, 'in', 'both');
-const button2 = new Gpio(19, 'in', 'both');
-const button3 = new Gpio(13, 'in', 'both');
-const button4 = new Gpio(12, 'in', 'both');
-const button5 = new Gpio(6, 'in', 'both');
-const button6 = new Gpio(5, 'in', 'both');
-const button7= new Gpio(8, 'in', 'both');
-const button8 = new Gpio(0, 'in', 'both');
-const button9 = new Gpio(7, 'in', 'both');
-const buttonStart = new Gpio(21, 'in', 'both');
-const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: 10});
-const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: 10});
+//Initializing Input
+const button1 = new Gpio(16, 'in', 'rising', {debounceTimeout: debounceTime});
+const button2 = new Gpio(19, 'in', 'rising', {debounceTimeout: debounceTime});
+const button3 = new Gpio(13, 'in', 'rising', {debounceTimeout: debounceTime});
+const button4 = new Gpio(12, 'in', 'rising', {debounceTimeout: debounceTime});
+const button5 = new Gpio(6, 'in', 'rising', {debounceTimeout: debounceTime});
+const button6 = new Gpio(5, 'in', 'rising', {debounceTimeout: debounceTime});
+const button7= new Gpio(8, 'in', 'rising', {debounceTimeout: debounceTime});
+const button8 = new Gpio(0, 'in', 'rising', {debounceTimeout: debounceTime});
+const button9 = new Gpio(7, 'in', 'rising', {debounceTimeout: debounceTime});
+const buttonStart = new Gpio(21, 'in', 'rising', {debounceTimeout: debounceTime});
+const buttonStop = new Gpio(20, 'in', 'rising', {debounceTimeout: debounceTime});
+const buttonRecord = new Gpio(26, 'in', 'rising', {debounceTimeout: debounceTime});
 
-button1.watch((err, value) => led1.writeSync(value));
+//Watch Output
+button1.watch((err, value) => blinking(led1));
 button2.watch((err, value) => led2.writeSync(value));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
@@ -38,6 +45,12 @@ button6.watch((err, value) => led6.writeSync(value));
 button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
+buttonStart.watch((err, value) => ledStart.writeSync(value));
+buttonStop.watch((err, value) => ledStop.writeSync(value));
+buttonRecord.watch((err, value) => ledRecord.writeSync(value));
+
+
+/*
 buttonStart.watch((err, value) => {
     ledStart.writeSync(value);
     http();
@@ -57,6 +70,21 @@ buttonRecord.watch((err, value) => {
     if(value==1){a.method();}
 
 });
+*/
+
+function blinking(led) {
+    const blinkLed = _ => {
+        if (stopBlinking) {
+            return led.unexport();
+        }
+
+        led.read()
+            .then(value => led.write(value ^ 1))
+            .then(_ => setTimeout(blinkLed, 200))
+            .catch(err => console.log(err));
+    };
+    blinkLed();
+}
 
 
 
