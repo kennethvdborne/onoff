@@ -54,7 +54,7 @@ let a = new InputPiHelper();
 buttonRecord.watch((err, value) => {
     ledRecord.writeSync(value);
     fan.writeSync(1);
-    a.method();
+    if(value==1){a.method();}
 
 });
 
