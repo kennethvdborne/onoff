@@ -36,7 +36,7 @@ const buttonStop = new Gpio(20, 'in', 'rising', {debounceTimeout: debounceTime})
 const buttonRecord = new Gpio(26, 'in', 'rising', {debounceTimeout: debounceTime});
 
 //Watch Output
-button1.watch((err, value) => blinking(led1));
+button1.watch((err, value) => blinkLED(led1));
 button2.watch((err, value) => led2.writeSync(value));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
@@ -72,20 +72,23 @@ buttonRecord.watch((err, value) => {
 });
 */
 
-function blinking(led) {
-    const blinkLed = _ => {
-        if (stopBlinking) {
-            return led.unexport();
-        }
+var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
-        led.read()
-            .then(value => led.write(value ^ 1))
-            .then(_ => setTimeout(blinkLed, 200))
-            .catch(err => console.log(err));
-    };
-    blinkLed();
+function blinkLED(led) { //function to start blinking
+    if (led.readSync() === 0) { //check the pin state, if the state is 0 (or off)
+        led.writeSync(1); //set pin state to 1 (turn LED on)
+    } else {
+        led.writeSync(0); //set pin state to 0 (turn LED off)
+    }
 }
 
+function endBlink() { //function to stop blinking
+    clearInterval(blinkInterval); // Stop blink intervals
+    LED.writeSync(0); // Turn LED off
+    LED.unexport(); // Unexport GPIO to free resources
+}
+
+setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 
 
 
