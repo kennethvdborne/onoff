@@ -47,13 +47,14 @@ buttonStop.watch((err, value) => {
     fan.writeSync(0);
     myLoop();
 });
+
 const InputPiHelper = require('./src/classes/inputPiHelper').InputPiHelper;
 let a = new InputPiHelper();
 
 buttonRecord.watch((err, value) => {
     ledRecord.writeSync(value);
     fan.writeSync(1);
-    a.method;
+    a.method();
 
 });
 
