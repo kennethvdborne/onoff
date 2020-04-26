@@ -47,7 +47,11 @@ buttonStop.watch((err, value) => {
     fan.writeSync(0);
     myLoop();
 });
-buttonRecord.watch((err, value) => ledRecord.writeSync(value));
+buttonRecord.watch((err, value) => {
+    ledRecord.writeSync(value);
+    fan.writeSync(1);
+
+});
 
 var leds = [
     ledStart,
