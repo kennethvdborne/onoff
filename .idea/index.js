@@ -22,18 +22,18 @@ const ledRecord = new Gpio(9, 'out');
 const fan = new Gpio(2, 'out');
 
 //Initializing Input
-const button1 = new Gpio(16, 'in', 'rising', {debounceTimeout: debounceTime});
-const button2 = new Gpio(19, 'in', 'rising', {debounceTimeout: debounceTime});
-const button3 = new Gpio(13, 'in', 'rising', {debounceTimeout: debounceTime});
-const button4 = new Gpio(12, 'in', 'rising', {debounceTimeout: debounceTime});
-const button5 = new Gpio(6, 'in', 'rising', {debounceTimeout: debounceTime});
-const button6 = new Gpio(5, 'in', 'rising', {debounceTimeout: debounceTime});
-const button7= new Gpio(8, 'in', 'rising', {debounceTimeout: debounceTime});
-const button8 = new Gpio(0, 'in', 'rising', {debounceTimeout: debounceTime});
-const button9 = new Gpio(7, 'in', 'rising', {debounceTimeout: debounceTime});
-const buttonStart = new Gpio(21, 'in', 'rising', {debounceTimeout: debounceTime});
-const buttonStop = new Gpio(20, 'in', 'rising', {debounceTimeout: debounceTime});
-const buttonRecord = new Gpio(26, 'in', 'rising', {debounceTimeout: debounceTime});
+const button1 = new Gpio(16, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button2 = new Gpio(19, 'in', 'both','rising', {debounceTimeout: debounceTime});
+const button3 = new Gpio(13, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button4 = new Gpio(12, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button5 = new Gpio(6, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button6 = new Gpio(5, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button7= new Gpio(8, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonStart = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
 //Watch Output
 button1.watch((err, value) => blinkLED());
