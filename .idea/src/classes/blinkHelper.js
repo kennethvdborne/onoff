@@ -1,6 +1,6 @@
-var blinkInterval = setInterval(blinkStart, 250);
 
 module.exports = {
+    blinkInterval : setInterval(blinkStart, 250),
 
     blinkStart : function () {
         if (led1.readSync() === 0) {
