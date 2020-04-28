@@ -1,6 +1,6 @@
-function blinking (ledx) {
-    setInterval(blinkStart, 250);
+var blinkInterval = setInterval(blinkStart, 300);
 
+function blinking (ledx) {
     function blinkStart() {
         if (ledx.readSync() === 0) {
             ledx.writeSync(1);
@@ -11,8 +11,9 @@ function blinking (ledx) {
 }
 
 function blinkEnd(ledx) {
+    clearInterval(blinkInterval);
     ledx.writeSync(0);
-    //ledx.unexport();
+    ledx.unexport();
 }
 
 module.exports.blinking = blinking;
