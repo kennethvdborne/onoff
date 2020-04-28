@@ -14,7 +14,7 @@ function blinkEnd(ledx) {
     ledx.unexport();
 }
 
-setTimeout(endBlink, 5000);
+setTimeout(blinkEnd, 5000);
 
 module.exports.blinkStart = blinkStart();
 module.exports.blinkEnd = blinkEnd();
