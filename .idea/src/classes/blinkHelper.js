@@ -1,6 +1,7 @@
-var blinkInterval = setInterval(blinkStart, 300);
+var blinkInterval;
 
 function blinking (ledx) {
+    blinkInterval = setInterval(blinkStart, 300);
     function blinkStart() {
         if (ledx.readSync() === 0) {
             ledx.writeSync(1);
