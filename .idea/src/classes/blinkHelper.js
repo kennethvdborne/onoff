@@ -1,10 +1,13 @@
 class BlinkHelper {
 
     constructor() {
-        this.ledx = null;
+        this.ledx;
+        this.blinkInterval;
+    }
+ 
+    blink() {
         this.blinkInterval = setInterval(blinkStart(), 300);
     }
-
 
     blinkStart() {
         if (this.ledx.readSync() === 0) {
