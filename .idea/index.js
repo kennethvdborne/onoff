@@ -1,4 +1,8 @@
-import HttpHelper from "./src/classes/httpHelper";
+//import {http} from "./src/classes/test";
+
+
+var callFunction = require('./src/classes/test');
+callFunction.http();
 
 const Gpio = require('onoff').Gpio;
 
@@ -51,7 +55,7 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
-HttpHelper.method();
+http();
 
 
 /*
