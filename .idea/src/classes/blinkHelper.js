@@ -1,4 +1,4 @@
-var blinkInterval = setInterval(blinkLED, 250);
+var blinkInterval = setInterval(blinkStart, 250);
 
 module.exports = {
 
