@@ -2,7 +2,7 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = {
 
-    http : function(req) {
+    http : function() {
         var request = new XMLHttpRequest();
 
         request.open('GET', 'http://localhost:8080/' + '/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true);
