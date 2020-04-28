@@ -40,8 +40,10 @@ const buttonStart = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debou
 const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
+var blinkHelper = require('./src/classes/blinkHelper')
+
 //Watch Output
-button1.watch((err, value) => blinking(led1));
+button1.watch((err, value) => blinkHelper.blinking(led1));
 button2.watch((err, value) => led2.writeSync(value));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
@@ -54,24 +56,6 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
-function blinking (led){
-    var ledx = led;
-    var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
-
-    function blinkLED() { //function to start blinking
-        if (ledx.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-            ledx.writeSync(1); //set pin state to 1 (turn LED on)
-        } else {
-            ledx.writeSync(0); //set pin state to 0 (turn LED off)
-        }
-    }
-
-    function endBlink() { //function to stop blinking
-        clearInterval(blinkInterval); // Stop blink intervals
-        ledx.writeSync(0); // Turn LED off
-        ledx.unexport(); // Unexport GPIO to free resources
-    }
-}
 
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds

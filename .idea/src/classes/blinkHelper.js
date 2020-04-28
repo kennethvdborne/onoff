@@ -1,22 +1,24 @@
-var blinkInterval = setInterval(blinkStart, 250);
 
-function blinkStart() {
-    if (ledx.readSync() === 0) {
-        ledx.writeSync(1);
-    } else {
+function blinking (ledx) {
+    var blinkInterval = setInterval(blinkStart, 250);
+
+    function blinkStart() {
+        if (ledx.readSync() === 0) {
+            ledx.writeSync(1);
+        } else {
+            ledx.writeSync(0);
+        }
+    }
+
+    function blinkEnd() {
+        clearInterval(blinkInterval);
         ledx.writeSync(0);
+        ledx.unexport();
     }
 }
 
-function blinkEnd() {
-    clearInterval(blinkInterval);
-    ledx.writeSync(0);
-    ledx.unexport();
-}
+module.exports.blinking = blinking(ledx);
 
-
-module.exports.blinkStart = blinkStart();
-module.exports.blinkEnd = blinkEnd();
 
 
 
