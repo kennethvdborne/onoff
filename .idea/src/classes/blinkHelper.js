@@ -1,17 +1,17 @@
 var blinkInterval = setInterval(blinkStart, 250);
 
-function blinkStart(led1) {
-    if (led1.readSync() === 0) {
-        led1.writeSync(1);
+function blinkStart(ledx) {
+    if (ledx.readSync() === 0) {
+        ledx.writeSync(1);
     } else {
-        led1.writeSync(0);
+        ledx.writeSync(0);
     }
 }
 
-function blinkEnd(led1) {
+function blinkEnd(ledx) {
     clearInterval(blinkInterval);
-    led1.writeSync(0);
-    led1.unexport();
+    ledx.writeSync(0);
+    ledx.unexport();
 }
 
 module.exports.blinkStart = blinkStart();
