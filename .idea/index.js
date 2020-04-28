@@ -1,4 +1,4 @@
-//import {http} from "./src/classes/test";
+import {http} from './src/classes/test'
 
 
 var callFunction = require('./src/classes/test');
@@ -55,7 +55,7 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
-http();
+//http();
 
 
 /*
