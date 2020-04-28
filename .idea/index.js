@@ -44,7 +44,7 @@ var blinkHelper = require('./src/classes/blinkHelper')
 
 //Watch Output
 button1.watch((err, value) => blinkHelper.blinking(led1));
-button2.watch((err, value) => led2.writeSync(value));
+button2.watch((err, value) => blinkHelper.blinkEnd(led1));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
 button5.watch((err, value) => led5.writeSync(value));
