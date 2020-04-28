@@ -3,6 +3,7 @@
 
 var callFunction = require('./src/classes/test');
 callFunction.http();
+callFunction.test();
 
 const Gpio = require('onoff').Gpio;
 
