@@ -1,9 +1,9 @@
 //import {http} from './src/classes/test'
 
 
-var callFunction = require('./src/classes/test');
-callFunction.http();
-callFunction.test();
+var helper = require('./src/classes/test');
+helper.http();
+helper.test();
 
 const Gpio = require('onoff').Gpio;
 
