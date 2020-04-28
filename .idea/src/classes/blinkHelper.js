@@ -14,7 +14,7 @@ function blinking (ledx) {
 function blinkEnd(ledx) {
     clearInterval(blinkInterval);
     ledx.writeSync(0);
-    ledx.unexport();
+    //ledx.unexport();
 }
 
 module.exports.blinking = blinking;
