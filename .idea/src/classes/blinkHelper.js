@@ -1,4 +1,4 @@
-export class Blinker {
+class Blinker {
 
     constructor() {
         this.blinkInterval = setInterval(blinkStart, 300);
