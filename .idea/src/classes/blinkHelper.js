@@ -1,23 +1,23 @@
+var blinkInterval = setInterval(blinkLED, 250);
 
-module.exports = {
-
-    blinkStart : function () {
-        if (led1.readSync() === 0) {
-            led1.writeSync(1);
-        } else {
-            led1.writeSync(0);
-        }
-    },
-
-    endBlink : function () {
-        clearInterval(blinkInterval);
+function blinkStart() {
+    if (led1.readSync() === 0) {
+        led1.writeSync(1);
+    } else {
         led1.writeSync(0);
-        led1.unexport();
-    },
-
-    blinkInterval : setInterval(blinkStart, 250)
-
+    }
 }
+
+function blinkEnd() {
+    clearInterval(blinkInterval);
+    led1.writeSync(0);
+    led1.unexport();
+}
+
+module.exports.blinkStart = blinkStart();
+module.exports.blinkEnd = blinkEnd();
+
+
 
 /*
 var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
