@@ -1,6 +1,5 @@
 
 module.exports = {
-    blinkInterval : setInterval(blinkStart, 250),
 
     blinkStart : function () {
         if (led1.readSync() === 0) {
@@ -14,7 +13,9 @@ module.exports = {
         clearInterval(blinkInterval);
         led1.writeSync(0);
         led1.unexport();
-    }
+    },
+
+    blinkInterval : setInterval(blinkStart, 250)
 
 }
 
