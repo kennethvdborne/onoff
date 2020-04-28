@@ -40,12 +40,12 @@ const buttonStart = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debou
 const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
-var blinkHelper = require('./src/classes/blinkHelper');
-var blinker = blinkHelper.Blinker();
+var BlinkHelper = require('./src/classes/blinkHelper');
+var blinker = new BlinkHelper();
 
 
 //Watch Output
-button1.watch((err, value) => blinkHelper.Blinker(led1));
+button1.watch((err, value) => blinkHelper.blinkStart(led1));
 button2.watch((err, value) => blinkHelper.blinkEnd(led1));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));

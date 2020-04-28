@@ -1,4 +1,4 @@
-class Blinker {
+class BlinkHelper {
 
     constructor() {
         this.blinkInterval = setInterval(blinkStart, 300);
@@ -20,6 +20,6 @@ class Blinker {
     }
 }
 
-module.exports = {Blinker: Blinker};
+module.exports = {BlinkHelper: BlinkHelper};
 //module.exports.blinking = blinking;
 //module.exports.blinkEnd = blinkEnd;
