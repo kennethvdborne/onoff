@@ -12,7 +12,7 @@ function blinking (ledx) {
 
 function blinkEnd(ledx) {
     ledx.writeSync(0);
-    ledx.unexport();
+    //ledx.unexport();
 }
 
 module.exports.blinking = blinking;
