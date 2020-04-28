@@ -1,4 +1,4 @@
-import {http} from './src/classes/test'
+//import {http} from './src/classes/test'
 
 
 var callFunction = require('./src/classes/test');
