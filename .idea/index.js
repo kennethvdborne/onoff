@@ -43,7 +43,7 @@ const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debo
 var blinkHelper = require('./src/classes/blinkHelper')
 
 //Watch Output
-button1.watch((err, value) => blinking(led1));
+button1.watch((err, value) => blinkHelper.blinking(led1));
 button2.watch((err, value) => led2.writeSync(value));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));

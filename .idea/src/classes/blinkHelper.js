@@ -17,7 +17,7 @@ function blinking (ledx) {
     }
 }
 
-module.exports.blinking = blinking(ledx);
+module.exports.blinking = blinking;
 
 
 
