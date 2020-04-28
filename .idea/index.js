@@ -71,32 +71,7 @@ buttonRecord.watch((err, value) => {
 
 });
 */
-var leds = [
-    ledStart,
-    ledStop,
-    ledRecord,
-    led1,
-    led2,
-    led3,
-    led4,
-    led5,
-    led6,
-    led7,
-    led8,
-    led9
-];
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-function http() {
-    var request = new XMLHttpRequest();
 
-    request.open('GET', url + '/api/playscene/0eb672ee-b7f8-485c-bcb9-774497f5f0b7', true);
-    request.onload = function() {
-        console.log("worked............");
-    }
-    console.log("busy...........")
-
-    request.send();
-}
 
 var i = 1;                  //  set your counter to 1
 
