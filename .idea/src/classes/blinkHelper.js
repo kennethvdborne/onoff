@@ -20,6 +20,6 @@ class BlinkHelper {
     }
 }
 
-module.exports = {BlinkHelper: BlinkHelper};
+module.exports = BlinkHelper();
 //module.exports.blinking = blinking;
 //module.exports.blinkEnd = blinkEnd;
