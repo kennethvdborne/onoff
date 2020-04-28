@@ -1,6 +1,4 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-
-class HttpHelper {
+export class HttpHelper {
 
     constructor(url) {
         this.url = url;
@@ -22,7 +20,3 @@ class HttpHelper {
 
 
 }
-
-var a = new HttpHelper();
-
-module.exports = {HttpHelper: HttpHelper};

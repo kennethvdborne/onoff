@@ -1,3 +1,5 @@
+import HttpHelper from "./src/classes/httpHelper";
+
 const Gpio = require('onoff').Gpio;
 
 var debounceTime = 100;
@@ -48,6 +50,8 @@ button9.watch((err, value) => led9.writeSync(value));
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
+
+HttpHelper.method();
 
 
 /*
