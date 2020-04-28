@@ -41,7 +41,7 @@ const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: deboun
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
 //Watch Output
-button1.watch((err, value) => blinkLED());
+button1.watch((err, value) => blinking(led1));
 button2.watch((err, value) => led2.writeSync(value));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
@@ -54,24 +54,34 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
+function blinking (led){
+    var ledx = led;
+    var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
-var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+    function blinkLED() { //function to start blinking
+        if (ledx.readSync() === 0) { //check the pin state, if the state is 0 (or off)
+            ledx.writeSync(1); //set pin state to 1 (turn LED on)
+        } else {
+            ledx.writeSync(0); //set pin state to 0 (turn LED off)
+        }
+    }
 
-function blinkLED() { //function to start blinking
-    if (led1.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-        led1.writeSync(1); //set pin state to 1 (turn LED on)
-    } else {
-        led1.writeSync(0); //set pin state to 0 (turn LED off)
+    function endBlink() { //function to stop blinking
+        clearInterval(blinkInterval); // Stop blink intervals
+        ledx.writeSync(0); // Turn LED off
+        ledx.unexport(); // Unexport GPIO to free resources
     }
 }
 
-function endBlink() { //function to stop blinking
-    clearInterval(blinkInterval); // Stop blink intervals
-    led1.writeSync(0); // Turn LED off
-    led1.unexport(); // Unexport GPIO to free resources
-}
 
-setTimeout(endBlink, 5000); //stop blinking after 5 seconds
+//setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
+
+
+
+
+
+
+
 
 
 var i = 1;                  //  set your counter to 1
