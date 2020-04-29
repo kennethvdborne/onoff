@@ -1,7 +1,7 @@
 
 var led;
 var blinkInterval;
-//var test = 'Something here ';
+var test = 'Something here ';
 
 function blinkStart(ledx) {
     led = ledx;
