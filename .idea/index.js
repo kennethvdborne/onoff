@@ -1,7 +1,7 @@
 const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 
-var debounceTime = 1;
+var debounceTime = 2000;
 var recordMode = false;
 var playMode = false;
 var stopMode = false;
