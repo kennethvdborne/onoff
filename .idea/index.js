@@ -33,7 +33,7 @@ const button7= new Gpio(8, 'in', 'both', 'rising', {debounceTimeout: debounceTim
 const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonPlay = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonStop = new Gpio(20, 'in');
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
 
