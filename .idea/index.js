@@ -103,4 +103,34 @@ function myLoop() {         //  create a loop function
 }
 
 fan.writeSync(1);
+
+
+process.on('SIGINT', _ => {
+    led1.unexport();
+    led2.unexport();
+    led3.unexport();
+    led4.unexport();
+    led5.unexport();
+    led6.unexport();
+    led7.unexport();
+    led8.unexport();
+    led9.unexport();
+    ledStop.unexport();
+    ledStart.unexport();
+    ledRecord.unexport();
+
+    button1.unexport();
+    button2.unexport();
+    button3.unexport();
+    button4.unexport();
+    button5.unexport();
+    button6.unexport();
+    button7.unexport();
+    button8.unexport();
+    button9.unexport();
+    buttonStop.unexport();
+    buttonStart.unexport();
+    buttonRecord.unexport();
+});
+
 console.log('End of node file');
