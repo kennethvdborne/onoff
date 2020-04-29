@@ -85,7 +85,7 @@ buttonPlay.watch((err, value) => {
         console.log("Play");
         console.log(playMode.valueOf());
     }
-    else if (value === 1 && playMode && timeX === 0) {
+    else if (value === 1 && playMode && sysTimePlay === 0) {
         delaySysTime(sysTimePlay);
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
