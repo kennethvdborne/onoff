@@ -1,11 +1,9 @@
-
 var led;
 var blinkInterval;
-var test = 'Something here ';
 
 function blinkStart(ledx) {
     led = ledx;
-    setInterval(function blinking() {
+    blinkInterval = setInterval(function blinking() {
         if (led.readSync() === 0) {
             led.writeSync(1);
         } else {
@@ -21,16 +19,7 @@ function blinkEnd() {
     led.unexport();
 }
 
-function testing(x) {
-    console.log(test);
-    console.log(x);
-    test = x;
-    console.log(x);
-}
-
 module.exports.blinkStart = blinkStart;
-//module.exports.blinkEnd = blinkEnd;
-//module.exports.ledx = ledx;
-module.exports.testing = testing;
-module.exports.test = test;
+module.exports.blinkEnd = blinkEnd;
+
 
