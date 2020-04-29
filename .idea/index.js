@@ -32,9 +32,9 @@ const button6 = new Gpio(5, 'in', 'both', 'rising', {debounceTimeout: debounceTi
 const button7= new Gpio(8, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const buttonPlay = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonPlay = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: 2000});
 const buttonStop = new Gpio(20, 'in', 'both');
-const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: 10});
 
 
 //Watch Output
