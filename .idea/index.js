@@ -40,7 +40,7 @@ const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debo
 //Watch Output
 button1.watch((err, value) => {
     if (value === 1) {
-        blinkHelper.blinkStart();
+        blinkHelper.blinkStart(led1);
     }
 
 });
