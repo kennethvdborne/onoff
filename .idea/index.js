@@ -32,7 +32,7 @@ const button6 = new Gpio(5, 'in', 'both', 'rising', {debounceTimeout: debounceTi
 const button7= new Gpio(8, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const buttonPlay = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: 2000});
+const buttonPlay = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: 10});
 
@@ -53,13 +53,21 @@ button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
 
+var timeX = 0;
+
 buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !playMode) {
+    if (value === 1 && !playMode && timeX === 0) {
+        timeX = 1;
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
+
+        setTimeout(function(){
+            timeX = 0;
+        }, 1000);
+
         console.log("Play");
         console.log(playMode.valueOf());
     }
@@ -131,7 +139,7 @@ process.on('SIGINT', _ => {
     led8.unexport();
     led9.unexport();
     ledStop.unexport();
-    ledStart.unexport();
+    ledPlay.unexport();
     ledRecord.unexport();
 
     button1.unexport();
@@ -144,7 +152,7 @@ process.on('SIGINT', _ => {
     button8.unexport();
     button9.unexport();
     buttonStop.unexport();
-    buttonStart.unexport();
+    buttonPlay.unexport();
     buttonRecord.unexport();
 });
 
