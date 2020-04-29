@@ -73,9 +73,16 @@ buttonPlay.watch((err, value) => {
         console.log("Play");
         console.log(playMode.valueOf());
     }
-    else if (value === 1 && playMode) {
+    else if (value === 1 && playMode && timeX === 0) {
+        timeX = 1;
+        console.log("time 0..........")
+
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
+        setTimeout(function(){
+            timeX = 0;
+            console.log("timer ended......")
+        }, 1000);
         console.log("Play");
         console.log(playMode.valueOf());
     };
