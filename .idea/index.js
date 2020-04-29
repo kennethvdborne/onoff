@@ -1,5 +1,6 @@
 const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
+const httpHelper = require('./src/classes/httpHelper');
 
 var debounceTime = 2000;
 var recordMode = false;
@@ -50,13 +51,27 @@ const buttonPlay = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
+function buttonFunctions(value, x, sysTime) {
+    if (value === 1 && recordMode && sysTime === 0) {
+        delaySysTime(sysTime);
+        console.log('record ' + x);
+    }
+    if (value === 1 && playMode && sysTime === 0) {
+        delaySysTime(sysTime);
+        console.log('play ' + x);
+    }
+    if (value === 1 && stopMode && sysTime === 0) {
+        delaySysTime(sysTime);
+        console.log('stop ' + x);
+    }
+}
 
 //Watch Output
 button1.watch((err, value) => {
-    if (value === 1) {
-        blinkHelper.blinkStart(led1);
+    if (err) {
+        throw err;
     }
-
+    buttonFunctions(value, 1, sysTime1);
 });
 button2.watch((err, value) => blinkHelper.blinkEnd(led1));
 button3.watch((err, value) => led3.writeSync(value));
