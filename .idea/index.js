@@ -1,5 +1,3 @@
-//import {http} from './src/classes/test'
-
 
 var helper = require('./src/classes/test');
 helper.http();
@@ -42,9 +40,13 @@ const buttonStart = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debou
 const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
+var BlinkHelper = require('./src/classes/blinkHelper');
+var blinker = new BlinkHelper();
+
+
 //Watch Output
-button1.watch((err, value) => blinkLED());
-button2.watch((err, value) => led2.writeSync(value));
+button1.watch((err, value) => blinkHelper.blinkStart(led1));
+button2.watch((err, value) => blinkHelper.blinkEnd(led1));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
 button5.watch((err, value) => led5.writeSync(value));
@@ -56,30 +58,33 @@ buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
 
-//http();
+function blinking (ledx){
+    var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+
+    function blinkLED() { //function to start blinking
+        if (ledx.readSync() === 0) { //check the pin state, if the state is 0 (or off)
+            ledx.writeSync(1); //set pin state to 1 (turn LED on)
+        } else {
+            ledx.writeSync(0); //set pin state to 0 (turn LED off)
+        }
+    }
+
+    function endBlink() { //function to stop blinking
+        clearInterval(blinkInterval); // Stop blink intervals
+        ledx.writeSync(0); // Turn LED off
+        ledx.unexport(); // Unexport GPIO to free resources
+    }
+}
 
 
-/*
-buttonStart.watch((err, value) => {
-    ledStart.writeSync(value);
-    http();
-});
-buttonStop.watch((err, value) => {
-    ledStop.writeSync(value);
-    fan.writeSync(0);
-    myLoop();
-});
+//setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
-const InputPiHelper = require('./src/classes/inputPiHelper').InputPiHelper;
-let a = new InputPiHelper();
 
-buttonRecord.watch((err, value) => {
-    ledRecord.writeSync(value);
-    fan.writeSync(1);
-    if(value==1){a.method();}
 
-});
-*/
+
+
+
+
 
 
 var i = 1;                  //  set your counter to 1
@@ -94,24 +99,5 @@ function myLoop() {         //  create a loop function
     }, 3000)
 }
 
-
-
-var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
-
-function blinkLED() { //function to start blinking
-    if (led1.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-        led1.writeSync(1); //set pin state to 1 (turn LED on)
-    } else {
-        led1.writeSync(0); //set pin state to 0 (turn LED off)
-    }
-}
-
-function endBlink() { //function to stop blinking
-    clearInterval(blinkInterval); // Stop blink intervals
-    led1.writeSync(0); // Turn LED off
-    led1.unexport(); // Unexport GPIO to free resources
-}
-
-setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 fan.writeSync(1);
 console.log('End of node file');
