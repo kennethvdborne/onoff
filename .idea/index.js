@@ -56,7 +56,7 @@ button9.watch((err, value) => led9.writeSync(value));
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
-
+/*
 function blinking (ledx){
     var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
@@ -74,7 +74,7 @@ function blinking (ledx){
         ledx.unexport(); // Unexport GPIO to free resources
     }
 }
-
+*/
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
