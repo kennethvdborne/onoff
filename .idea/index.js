@@ -48,7 +48,7 @@ const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTi
 const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonPlay = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
-const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: 10});
+const buttonRecord = new Gpio(26, 'in', 'both');
 
 
 //Watch Output
@@ -74,49 +74,58 @@ function delaySysTime(sysTime) {
     }, 300);
 }
 
-function mainButtons(value, mode, sysTime, led) {
-    console.log(value + '...' + mode + '...' + sysTime + '...' + led);
-    if (value === 1 && !mode && sysTime === 0) {
-        delaySysTime(sysTime);
-        blinkHelper.blinkStart(led);
-        mode = true;
+function allModes() {
+    if (playMode || recordMode || stopMode) {
+        return true;
     }
-    else if (value === 1 && mode && sysTime === 0) {
-        delaySysTime(sysTime);
-        blinkHelper.blinkEnd(led);
-        mode = false;
-    };
 }
 
 buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    mainButtons(value, playMode, sysTimePlay, ledPlay);
+    if (value === 1 && !allModes() && sysTimePlay === 0) {
+        delaySysTime(sysTimePlay);
+        blinkHelper.blinkStart(ledPlay);
+        playMode = true;
+    }
+    else if (value === 1 && playMode && sysTimePlay === 0) {
+        delaySysTime(sysTimePlay);
+        blinkHelper.blinkEnd(ledPlay);
+        playMode = false;
+    };
 });
 
 buttonStop.watch((err, value) => {
     if (err) {
         throw err;
     }
-    else if (value === 1) {
+    if (value === 1 && !allModes() && sysTimeStop === 0) {
+        delaySysTime(sysTimeStop);
         blinkHelper.blinkStart(ledStop);
-        stopMode = !stopMode;
-        console.log("Stop");
-        console.log(stopMode.valueOf());
+        stopMode = true;
     }
+    else if (value === 1 && stopMode && sysTimeStop === 0) {
+        delaySysTime(sysTimeStop);
+        blinkHelper.blinkEnd(ledStop);
+        stopMode = false;
+    };
 });
 
 buttonRecord.watch((err, value) => {
     if (err) {
         throw err;
     }
-    else if (value === 1) {
+    if (value === 1 && !allModes() && sysTimeRecord === 0) {
+        delaySysTime(sysTimeRecord);
         blinkHelper.blinkStart(ledRecord);
-        recordMode = !recordMode;
-        console.log("Record");
-        console.log(recordMode.valueOf());
+        recordMode = true;
     }
+    else if (value === 1 && recordMode && sysTimeRecord === 0) {
+        delaySysTime(sysTimeRecord);
+        blinkHelper.blinkEnd(ledRecord);
+        recordMode = false;
+    };
 });
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
