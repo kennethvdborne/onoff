@@ -1,9 +1,5 @@
-
-var helper = require('./src/classes/test');
-helper.http();
-helper.test();
-
 const Gpio = require('onoff').Gpio;
+const blinkHelper = require('./src/classes/blinkHelper');
 
 var debounceTime = 100;
 var recordMode = false;
@@ -40,12 +36,14 @@ const buttonStart = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debou
 const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
-var BlinkHelper = require('./src/classes/blinkHelper');
-var blinker = new BlinkHelper();
-
 
 //Watch Output
-button1.watch((err, value) => blinkHelper.blinkStart(led1));
+button1.watch((err, value) => {
+    if (value === 1) {
+        blinkHelper.blinkStart(led1);
+    }
+
+});
 button2.watch((err, value) => blinkHelper.blinkEnd(led1));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
@@ -57,7 +55,7 @@ button9.watch((err, value) => led9.writeSync(value));
 buttonStart.watch((err, value) => ledStart.writeSync(value));
 buttonStop.watch((err, value) => ledStop.writeSync(value));
 buttonRecord.watch((err, value) => ledRecord.writeSync(value));
-
+/*
 function blinking (ledx){
     var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
 
@@ -75,7 +73,7 @@ function blinking (ledx){
         ledx.unexport(); // Unexport GPIO to free resources
     }
 }
-
+*/
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 

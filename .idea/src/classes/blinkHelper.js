@@ -1,29 +1,28 @@
-class BlinkHelper {
+var blinkInProcess = false;
+var blinkInterval;
 
-    constructor() {
-        this.ledx;
-        this.blinkInterval;
+function blinkStart(led) {
+    if (!blinkInProcess) {
+        blinkInProcess = true;
+        blinkInterval = setInterval(function blinking() {
+            if (led.readSync() === 0) {
+                led.writeSync(1);
+            } else {
+                led.writeSync(0);
+            }
+        },300);
     }
- 
-    blink() {
-        this.blinkInterval = setInterval(blinkStart(), 300);
-    }
-
-    blinkStart() {
-        if (this.ledx.readSync() === 0) {
-            this.ledx.writeSync(1);
-        } else {
-            this.ledx.writeSync(0);
-        }
-    }
-
-    blinkEnd(ledx) {
-        clearInterval(blinkInterval);
-        this.ledx.writeSync(0);
-        this.ledx.unexport();
-    }
+    else blinkEnd(led);
 }
 
-module.exports = new BlinkHelper();
-//module.exports.blinking = blinking;
-//module.exports.blinkEnd = blinkEnd;
+
+function blinkEnd(led) {
+    clearInterval(blinkInterval);
+    blinkInProcess = false;
+    led.writeSync(0);
+}
+
+module.exports.blinkStart = blinkStart;
+module.exports.blinkEnd = blinkEnd;
+
+
