@@ -4,7 +4,7 @@ const blinkHelper = require('./src/classes/blinkHelper');
 var debounceTime = 100;
 var recordMode = false;
 var playMode = false;
-var pauseMode = false;
+var stopMode = false;
 
 //Initializing Output
 const led1 = new Gpio(10, 'out');
@@ -63,6 +63,7 @@ buttonPlay.watch((err, value) => {
 buttonStop.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledStop);
+        stopMode = !stopMode;
         console.log("Stop");
         console.log(playMode.valueOf());
     }
@@ -70,6 +71,7 @@ buttonStop.watch((err, value) => {
 buttonRecord.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledRecord);
+        recordMode = !recordMode;
         console.log("Record");
         console.log(playMode.valueOf());
     }
