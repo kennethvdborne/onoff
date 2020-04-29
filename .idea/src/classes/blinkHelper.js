@@ -1,8 +1,7 @@
-var led;
+//var led;
 var blinkInterval;
 
-function blinkStart(ledx) {
-    led = ledx;
+function blinkStart(led) {
     blinkInterval = setInterval(function blinking() {
         if (led.readSync() === 0) {
             led.writeSync(1);
@@ -13,7 +12,7 @@ function blinkStart(ledx) {
 }
 
 
-function blinkEnd() {
+function blinkEnd(led) {
     clearInterval(blinkInterval);
     led.writeSync(0);
     //led.unexport();

@@ -44,7 +44,7 @@ button1.watch((err, value) => {
     }
 
 });
-button2.watch((err, value) => blinkHelper.blinkEnd());
+button2.watch((err, value) => blinkHelper.blinkEnd(led1));
 button3.watch((err, value) => led3.writeSync(value));
 button4.watch((err, value) => led4.writeSync(value));
 button5.watch((err, value) => led5.writeSync(value));
