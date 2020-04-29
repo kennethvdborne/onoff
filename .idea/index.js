@@ -75,6 +75,7 @@ function delaySysTime(sysTime) {
 }
 
 function mainButtons(value, mode, sysTime, led) {
+    console.log(value + '...' + mode + '...' + sysTime + '...' + led);
     if (value === 1 && !mode && sysTime === 0) {
         delaySysTime(sysTime);
         blinkHelper.blinkStart(led);
