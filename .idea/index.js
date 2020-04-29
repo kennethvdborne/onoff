@@ -68,7 +68,7 @@ buttonPlay.watch((err, value) => {
         setTimeout(function(){
             timeX = 0;
             console.log("timer ended......")
-        }, 1000);
+        }, 200);
 
         console.log("Play");
         console.log(playMode.valueOf());
@@ -82,7 +82,7 @@ buttonPlay.watch((err, value) => {
         setTimeout(function(){
             timeX = 0;
             console.log("timer ended......")
-        }, 1000);
+        }, 200);
         console.log("Play");
         console.log(playMode.valueOf());
     };
