@@ -71,27 +71,27 @@ function delaySysTime(sysTime) {
     sysTime = 1;
     setTimeout(function(){
         sysTime = 0;
-    }, 200);
+    }, 300);
+}
+
+function mainButtons(value, mode, sysTime, led) {
+    if (value === 1 && !mode && sysTime === 0) {
+        delaySysTime(sysTime);
+        blinkHelper.blinkStart(led);
+        mode = true;
+    }
+    else if (value === 1 && mode && sysTime === 0) {
+        delaySysTime(sysTime);
+        blinkHelper.blinkEnd(led);
+        mode = false;
+    };
 }
 
 buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !playMode && sysTimePlay === 0) {
-        delaySysTime(sysTimePlay);
-        blinkHelper.blinkStart(ledPlay);
-        playMode = true;
-        console.log("Play");
-        console.log(playMode.valueOf());
-    }
-    else if (value === 1 && playMode && sysTimePlay === 0) {
-        delaySysTime(sysTimePlay);
-        blinkHelper.blinkEnd(ledPlay);
-        playMode = false;
-        console.log("Play");
-        console.log(playMode.valueOf());
-    };
+    mainButtons(value, playMode, sysTimePlay, ledPlay);
 });
 
 buttonStop.watch((err, value) => {
