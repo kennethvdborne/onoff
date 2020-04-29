@@ -4,12 +4,15 @@ var ledx;
 var test = 'Something here ';
 
 function blinkStart() {
-    if (ledx.readSync() === 0) {
-        ledx.writeSync(1);
-    } else {
-        ledx.writeSync(0);
-    }
+    setInterval(function blinking() {
+        if (ledx.readSync() === 0) {
+            ledx.writeSync(1);
+        } else {
+            ledx.writeSync(0);
+        }
+    },300);
 }
+
 
 function blinkEnd() {
     clearInterval(blinkInterval);
@@ -24,7 +27,7 @@ function testing(x) {
     console.log(x);
 }
 
-//module.exports.blinkStart = blinkStart;
+module.exports.blinkStart = blinkStart;
 //module.exports.blinkEnd = blinkEnd;
 //module.exports.ledx = ledx;
 module.exports.testing = testing;
