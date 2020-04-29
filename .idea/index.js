@@ -17,7 +17,7 @@ const led7 = new Gpio(17, 'out');
 const led8 = new Gpio(15, 'out');
 const led9 = new Gpio(14, 'out');
 const ledMain = new Gpio(4, 'out');
-const ledStart = new Gpio(11, 'out');
+const ledPlay = new Gpio(11, 'out');
 const ledStop = new Gpio(25, 'out');
 const ledRecord = new Gpio(9, 'out');
 const fan = new Gpio(2, 'out');
@@ -32,7 +32,7 @@ const button6 = new Gpio(5, 'in', 'both', 'rising', {debounceTimeout: debounceTi
 const button7= new Gpio(8, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const buttonStart = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const buttonPlay = new Gpio(21, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonStop = new Gpio(20, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
 
@@ -52,28 +52,24 @@ button6.watch((err, value) => led6.writeSync(value));
 button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
-buttonStart.watch((err, value) => ledStart.writeSync(value));
-buttonStop.watch((err, value) => ledStop.writeSync(value));
-buttonRecord.watch((err, value) => ledRecord.writeSync(value));
-/*
-function blinking (ledx){
-    var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
-
-    function blinkLED() { //function to start blinking
-        if (ledx.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-            ledx.writeSync(1); //set pin state to 1 (turn LED on)
-        } else {
-            ledx.writeSync(0); //set pin state to 0 (turn LED off)
-        }
+buttonPlay.watch((err, value) => {
+    if (value === 1) {
+        blinkHelper.blinkStart(ledPlay);
+        playMode = !playMode;
+        console.log(playMode.valueOf());
     }
-
-    function endBlink() { //function to stop blinking
-        clearInterval(blinkInterval); // Stop blink intervals
-        ledx.writeSync(0); // Turn LED off
-        ledx.unexport(); // Unexport GPIO to free resources
+});
+buttonStop.watch((err, value) => {
+    if (value === 1) {
+        blinkHelper.blinkStart(ledStop);
     }
-}
-*/
+});
+buttonRecord.watch((err, value) => {
+    if (value === 1) {
+        blinkHelper.blinkStart(ledRecord);
+    }
+});
+
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
