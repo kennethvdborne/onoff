@@ -1,6 +1,6 @@
 
 var ledx;
-var blinkInterval = setInterval(blinkStart(), 300);
+//var blinkInterval = setInterval(blinkStart(), 300);
 var test = 'Something here ';
 
 function blinkStart() {
