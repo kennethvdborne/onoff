@@ -54,7 +54,10 @@ button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
 
 buttonPlay.watch((err, value) => {
-    if (value === 1) {
+    if (err) {
+        throw err;
+    }
+    else if (value === 1) {
         blinkHelper.blinkStart(ledPlay);
         playMode = !playMode;
         console.log("Play");
@@ -63,7 +66,10 @@ buttonPlay.watch((err, value) => {
 });
 
 buttonStop.watch((err, value) => {
-    if (value === 1) {
+    if (err) {
+        throw err;
+    }
+    else if (value === 1) {
         blinkHelper.blinkStart(ledStop);
         stopMode = !stopMode;
         console.log("Stop");
@@ -72,7 +78,10 @@ buttonStop.watch((err, value) => {
 });
 
 buttonRecord.watch((err, value) => {
-    if (value === 1) {
+    if (err) {
+        throw err;
+    }
+    else if (value === 1) {
         blinkHelper.blinkStart(ledRecord);
         recordMode = !recordMode;
         console.log("Record");
