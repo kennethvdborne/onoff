@@ -12,7 +12,6 @@ function blinkStart(led) {
             }
         },300);
     }
-    else blinkEnd(led);
 }
 
 function blinkEnd(led) {
