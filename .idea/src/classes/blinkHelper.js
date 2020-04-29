@@ -24,9 +24,9 @@ function testing(x) {
     console.log(x);
 }
 
-module.exports.blinkStart = blinkStart;
-module.exports.blinkEnd = blinkEnd;
-module.exports.ledx = ledx;
+//module.exports.blinkStart = blinkStart;
+//module.exports.blinkEnd = blinkEnd;
+//module.exports.ledx = ledx;
 module.exports.testing = testing;
 module.exports.test = test;
 
