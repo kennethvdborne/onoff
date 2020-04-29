@@ -1,14 +1,15 @@
 
-var ledx;
+var led;
 //var blinkInterval = setInterval(blinkStart(), 300);
 var test = 'Something here ';
 
-function blinkStart() {
+function blinkStart(ledx) {
+    led = ledx;
     setInterval(function blinking() {
-        if (ledx.readSync() === 0) {
-            ledx.writeSync(1);
+        if (led.readSync() === 0) {
+            led.writeSync(1);
         } else {
-            ledx.writeSync(0);
+            led.writeSync(0);
         }
     },300);
 }
