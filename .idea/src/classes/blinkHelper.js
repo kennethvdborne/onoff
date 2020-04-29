@@ -12,7 +12,7 @@ function blinkStart(led) {
             }
         },300);
     }
-    else console.log('Blink in process.....');
+    else blinkEnd(led);
 }
 
 
@@ -20,7 +20,6 @@ function blinkEnd(led) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
     led.writeSync(0);
-    //led.unexport();
 }
 
 module.exports.blinkStart = blinkStart;
