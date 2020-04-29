@@ -56,17 +56,22 @@ buttonPlay.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledPlay);
         playMode = !playMode;
+        console.log("Play");
         console.log(playMode.valueOf());
     }
 });
 buttonStop.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledStop);
+        console.log("Stop");
+        console.log(playMode.valueOf());
     }
 });
 buttonRecord.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledRecord);
+        console.log("Record");
+        console.log(playMode.valueOf());
     }
 });
 
