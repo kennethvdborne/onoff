@@ -19,7 +19,7 @@ function blinkEnd(led) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
     led.writeSync(0);
-    led.unexport();
+    //led.unexport();
 }
 
 module.exports.blinkStart = blinkStart;
