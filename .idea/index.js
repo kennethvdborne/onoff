@@ -6,6 +6,20 @@ var recordMode = false;
 var playMode = false;
 var stopMode = false;
 
+//DelayTime for buttons
+var sysTime1 = 0;
+var sysTime2 = 0;
+var sysTime3 = 0;
+var sysTime4 = 0;
+var sysTime5 = 0;
+var sysTime6 = 0;
+var sysTime7 = 0;
+var sysTime8 = 0;
+var sysTime9 = 0;
+var sysTimePlay = 0;
+var sysTimeStop = 0;
+var sysTimeRecord = 0;
+
 //Initializing Output
 const led1 = new Gpio(10, 'out');
 const led2 = new Gpio(24, 'out');
@@ -53,36 +67,28 @@ button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
 
-var timeX = 0;
+function delaySysTime(sysTime) {
+    sysTime = 1;
+    setTimeout(function(){
+        sysTime = 0;
+    }, 200);
+}
 
 buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !playMode && timeX === 0) {
-        timeX = 1;
-        console.log("time 0..........")
+    if (value === 1 && !playMode && sysTimePlay === 0) {
+        delaySysTime(sysTimePlay);
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
-
-        setTimeout(function(){
-            timeX = 0;
-            console.log("timer ended......")
-        }, 200);
-
         console.log("Play");
         console.log(playMode.valueOf());
     }
     else if (value === 1 && playMode && timeX === 0) {
-        timeX = 1;
-        console.log("time 0..........")
-
+        delaySysTime(sysTimePlay);
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
-        setTimeout(function(){
-            timeX = 0;
-            console.log("timer ended......")
-        }, 200);
         console.log("Play");
         console.log(playMode.valueOf());
     };
