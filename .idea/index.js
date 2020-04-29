@@ -60,13 +60,15 @@ buttonPlay.watch((err, value) => {
     if (value === 1 && !playMode) {
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
+        console.log("Play");
+        console.log(playMode.valueOf());
     }
     else if (value === 1 && playMode) {
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
+        console.log("Play");
+        console.log(playMode.valueOf());
     };
-    console.log("Play");
-    console.log(playMode.valueOf());
 });
 
 buttonStop.watch((err, value) => {
