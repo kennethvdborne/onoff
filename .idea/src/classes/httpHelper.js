@@ -24,9 +24,24 @@ module.exports = {
             //.then(json => console.log(json));
         
         obj = await response.text();
+        return obj;
         console.log(obj);
 
         
 
+    },
+
+    getButtonsWithoutScene: async function() {
+
+        let obj;
+
+        var response = await fetch(url + 'api/getbuttonswithoutscene')
+            //.then(res => res.json())
+            //.then(json => obj = json)
+            //.then(json => console.log(json));
+        
+        obj = await response.text();
+        return obj;
+        console.log(obj);
     }
 }
