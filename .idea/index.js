@@ -39,8 +39,11 @@ const buttonRecord = new Gpio(26, 'in', 'both', 'rising', {debounceTimeout: debo
 
 //Watch Output
 button1.watch((err, value) => {
-    blinkHelper.ledx = led1;
-    blinkHelper.blinkStart();
+    //blinkHelper.ledx = led1;
+    //blinkHelper.blinkStart();
+    blinkHelper.testing();
+    blinkHelper.test = 'Something else';
+    blinkHelper.testing();
 });
 button2.watch((err, value) => blinkHelper.blinkEnd());
 button3.watch((err, value) => led3.writeSync(value));
