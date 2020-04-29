@@ -52,6 +52,7 @@ button6.watch((err, value) => led6.writeSync(value));
 button7.watch((err, value) => led7.writeSync(value));
 button8.watch((err, value) => led8.writeSync(value));
 button9.watch((err, value) => led9.writeSync(value));
+
 buttonPlay.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledPlay);
@@ -60,23 +61,24 @@ buttonPlay.watch((err, value) => {
         console.log(playMode.valueOf());
     }
 });
+
 buttonStop.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledStop);
         stopMode = !stopMode;
         console.log("Stop");
-        console.log(playMode.valueOf());
+        console.log(stopMode.valueOf());
     }
 });
+
 buttonRecord.watch((err, value) => {
     if (value === 1) {
         blinkHelper.blinkStart(ledRecord);
         recordMode = !recordMode;
         console.log("Record");
-        console.log(playMode.valueOf());
+        console.log(recordMode.valueOf());
     }
 });
-
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
