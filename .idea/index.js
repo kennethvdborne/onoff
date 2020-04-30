@@ -72,15 +72,72 @@ button1.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(1);
 });
-button2.watch((err, value) => blinkHelper.blinkEnd(led1));
-button3.watch((err, value) => led3.writeSync(value));
-button4.watch((err, value) => led4.writeSync(value));
-button5.watch((err, value) => led5.writeSync(value));
-button6.watch((err, value) => led6.writeSync(value));
-button7.watch((err, value) => led7.writeSync(value));
-button8.watch((err, value) => led8.writeSync(value));
-button9.watch((err, value) => led9.writeSync(value));
+
+button2.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(2);
+});
+
+button3.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(3);
+});
+
+button4.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(4);
+});
+
+button5.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(5);
+});
+
+button6.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(6);
+});
+
+button7.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(7);
+});
+
+button8.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(8);
+});
+
+button9.watch((err, value) => {
+    if (err) {
+        throw err;
+    }
+    buttonFunctions(value, 1, sysTime1);
+    httpHelper.playScene(9);
+});
 
 function delaySysTime(sysTime) {
     sysTime = 1;
