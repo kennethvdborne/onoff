@@ -102,6 +102,7 @@ button5.watch((err, value) => {
 });
 
 button6.watch((err, value) => {
+    console.log(sysTime6);
     if (err) {
         throw err;
     }
