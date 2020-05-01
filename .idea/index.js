@@ -257,6 +257,7 @@ buttonRecord.watch((err, value) => {
             sysRecord = true;
         }, 500);
         blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
         recordMode = false;
     };
 });
