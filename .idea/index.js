@@ -133,7 +133,7 @@ function delaySysTime(sysTime) {
     sysTime = 1;
     setTimeout(function(){
         sysTime = 0;
-    }, 300);
+    }, 500);
 }
 
 function allModes() {
