@@ -59,10 +59,12 @@ function buttonFunctions(value, x) {
     if (value === 1 && recordMode) {
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(x);
+        console.log('record...' + x);
     }
     if (value === 1 && playMode) {
         blinkHelper.blinkEndLeds();
         httpHelper.playScene(x);
+        console.log('play...' + x);
     }
     if (value === 1 && stopMode) {
         console.log('stop ' + x);
