@@ -18,7 +18,6 @@ function blinkEnd(led) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
     led.writeSync(0);
-    //led.unexport();
 }
 
 function blinkStartLeds(leds) {
@@ -28,8 +27,10 @@ function blinkStartLeds(leds) {
     }
 }
 function blinkEndLeds(leds) {
+    clearInterval(blinkInterval);
+    blinkInProcess = false;
     for (let i = 0; i < leds.length; i++) {
-        blinkEnd(leds[i]);
+        leds[i].writeSync(0);
     }
 }
 
