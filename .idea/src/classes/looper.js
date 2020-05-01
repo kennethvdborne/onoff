@@ -12,7 +12,7 @@ function loopInit (leds) {
                 myLoop()
             }, 800)
         }
-        if (i > 3 && i < length) {
+        if (i > 2 && i < length) {
             setTimeout(function () {
                 leds[(i - 3)].writeSync(0);
                 if (i >= leds.length) {
