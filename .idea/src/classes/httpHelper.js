@@ -40,5 +40,6 @@ module.exports = {
         
         obj = await response.text();
         return obj;
-    }
+    },
+
 }
