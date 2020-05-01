@@ -21,7 +21,7 @@ function loop (leds) {
                 leds[(i-3)].writeSync(0);
             }, 800)
 
-            if(i > leds.length && i < length){
+            if(i >= leds.length && i < length){
                 myLoop();
                 i++;
             }
