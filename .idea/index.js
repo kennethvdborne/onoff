@@ -67,45 +67,77 @@ button1.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1);
+    if (sys1 && value === 1) {
+        sys1 = false;
+        setTimeout(function(){
+            sys1 = true;
+        }, 1000);
+        buttonFunctions(value, 1);
+    }
 });
 
 button2.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 2);
+    if (sys2 && value === 1) {
+        sys2 = false;
+        setTimeout(function(){
+            sys2 = true;
+        }, 1000);
+        buttonFunctions(value, 2);
+    }
 });
 
 button3.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 3);
+    if (sys3 && value === 1) {
+        sys3 = false;
+        setTimeout(function(){
+            sys3 = true;
+        }, 1000);
+        buttonFunctions(value, 3);
+    }
 });
 
 button4.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 4);
+        if (sys4 && value === 1) {
+            sys4 = false;
+            setTimeout(function(){
+                sys4 = true;
+            }, 1000);
+            buttonFunctions(value, 4);
+        }
 });
 
 button5.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 5);
+    if (sys5 && value === 1) {
+        sys5 = false;
+        setTimeout(function(){
+            sys5 = true;
+        }, 1000);
+        buttonFunctions(value, 5);
+    }
 });
 
 button6.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (sys6) {
+    if (sys6 && value === 1) {
         sys6 = false;
-        setTimeout(function(){ sys6 = true; console.log('end sys......')}, 1000);
-        //delaySysTime(sys6);
+        setTimeout(function(){
+            sys6 = true;
+            console.log('end sys......');
+        }, 1000);
         buttonFunctions(value, 6);
     }
 });
@@ -114,29 +146,40 @@ button7.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 7);
+    if (sys7 && value === 1) {
+        sys7 = false;
+        setTimeout(function(){
+            sys7 = true;
+        }, 1000);
+        buttonFunctions(value, 7);
+    }
 });
 
 button8.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 8);
+    if (sys8 && value === 1) {
+        sys8 = false;
+        setTimeout(function(){
+            sys8 = true;
+        }, 1000);
+        buttonFunctions(value, 8);
+    }
 });
 
 button9.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 9);
+    if (sys9 && value === 1) {
+        sys9 = false;
+        setTimeout(function(){
+            sys9 = true;
+        }, 1000);
+        buttonFunctions(value, 9);
+    }
 });
-
-function delaySysTime(sys) {
-    //sys = false;
-    setTimeout(function(){
-        sys = true;
-    }, 1000);
-}
 
 function allModes() {
     if (playMode || recordMode || stopMode) {
@@ -150,13 +193,17 @@ buttonPlay.watch((err, value) => {
     }
     if (value === 1 && !allModes() && sysPlay) {
         sysPlay = false;
-        delaySysTime(sysPlay);
+        setTimeout(function(){
+            sysPlay = true;
+        }, 1000);
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
     }
     else if (value === 1 && playMode && sysPlay) {
         sysPlay = false;
-        delaySysTime(sysPlay);
+        setTimeout(function(){
+            sysPlay = true;
+        }, 1000);
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
     };
@@ -168,13 +215,17 @@ buttonStop.watch((err, value) => {
     }
     if (value === 1 && !allModes() && sysStop) {
         sysStop = false;
-        delaySysTime(sysStop);
+        setTimeout(function(){
+            sysStop = true;
+        }, 1000);
         blinkHelper.blinkStart(ledStop);
         stopMode = true;
     }
     else if (value === 1 && stopMode && sysStop) {
         sysStop = false;
-        delaySysTime(sysStop);
+        setTimeout(function(){
+            sysStop = true;
+        }, 1000);
         blinkHelper.blinkEnd(ledStop);
         stopMode = false;
     };
@@ -186,13 +237,17 @@ buttonRecord.watch((err, value) => {
     }
     if (value === 1 && !allModes() && sysRecord) {
         sysRecord = false;
-        delaySysTime(sysRecord);
+        setTimeout(function(){
+            sysRecord = true;
+        }, 1000);
         blinkHelper.blinkStart(ledRecord);
         recordMode = true;
     }
     else if (value === 1 && recordMode && sysRecord) {
         sysRecord = false;
-        delaySysTime(sysRecord);
+        setTimeout(function(){
+            sysRecord = true;
+        }, 1000);
         blinkHelper.blinkEnd(ledRecord);
         recordMode = false;
     };
