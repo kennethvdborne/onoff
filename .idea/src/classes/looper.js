@@ -23,7 +23,7 @@ function loop (leds) {
 
             if(i > leds.length && i < length){
                 myLoop();
-                i++
+                i++;
             }
         }
 
