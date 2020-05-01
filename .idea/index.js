@@ -77,56 +77,56 @@ button2.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime2);
+    buttonFunctions(value, 2, sysTime2);
 });
 
 button3.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime3);
+    buttonFunctions(value, 3, sysTime3);
 });
 
 button4.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime4);
+    buttonFunctions(value, 4, sysTime4);
 });
 
 button5.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime5);
+    buttonFunctions(value, 5, sysTime5);
 });
 
 button6.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime6);
+    buttonFunctions(value, 6, sysTime6);
 });
 
 button7.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime7);
+    buttonFunctions(value, 7, sysTime7);
 });
 
 button8.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime8);
+    buttonFunctions(value, 8, sysTime8);
 });
 
 button9.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 1, sysTime9);
+    buttonFunctions(value, 9, sysTime9);
 });
 
 function delaySysTime(sysTime) {
