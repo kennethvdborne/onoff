@@ -4,6 +4,7 @@ function loop (leds) {
     myLoop();
 
     function myLoop() {
+        console.log('starting .... ')
         if(i < leds.length) {
             setTimeout(function () {
                 leds[i].writeSync(1);
