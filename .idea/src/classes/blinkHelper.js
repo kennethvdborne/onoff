@@ -25,6 +25,7 @@ function blinkEnd(led) {
 
 function blinkStartLeds(ledsInput) {
     leds = ledsInput;
+    console.log(leds.length);
     for (let i = 0; i < leds.length; i++) {
         blinkInProcess = false;
         blinkStart(leds[i]);
@@ -64,6 +65,7 @@ function blinkSpecificKLedsStart(input, ledsInput) {
             console.log('remove ...' + i)
         }
     }
+    console.log(leds.length + '....input');
     blinkStartLeds(leds);
 }
 
