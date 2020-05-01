@@ -6,12 +6,14 @@ module.exports = {
 
     recordScene : function(button) {
 
+        console.log('recordfromhhhtp');
+
         fetch(url + '/api/recordscenebis/' + button);
         
     },
 
     playScene : function (button) {
-
+        console.log('playfromhhhtp');
         fetch(url + '/api/playscene/' + button);
     },
 
