@@ -48,25 +48,26 @@ function blinkEndLeds() {
 
 function blinkSpecificLedsStart(input, ledsInput) {
     leds = [ ...ledsInput ];
+    var ledsZ = [];
     for (let i = 0; i < input.length; i++) {
          if (!input[i]) {
-             leds.splice(i, 1);
+             ledsZ.push(leds[i]);
          }
     }
-    blinkStartLeds(leds);
+    blinkStartLeds(ledsZ);
 }
 
 
 function blinkSpecificKLedsStart(input, ledsInput) {
     leds = [ ...ledsInput ];
+    var ledsZ = [];
     for (let i = 0; i < input.length; i++) {
         if (input[i]) {
-            leds.splice(i, 1);
-            console.log('remove ...' + i)
+            ledsZ.push(leds[i]);
         }
     }
-    console.log(leds.length + '....input');
-    blinkStartLeds(leds);
+    console.log(ledsZ.length + '....input');
+    blinkStartLeds(ledsZ);
 }
 
 function getLeds() {
