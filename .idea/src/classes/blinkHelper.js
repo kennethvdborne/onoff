@@ -21,8 +21,16 @@ function blinkEnd(led) {
     //led.unexport();
 }
 
+function blinkStartLeds(leds) {
+    for (let i = 0; i < leds.length; i++) {
+        blinkstart(leds[i]);
+    }
+
+}
+
 module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;
+module.exports.blinkStartLeds = blinkStartLeds;
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
