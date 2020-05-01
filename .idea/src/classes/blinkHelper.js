@@ -23,7 +23,7 @@ function blinkEnd(led) {
 
 function blinkStartLeds(leds) {
     for (let i = 0; i < leds.length; i++) {
-        blinkstart(leds[i]);
+        blinkStart(leds[i]);
     }
 
 }
