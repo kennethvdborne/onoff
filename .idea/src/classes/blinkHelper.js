@@ -1,5 +1,6 @@
 var blinkInProcess = false;
 var blinkInterval;
+var leds;
 
 function blinkStart(led) {
     if (!blinkInProcess) {
@@ -20,24 +21,30 @@ function blinkEnd(led) {
     led.writeSync(0);
 }
 
-function blinkStartLeds(leds) {
+function blinkStartLeds(ledsInput) {
     for (let i = 0; i < leds.length; i++) {
         blinkInProcess = false;
         blinkStart(leds[i]);
     }
 }
-function blinkEndLeds(leds) {
+function blinkEndLeds(ledsInput) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
+    this.leds = ledsInput;
     for (let i = 0; i < leds.length; i++) {
         leds[i].writeSync(0);
     }
+}
+
+function setLeds(ledsInput) {
+    this.leds = ledsInput;
 }
 
 module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
+module.exports.setLeds = setLeds;
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
