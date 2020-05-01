@@ -2,7 +2,6 @@ const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
 
-var debounceTime = 2000;
 var recordMode = false;
 var playMode = false;
 var stopMode = false;
@@ -38,15 +37,15 @@ const ledRecord = new Gpio(9, 'out');
 const fan = new Gpio(2, 'out');
 
 //Initializing Input
-const button1 = new Gpio(16, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button2 = new Gpio(19, 'in', 'both','rising', {debounceTimeout: debounceTime});
-const button3 = new Gpio(13, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button4 = new Gpio(12, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button5 = new Gpio(6, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button6 = new Gpio(5, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button7= new Gpio(8, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button8 = new Gpio(0, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
-const button9 = new Gpio(7, 'in', 'both', 'rising', {debounceTimeout: debounceTime});
+const button1 = new Gpio(16, 'in', 'both', 'rising');
+const button2 = new Gpio(19, 'in', 'both','rising');
+const button3 = new Gpio(13, 'in', 'both', 'rising');
+const button4 = new Gpio(12, 'in', 'both', 'rising');
+const button5 = new Gpio(6, 'in', 'both', 'rising');
+const button6 = new Gpio(5, 'in', 'both', 'rising');
+const button7= new Gpio(8, 'in', 'both', 'rising');
+const button8 = new Gpio(0, 'in', 'both', 'rising');
+const button9 = new Gpio(7, 'in', 'both', 'rising');
 const buttonPlay = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
@@ -142,12 +141,6 @@ buttonRecord.watch((err, value) => {
         recordMode = false;
     };
 });
-
-//setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
-
-
-
-
 
 
 
