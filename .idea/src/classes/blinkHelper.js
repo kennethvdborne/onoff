@@ -56,11 +56,27 @@ function blinkSpecificLedsStart(input, ledsInput) {
 }
 
 
+function blinkSpecificKLedsStart(input, ledsInput) {
+    leds = [ ...ledsInput ];
+    for (let i = 0; i < input.length; i++) {
+        if (input[i]) {
+            leds.splice(i, 1);
+        }
+    }
+    blinkStartLeds(leds);
+}
+
+function getLeds() {
+    return leds;
+}
+
+
 module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
 module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
+module.exports.getLeds = getLeds;
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 

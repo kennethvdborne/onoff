@@ -57,10 +57,12 @@ const buttonRecord = new Gpio(26, 'in', 'both');
 
 function buttonFunctions(value, x) {
     if (value === 1 && recordMode) {
-
+        blinkHelper.blinkEndLeds();
+        httpHelper.recordScene(x);
     }
     if (value === 1 && playMode) {
-        console.log('play ' + x);
+        blinkHelper.blinkEndLeds();
+        httpHelper.playScene(x);
     }
     if (value === 1 && stopMode) {
         console.log('stop ' + x);
@@ -203,6 +205,7 @@ buttonPlay.watch((err, value) => {
             sysPlay = true;
         }, 500);
         blinkHelper.blinkStart(ledPlay);
+        httpHelper.getK(ledsFunction);
         playMode = true;
     }
     else if (value === 1 && playMode && sysPlay) {
@@ -211,6 +214,7 @@ buttonPlay.watch((err, value) => {
             sysPlay = true;
         }, 500);
         blinkHelper.blinkEnd(ledPlay);
+        blinkHelper.blinkEndLeds();
         playMode = false;
     };
 });
@@ -233,6 +237,7 @@ buttonStop.watch((err, value) => {
             sysStop = true;
         }, 500);
         blinkHelper.blinkEnd(ledStop);
+        blinkHelper.blinkEndLeds();
         stopMode = false;
     };
 });

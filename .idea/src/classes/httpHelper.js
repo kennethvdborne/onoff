@@ -56,6 +56,19 @@ module.exports = {
                 console.log(json);
                 b.blinkSpecificLedsStart(json, leds);
             });
+    },
+
+    getK: function(leds){
+        fetch(url + 'api/getbuttons')
+            //.then(res => res.json())é
+            //.then(json => console.log(json))
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(json){
+                console.log(json);
+                b.blinkSpecificKLedsStart(json, leds);
+            });
     }
 
 
