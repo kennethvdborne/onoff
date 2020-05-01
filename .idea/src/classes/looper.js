@@ -10,7 +10,7 @@ function loop (leds) {
             }, 1000)
         }
 
-        if(i > 2) {
+        if(i > 3) {
             setTimeout(function() {
                 leds[(i-3)].writeSync(0);
             }, 800)
