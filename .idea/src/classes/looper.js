@@ -5,7 +5,7 @@ function loop (leds) {
     myLoop();
 
     function myLoop() {
-        if(i < leds.length - 3) {
+        if(i < length - 3) {
             setTimeout(function () {
                 leds[i].writeSync(1);
                 i++;
