@@ -55,7 +55,7 @@ function buttonFunctions(value, x, sysTime) {
         delaySysTime(sysTime);
         console.log('record ' + x);
     }
-    if (value === 1 && playMode && sysTime === 0) {
+    if (value === 1 && playMode) {
         delaySysTime(sysTime);
         console.log('play ' + x);
     }
@@ -107,8 +107,8 @@ button6.watch((err, value) => {
         throw err;
     }
     if (sysTime6 === 0) {
-        buttonFunctions(value, 6, sysTime6);
         sysTime6 = 1;
+        buttonFunctions(value, 6, sysTime6);
     }
 
 });
