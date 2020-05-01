@@ -36,7 +36,8 @@ module.exports = {
 
         var response = await fetch(url + 'api/getbuttons')
             .then(res => res.json())
-            .return(response.text)
+            .then(json => console.log(json))
+            .then(json => {return json})
             //.then(json => obj = json)
             //.then(json => console.log(json));
         
