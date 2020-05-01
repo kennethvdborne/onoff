@@ -30,6 +30,7 @@ module.exports = {
     },
 
     getButtonsWithoutScene: async function() {
+        console.log('started .. .. .. ')
 
         let obj;
 
@@ -39,6 +40,7 @@ module.exports = {
             //.then(json => console.log(json));
         
         obj = await response.text();
+        console.log(obj);
         return obj;
     },
 
