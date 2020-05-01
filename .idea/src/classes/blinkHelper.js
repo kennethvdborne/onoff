@@ -1,7 +1,7 @@
 var blinkInProcess = false;
 var leds;
 var blinkInterval;
-var arrayBlinkInterval;
+var arrayBlinkInterval = [];
 
 function blinkStart(led) {
     if (!blinkInProcess) {
