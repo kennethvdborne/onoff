@@ -105,7 +105,7 @@ button6.watch((err, value) => {
     }
     if (sys6 === true) {
         sys6 = false;
-        delaySysTime(sys);
+        delaySysTime(sys6);
         console.log('free....');
         buttonFunctions(value, 6);
     }
