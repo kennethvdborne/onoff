@@ -50,7 +50,7 @@ function blinkSpecificLedsStart(input, ledsInput) {
     leds = [ ...ledsInput ];
     var ledsZ = [];
     for (let i = 0; i < input.length; i++) {
-         if (!input[i]) {
+         if (input[i]) {
              ledsZ.push(leds[i]);
          }
     }
@@ -62,7 +62,7 @@ function blinkSpecificKLedsStart(input, ledsInput) {
     leds = [ ...ledsInput ];
     var ledsZ = [];
     for (let i = 0; i < input.length; i++) {
-        if (input[i]) {
+        if (!input[i]) {
             ledsZ.push(leds[i]);
         }
     }
