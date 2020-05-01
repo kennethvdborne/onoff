@@ -48,8 +48,11 @@ module.exports = {
         fetch(url + 'api/getbuttons')
             //.then(res => res.json())
             //.then(json => console.log(json))
-            .then((res) => {
-                return res.json()
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(json){
+                console.log(json);
             });
     }
 

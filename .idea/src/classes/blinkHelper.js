@@ -48,7 +48,7 @@ function blinkEndLeds() {
 function blinkSpecificLedsStart(input) {
     console.log('loop.......');
     console.log(input);
-    console.log(input.length);
+    //console.log(input.length);
     for (let i = 0; i < input.length; i++) {
          console.log(input[i]);
     }
