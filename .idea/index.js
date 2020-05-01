@@ -71,7 +71,6 @@ button1.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime1);
-    httpHelper.playScene(1);
 });
 
 button2.watch((err, value) => {
@@ -79,7 +78,6 @@ button2.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime2);
-    httpHelper.playScene(2);
 });
 
 button3.watch((err, value) => {
@@ -87,7 +85,6 @@ button3.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime3);
-    httpHelper.playScene(3);
 });
 
 button4.watch((err, value) => {
@@ -95,7 +92,6 @@ button4.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime4);
-    httpHelper.playScene(4);
 });
 
 button5.watch((err, value) => {
@@ -103,7 +99,6 @@ button5.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime5);
-    httpHelper.playScene(5);
 });
 
 button6.watch((err, value) => {
@@ -111,7 +106,6 @@ button6.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime6);
-    httpHelper.playScene(6);
 });
 
 button7.watch((err, value) => {
@@ -119,7 +113,6 @@ button7.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime7);
-    httpHelper.playScene(7);
 });
 
 button8.watch((err, value) => {
@@ -127,7 +120,6 @@ button8.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime8);
-    httpHelper.playScene(8);
 });
 
 button9.watch((err, value) => {
@@ -135,7 +127,6 @@ button9.watch((err, value) => {
         throw err;
     }
     buttonFunctions(value, 1, sysTime9);
-    httpHelper.playScene(9);
 });
 
 function delaySysTime(sysTime) {
