@@ -4,7 +4,7 @@ function loop () {
     myLoop();
     function myLoop() {
         setTimeout(function() {
-            console.log('hello');
+            console.log('hello.....' + i);
             i++;
             if (i < 10) {
                 myLoop();
