@@ -1,4 +1,4 @@
-function loop (leds) {
+function loopInit (leds) {
     var length = leds.length + 3;
     i = 0;
     myLoop();
@@ -10,7 +10,7 @@ function loop (leds) {
                 leds[i].writeSync(1);
                 i++;
                 myLoop()
-            }, 1000)
+            }, 800)
         }
         if (i > 3 && i < length) {
             setTimeout(function () {
@@ -19,12 +19,12 @@ function loop (leds) {
                     i++;
                     myLoop()
                 }
-            }, 800)
+            }, 600)
         }
     }
 }
 
-module.exports.loop = loop;
+module.exports.loopInit = loopInit;
 
 
 /*

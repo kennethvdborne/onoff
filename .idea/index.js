@@ -60,7 +60,6 @@ function buttonFunctions(value, x) {
     }
     if (value === 1 && playMode) {
         console.log('play ' + x);
-        looper.loop(leds);
     }
     if (value === 1 && stopMode) {
         console.log('stop ' + x);
@@ -286,5 +285,7 @@ process.on('SIGINT', _ => {
 });
 
 fan.writeSync(1);
+
+looper.loopInit(leds);
 
 console.log('End of node file');
