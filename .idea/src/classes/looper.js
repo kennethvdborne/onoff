@@ -8,24 +8,20 @@ function loop (leds) {
         if(i < leds.length) {
             setTimeout(function () {
                 leds[i].writeSync(1);
+                i++;
+                myLoop()
             }, 1000)
 
-            if(i > 3) {
-                setTimeout(function() {
-                    leds[(i-3)].writeSync(0);
+            if (i > 3 && i < length) {
+                setTimeout(function () {
+                    leds[(i - 3)].writeSync(0);
+                    if (i >= leds.length) {
+                        i++;
+                        myLoop()
+                    }
                 }, 800)
             }
-
-        if(i < length) {
-                i++;
-                myLoop();
-            }
         }
-
-
-
-
-
     }
 }
 
