@@ -27,18 +27,16 @@ function blinkStartLeds(ledsInput) {
         blinkStart(leds[i]);
     }
 }
-function blinkEndLeds(ledsInput) {
-
+function blinkEndLeds() {
     try {
         clearInterval(blinkInterval);
         blinkInProcess = false;
-        leds = ledsInput;
+        //leds = ledsInput;
         for (let i = 0; i < leds.length; i++) {
             leds[i].writeSync(0);
         }
     } catch(e) {
-        console.log(e);
-        // [Error: Uh oh!]
+        console.log('error');
     }
 
 }

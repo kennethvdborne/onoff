@@ -86,7 +86,7 @@ button2.watch((err, value) => {
         throw err;
     }
     if (sys2 && value === 1) {
-        blinkHelper.setLeds(null);
+        blinkHelper.blinkEndLeds();
         sys2 = false;
         setTimeout(function(){
             sys2 = true;
