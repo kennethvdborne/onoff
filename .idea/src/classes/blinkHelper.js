@@ -1,5 +1,4 @@
 var blinkInProcess = false;
-var blinkInterval;
 var leds;
 
 function blinkStart(led) {
@@ -29,12 +28,19 @@ function blinkStartLeds(ledsInput) {
     }
 }
 function blinkEndLeds(ledsInput) {
-    clearInterval(blinkInterval);
-    blinkInProcess = false;
-    leds = ledsInput;
-    for (let i = 0; i < leds.length; i++) {
-        leds[i].writeSync(0);
+
+    try {
+        clearInterval(blinkInterval);
+        blinkInProcess = false;
+        leds = ledsInput;
+        for (let i = 0; i < leds.length; i++) {
+            leds[i].writeSync(0);
+        }
+    } catch(e) {
+        console.log(e);
+        // [Error: Uh oh!]
     }
+
 }
 
 function setLeds(ledsInput) {
