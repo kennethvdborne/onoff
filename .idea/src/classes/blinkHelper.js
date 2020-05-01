@@ -26,7 +26,11 @@ function blinkStartLeds(leds) {
         blinkInProcess = false;
         blinkStart(leds[i]);
     }
-
+}
+function blinkEndLeds(leds) {
+    for (let i = 0; i < leds.length; i++) {
+        blinkEnd(leds[i]);
+    }
 }
 
 module.exports.blinkStart = blinkStart;
