@@ -148,12 +148,12 @@ buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !allModes() && sysPlay === 0) {
+    if (value === 1 && !allModes() && sysPlay) {
         delaySysTime(sysPlay);
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
     }
-    else if (value === 1 && playMode && sysPlay === 0) {
+    else if (value === 1 && playMode && sysPlay) {
         delaySysTime(sysPlay);
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
@@ -164,12 +164,12 @@ buttonStop.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !allModes() && sysStop === 0) {
+    if (value === 1 && !allModes() && sysStop) {
         delaySysTime(sysStop);
         blinkHelper.blinkStart(ledStop);
         stopMode = true;
     }
-    else if (value === 1 && stopMode && sysStop === 0) {
+    else if (value === 1 && stopMode && sysStop) {
         delaySysTime(sysStop);
         blinkHelper.blinkEnd(ledStop);
         stopMode = false;
@@ -180,12 +180,12 @@ buttonRecord.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !allModes() && sysRecord === 0) {
+    if (value === 1 && !allModes() && sysRecord) {
         delaySysTime(sysRecord);
         blinkHelper.blinkStart(ledRecord);
         recordMode = true;
     }
-    else if (value === 1 && recordMode && sysRecord === 0) {
+    else if (value === 1 && recordMode && sysRecord) {
         delaySysTime(sysRecord);
         blinkHelper.blinkEnd(ledRecord);
         recordMode = false;
