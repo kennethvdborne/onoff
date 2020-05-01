@@ -22,7 +22,7 @@ function blinkEnd(led) {
 }
 
 function blinkStartLeds(ledsInput) {
-    this.leds = ledsInput;
+    leds = ledsInput;
     for (let i = 0; i < leds.length; i++) {
         blinkInProcess = false;
         blinkStart(leds[i]);
