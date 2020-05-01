@@ -106,7 +106,11 @@ button6.watch((err, value) => {
     if (err) {
         throw err;
     }
-    buttonFunctions(value, 6, sysTime6);
+    if (sysTime6 === 0) {
+        buttonFunctions(value, 6, sysTime6);
+        sysTime6 = 1;
+    }
+
 });
 
 button7.watch((err, value) => {
@@ -131,7 +135,6 @@ button9.watch((err, value) => {
 });
 
 function delaySysTime(sysTime) {
-    sysTime = 1;
     setTimeout(function(){
         sysTime = 0;
     }, 1000);
