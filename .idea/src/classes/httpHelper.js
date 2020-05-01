@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080/';
+const url = 'http://172.18.97.33:8080/';
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
         obj = await response.text();
         console.log(obj);
         return obj;
-        c
+
     },
 
     getButtonsWithoutScene: async function() {

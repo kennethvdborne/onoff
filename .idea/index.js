@@ -56,7 +56,7 @@ const buttonRecord = new Gpio(26, 'in', 'both');
 
 function buttonFunctions(value, x) {
     if (value === 1 && recordMode) {
-        console.log('record ' + x);
+
     }
     if (value === 1 && playMode) {
         console.log('play ' + x);
@@ -246,6 +246,8 @@ buttonRecord.watch((err, value) => {
             sysRecord = true;
         }, 500);
         blinkHelper.blinkStart(ledRecord);
+        var input = httpHelper.getButtonsWithoutScene();
+        blinkHelper.blinkStartLeds(input);
         recordMode = true;
     }
     else if (value === 1 && recordMode && sysRecord) {
