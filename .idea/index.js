@@ -99,13 +99,11 @@ button5.watch((err, value) => {
 });
 
 button6.watch((err, value) => {
-    console.log(sys6);
     if (err) {
         throw err;
     }
     if (sys6 === true) {
         delaySysTime(sys6);
-        console.log('free....');
         buttonFunctions(value, 6);
     }
 });
