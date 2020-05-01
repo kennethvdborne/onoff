@@ -38,8 +38,8 @@ const ledRecord = new Gpio(9, 'out');
 const fan = new Gpio(2, 'out');
 
 //Array leds
-const ledsAll = [ledPlay, ledStop, ledRecord, led1, led2, led3, led4, led5, led6, led7, led8, led9];
-const ledsFunction = [led1, led2, led3, led4, led5, led6, led7, led8, led9];
+var ledsAll = [ledPlay, ledStop, ledRecord, led1, led2, led3, led4, led5, led6, led7, led8, led9];
+var ledsFunction = [led1, led2, led3, led4, led5, led6, led7, led8, led9];
 
 //Initializing Input
 const button1 = new Gpio(16, 'in', 'both', 'rising');
