@@ -1,6 +1,7 @@
 function loop () {
     console.log('Starting loop.....')
     var i = 1;
+    myLoop();
     function myLoop() {
         setTimeout(function() {
             console.log('hello');
