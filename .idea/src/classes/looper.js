@@ -1,5 +1,4 @@
 function loop (leds) {
-    console.log('Starting loop.....')
     var length = leds.length + 3;
     i = 0;
     myLoop();
@@ -8,23 +7,18 @@ function loop (leds) {
         if(i < leds.length) {
             setTimeout(function () {
                 leds[i].writeSync(1);
-                i++;
-                if (i < length) {
-                    myLoop();
-                }
             }, 1000)
         }
 
         if(i > 2) {
-            console.log(i);
             setTimeout(function() {
                 leds[(i-3)].writeSync(0);
             }, 800)
+        }
 
-            if(i >= leds.length && i < length){
-                myLoop();
-                i++;
-            }
+        if(i < length) {
+            i++;
+            myLoop();
         }
 
     }
