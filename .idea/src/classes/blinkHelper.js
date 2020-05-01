@@ -46,8 +46,10 @@ function blinkEndLeds() {
 }
 
 function blinkSpecificLedsStart(input) {
+    console.log('loop.......');
+    console.log(input.length);
     for (let i = 0; i < input.length; i++) {
-        console.log(input[i]);
+         console.log(input[i]);
     }
 
 }
@@ -57,7 +59,7 @@ module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
-module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart
+module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
