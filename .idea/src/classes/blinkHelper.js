@@ -31,14 +31,14 @@ function blinkStartLeds(ledsInput) {
 function blinkEndLeds(ledsInput) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
-    this.leds = ledsInput;
+    leds = ledsInput;
     for (let i = 0; i < leds.length; i++) {
         leds[i].writeSync(0);
     }
 }
 
 function setLeds(ledsInput) {
-    this.leds = ledsInput;
+    leds = ledsInput;
 }
 
 module.exports.blinkStart = blinkStart;
