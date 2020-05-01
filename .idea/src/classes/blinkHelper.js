@@ -48,7 +48,7 @@ function blinkEndLeds() {
 function blinkSpecificLedsStart(input, leds) {
     for (let i = 0; i < input.length; i++) {
          if (!input[i]) {
-             leds.splice(pos, i);
+             leds.splice(i, 1);
              console.log(i);
          }
     }
