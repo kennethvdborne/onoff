@@ -4,23 +4,27 @@ function loop (leds) {
     myLoop();
 
     function myLoop() {
-        console.log('starting .... ')
+        console.log('starting .... ');
         if(i < leds.length) {
             setTimeout(function () {
                 leds[i].writeSync(1);
             }, 1000)
-        }
 
-        if(i > 3) {
-            setTimeout(function() {
-                leds[(i-3)].writeSync(0);
-            }, 800)
-        }
+            if(i > 3) {
+                setTimeout(function() {
+                    leds[(i-3)].writeSync(0);
+                }, 800)
+            }
 
         if(i < length) {
-            i++;
-            myLoop();
+                i++;
+                myLoop();
+            }
         }
+
+
+
+
 
     }
 }
