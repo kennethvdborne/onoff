@@ -7,11 +7,10 @@ function loop (leds) {
         setTimeout(function() {
             for (i = 0; i < leds.length; i++) {
                 leds[i].writeSync(1);
-
-                setTimeout(function() {
-                    leds[i].writeSync(0);
-                },500)
-                
+                if(i > 1) {
+                    j = i-2;
+                    leds[j].writeSync(0);
+                }
                 myLoop();
             }
         }, 500)
