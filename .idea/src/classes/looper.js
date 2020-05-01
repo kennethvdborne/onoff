@@ -8,8 +8,9 @@ function loop (leds) {
     function myLoop() {
         setTimeout(function() {
             console.log('led.....' + i);
+            console.log('led.....' + j);
             leds[i].writeSync(1);
-            leds[j].writeSync(0);
+            //leds[j].writeSync(0);
             i++;
             j++
             if (i < length) {
