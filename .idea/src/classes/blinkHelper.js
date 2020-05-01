@@ -61,6 +61,7 @@ function blinkSpecificKLedsStart(input, ledsInput) {
     for (let i = 0; i < input.length; i++) {
         if (input[i]) {
             leds.splice(i, 1);
+            console.log('remove ...' + i)
         }
     }
     blinkStartLeds(leds);
