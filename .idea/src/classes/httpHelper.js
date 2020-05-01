@@ -24,11 +24,9 @@ module.exports = {
             //.then(json => console.log(json));
         
         obj = await response.text();
-        return obj;
         console.log(obj);
-
-        
-
+        return obj;
+        c
     },
 
     getButtonsWithoutScene: async function() {
@@ -42,6 +40,5 @@ module.exports = {
         
         obj = await response.text();
         return obj;
-        console.log(obj);
     }
 }
