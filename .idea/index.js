@@ -57,6 +57,7 @@ function buttonFunctions(value, x) {
     }
     if (value === 1 && playMode) {
         console.log('play ' + x);
+        looper.loop();
     }
     if (value === 1 && stopMode) {
         console.log('stop ' + x);
@@ -198,7 +199,6 @@ buttonPlay.watch((err, value) => {
         }, 500);
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
-        looper.loop(1);
     }
     else if (value === 1 && playMode && sysPlay) {
         sysPlay = false;

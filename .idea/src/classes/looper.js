@@ -1,4 +1,5 @@
-function loop (leds) {
+function loop () {
+    console.log('Starting loop.....')
     var i = 1;
     function myLoop() {
         setTimeout(function() {
