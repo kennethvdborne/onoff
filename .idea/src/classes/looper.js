@@ -16,7 +16,7 @@ function loop (leds) {
         if(i > 1) {
             setTimeout(function() {
                 leds[(i-2)].writeSync(0);
-            }, 1000)
+            }, 800)
         }
 
     }
