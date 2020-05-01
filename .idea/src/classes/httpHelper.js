@@ -32,6 +32,7 @@ module.exports = {
     getButtons: function() {
         console.log('started .. .. .. ')
 
+
         let obj;
 
         var response = fetch(url + 'api/getbuttons')
@@ -56,5 +57,14 @@ module.exports = {
         //return await response.text();
         //console.log(obj);
     },
+
+    getDataFromUrl: function(resp){
+        fetch(url + 'api/getbuttons')
+        .then(function(data) {
+            return data.json();
+        }).then(function(parsed){
+        resp(parsed);
+    });
+}
 
 }
