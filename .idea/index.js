@@ -37,6 +37,9 @@ const ledStop = new Gpio(25, 'out');
 const ledRecord = new Gpio(9, 'out');
 const fan = new Gpio(2, 'out');
 
+//Array leds
+const leds = [ledPlay, ledStop, ledRecord, led1, led2, led3, led4, led5, led6, led7, led8, led9];
+
 //Initializing Input
 const button1 = new Gpio(16, 'in', 'both', 'rising');
 const button2 = new Gpio(19, 'in', 'both','rising');
@@ -57,7 +60,7 @@ function buttonFunctions(value, x) {
     }
     if (value === 1 && playMode) {
         console.log('play ' + x);
-        looper.loop();
+        looper.loop(leds);
     }
     if (value === 1 && stopMode) {
         console.log('stop ' + x);
