@@ -1,6 +1,7 @@
 const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
+const looper = require('./src/classes/looper');
 
 var recordMode = false;
 var playMode = false;
@@ -136,7 +137,6 @@ button6.watch((err, value) => {
         sys6 = false;
         setTimeout(function(){
             sys6 = true;
-            console.log('end sys......');
         }, 1000);
         buttonFunctions(value, 6);
     }
@@ -195,15 +195,16 @@ buttonPlay.watch((err, value) => {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
-        }, 1000);
+        }, 500);
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
+        looper.loop(1);
     }
     else if (value === 1 && playMode && sysPlay) {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
-        }, 1000);
+        }, 500);
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
     };
@@ -217,7 +218,7 @@ buttonStop.watch((err, value) => {
         sysStop = false;
         setTimeout(function(){
             sysStop = true;
-        }, 1000);
+        }, 500);
         blinkHelper.blinkStart(ledStop);
         stopMode = true;
     }
@@ -225,7 +226,7 @@ buttonStop.watch((err, value) => {
         sysStop = false;
         setTimeout(function(){
             sysStop = true;
-        }, 1000);
+        }, 500);
         blinkHelper.blinkEnd(ledStop);
         stopMode = false;
     };
@@ -239,7 +240,7 @@ buttonRecord.watch((err, value) => {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
-        }, 1000);
+        }, 500);
         blinkHelper.blinkStart(ledRecord);
         recordMode = true;
     }
@@ -247,29 +248,11 @@ buttonRecord.watch((err, value) => {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
-        }, 1000);
+        }, 500);
         blinkHelper.blinkEnd(ledRecord);
         recordMode = false;
     };
 });
-
-
-
-/*
-
-var i = 1;                  //  set your counter to 1
-
-function myLoop() {         //  create a loop function
-    setTimeout(function() {   //  call a 3s setTimeout when the loop is called
-        console.log('hello');   //  your code here
-        i++;                    //  increment the counter
-        if (i < 10) {           //  if the counter < 10, call the loop function
-            myLoop();             //  ..  again which will trigger another
-        }                       //  ..  setTimeout()
-    }, 3000)
-}
-*/
-
 
 fan.writeSync(1);
 
