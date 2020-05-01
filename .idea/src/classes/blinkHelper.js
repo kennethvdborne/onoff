@@ -45,12 +45,12 @@ function blinkEndLeds() {
     }
 }
 
-function blinkSpecificLedsStart(input) {
-    console.log('loop.......');
-    console.log(input);
-    //console.log(input.length);
+function blinkSpecificLedsStart(input, leds) {
     for (let i = 0; i < input.length; i++) {
-         console.log(input[i]);
+         if (!input[i]) {
+             leds.splice(pos, i);
+             console.log(i);
+         }
     }
 
 }

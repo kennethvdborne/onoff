@@ -45,7 +45,7 @@ module.exports = {
         return obj;
     },
 
-    getS: function(){
+    getS: function(leds){
         fetch(url + 'api/getbuttons')
             //.then(res => res.json())
             //.then(json => console.log(json))
@@ -54,7 +54,7 @@ module.exports = {
             })
             .then(function(json){
                 console.log(json);
-                b.blinkSpecificLedsStart(json);
+                b.blinkSpecificLedsStart(json, leds);
             });
     }
 
