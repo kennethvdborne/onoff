@@ -31,15 +31,18 @@ function blinkStartLeds(ledsInput) {
     }
 }
 function blinkEndLeds() {
-    console.log('ending interval ......')
     try {
-        for (let i = 0; i < arrayBlinkInterval.length; i++) {
-            clearInterval(arrayBlinkInterval[i]);
+        if (arrayBlinkInterval.length > 0) {
+            for (let i = 0; i < arrayBlinkInterval.length; i++) {
+                clearInterval(arrayBlinkInterval[i]);
+            }
+            for (let i = 0; i < leds.length; i++) {
+                leds[i].writeSync(0);
+            }
         }
     } catch(e) {
         console.log('error');
     }
-
 }
 
 function setLeds(ledsInput) {
