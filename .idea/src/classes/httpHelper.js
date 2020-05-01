@@ -29,12 +29,12 @@ module.exports = {
 
     },
 
-    getButtonsWithoutScene: async function() {
+    getButtons: async function() {
         console.log('started .. .. .. ')
 
         let obj;
 
-        var response = await fetch(url + 'api/getbuttonswithoutscene')
+        var response = await fetch(url + 'api/getbuttons')
             //.then(res => res.json())
             //.then(json => obj = json)
             //.then(json => console.log(json));

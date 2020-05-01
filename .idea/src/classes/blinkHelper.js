@@ -45,11 +45,19 @@ function blinkEndLeds() {
     }
 }
 
+function blinkSpecificLedsStart(input) {
+    for (let i = 0; i < input.length; i++) {
+        console.log(input[i]);
+    }
+
+}
+
 
 module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
+module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
