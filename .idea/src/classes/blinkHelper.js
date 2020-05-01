@@ -28,11 +28,13 @@ function blinkStartLeds(ledsInput) {
     }
 }
 function blinkEndLeds() {
+    console.log('ending interval ......')
     try {
         clearInterval(blinkInterval);
         blinkInProcess = false;
         //leds = ledsInput;
         for (let i = 0; i < leds.length; i++) {
+            leds[i].clearInterval();
             leds[i].writeSync(0);
         }
     } catch(e) {
