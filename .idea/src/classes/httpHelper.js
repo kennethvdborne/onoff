@@ -29,19 +29,18 @@ module.exports = {
 
     },
 
-    getButtons: function() {
+    getButtons: async function() {
         console.log('started .. .. .. ')
 
         let obj;
 
-        var response = fetch(url + 'api/getbuttons')
+        var response = await fetch(url + 'api/getbuttons')
             //.then(res => res.json())
             //.then(json => obj = json)
             //.then(json => console.log(json));
         
-        obj = response.text();
-        console.log(obj);
-        return obj;
+        return await response.text();
+        //console.log(obj);
     },
 
 }
