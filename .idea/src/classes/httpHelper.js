@@ -1,4 +1,4 @@
-const url = 'http://172.18.97.33:8080/';
+const url = 'http://169.254.198.144:8080/';
 const fetch = require('node-fetch');
 
 module.exports = {
