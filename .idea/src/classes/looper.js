@@ -11,16 +11,15 @@ function loop (leds) {
                 i++;
                 myLoop()
             }, 1000)
-
-            if (i > 3 && i < length) {
-                setTimeout(function () {
-                    leds[(i - 3)].writeSync(0);
-                    if (i >= leds.length) {
-                        i++;
-                        myLoop()
-                    }
-                }, 800)
-            }
+        }
+        if (i > 3 && i < length) {
+            setTimeout(function () {
+                leds[(i - 3)].writeSync(0);
+                if (i >= leds.length) {
+                    i++;
+                    myLoop()
+                }
+            }, 800)
         }
     }
 }
