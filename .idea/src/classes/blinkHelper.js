@@ -36,6 +36,7 @@ function blinkEndLeds(leds) {
 module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
+module.exports.blinkEndLeds = blinkEndLeds;
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 
