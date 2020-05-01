@@ -35,11 +35,23 @@ module.exports = {
         let obj;
 
         var response = await fetch(url + 'api/getbuttons')
-            .then(res => res.json())
-            .then(json => console.log(json))
-            .then(json => {return json})
+            //.then(res => res.json())
+            //.then(json => console.log(json))
+            //.then(json => {return json})
             //.then(json => obj = json)
             //.then(json => console.log(json));
+            .then((res) => {
+                status = res.status;
+                return res.json()
+            })
+            .then((jsonData) => {
+                console.log(jsonData);
+                console.log(status);
+            })
+            .catch((err) => {
+                // handle error for example
+                console.error(err);
+            });
         
         //return await response.text();
         //console.log(obj);
