@@ -46,6 +46,8 @@ function blinkEndLeds() {
 }
 
 function blinkSpecificLedsStart(input, leds) {
+    //Removing first 3 leds, Play, Stop, Record
+    leds.splice((0,3));
     for (let i = 0; i < input.length; i++) {
          if (!input[i]) {
              leds.splice(i, 1);

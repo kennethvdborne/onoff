@@ -47,7 +47,7 @@ module.exports = {
 
     getS: function(leds){
         fetch(url + 'api/getbuttons')
-            //.then(res => res.json())
+            //.then(res => res.json())é
             //.then(json => console.log(json))
             .then(function(response){
                 return response.json();
