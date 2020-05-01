@@ -24,7 +24,7 @@ function blinkEnd(led) {
 }
 
 function blinkStartLeds(ledsInput) {
-    leds = [ ...ledsInput ]
+    leds = ledsInput;
     for (let i = 0; i < leds.length; i++) {
         blinkInProcess = false;
         blinkStart(leds[i]);
@@ -45,7 +45,8 @@ function blinkEndLeds() {
     }
 }
 
-function blinkSpecificLedsStart(input, leds) {
+function blinkSpecificLedsStart(input, ledsInput) {
+    leds = [ ...ledsInput ];
     for (let i = 0; i < input.length; i++) {
          if (!input[i]) {
              leds.splice(i, 1);
