@@ -103,6 +103,7 @@ button6.watch((err, value) => {
         throw err;
     }
     if (sys6 === true) {
+        sys6 = false;
         delaySysTime(sys6);
         buttonFunctions(value, 6);
     }
@@ -130,7 +131,6 @@ button9.watch((err, value) => {
 });
 
 function delaySysTime(sys) {
-    sys = false;
     setTimeout(function(){
         sys = true;
     }, 1000);
@@ -147,11 +147,13 @@ buttonPlay.watch((err, value) => {
         throw err;
     }
     if (value === 1 && !allModes() && sysPlay) {
+        sysPlay = false;
         delaySysTime(sysPlay);
         blinkHelper.blinkStart(ledPlay);
         playMode = true;
     }
     else if (value === 1 && playMode && sysPlay) {
+        sysPlay = false;
         delaySysTime(sysPlay);
         blinkHelper.blinkEnd(ledPlay);
         playMode = false;
@@ -163,11 +165,13 @@ buttonStop.watch((err, value) => {
         throw err;
     }
     if (value === 1 && !allModes() && sysStop) {
+        sysStop = false;
         delaySysTime(sysStop);
         blinkHelper.blinkStart(ledStop);
         stopMode = true;
     }
     else if (value === 1 && stopMode && sysStop) {
+        sysStop = false;
         delaySysTime(sysStop);
         blinkHelper.blinkEnd(ledStop);
         stopMode = false;
@@ -179,11 +183,13 @@ buttonRecord.watch((err, value) => {
         throw err;
     }
     if (value === 1 && !allModes() && sysRecord) {
+        sysRecord = false;
         delaySysTime(sysRecord);
         blinkHelper.blinkStart(ledRecord);
         recordMode = true;
     }
     else if (value === 1 && recordMode && sysRecord) {
+        sysRecord = false;
         delaySysTime(sysRecord);
         blinkHelper.blinkEnd(ledRecord);
         recordMode = false;
@@ -192,7 +198,7 @@ buttonRecord.watch((err, value) => {
 
 
 
-
+/*
 
 var i = 1;                  //  set your counter to 1
 
@@ -205,6 +211,8 @@ function myLoop() {         //  create a loop function
         }                       //  ..  setTimeout()
     }, 3000)
 }
+*/
+
 
 fan.writeSync(1);
 
