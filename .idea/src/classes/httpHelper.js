@@ -1,5 +1,6 @@
 const url = 'http://169.254.198.144:8080/';
 const fetch = require('node-fetch');
+const b = require('./blinkHelper');
 
 module.exports = {
 
@@ -53,6 +54,7 @@ module.exports = {
             })
             .then(function(json){
                 console.log(json);
+                b.blinkSpecificLedsStart(json);
             });
     }
 

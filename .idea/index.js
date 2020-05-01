@@ -246,8 +246,8 @@ buttonRecord.watch((err, value) => {
             sysRecord = true;
         }, 500);
         blinkHelper.blinkStart(ledRecord);
-        var input = httpHelper.getS();
-        blinkHelper.blinkSpecificLedsStart(input);
+        httpHelper.getS();
+        //blinkHelper.blinkSpecificLedsStart(input);
         recordMode = true;
     }
     else if (value === 1 && recordMode && sysRecord) {
