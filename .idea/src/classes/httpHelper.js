@@ -29,42 +29,29 @@ module.exports = {
 
     },
 
-    getButtons: function() {
+    getButtonsWithoutScene: async function() {
         console.log('started .. .. .. ')
-
 
         let obj;
 
-        var response = fetch(url + 'api/getbuttons')
+        var response = await fetch(url + 'api/getbuttonswithoutscene')
             //.then(res => res.json())
-            //.then(json => console.log(json))
-            //.then(json => {return json})
             //.then(json => obj = json)
             //.then(json => console.log(json));
-            .then((res) => {
-                status = res.status;
-                return res.json()
-            })
-            .then((jsonData) => {
-                console.log(jsonData);
-                console.log(status);
-            })
-            .catch((err) => {
-                // handle error for example
-                console.error(err);
-            });
         
-        //return await response.text();
-        //console.log(obj);
+        obj = await response.text();
+        console.log(obj);
+        return obj;
     },
 
-    getDataFromUrl: function(resp){
+    getS: function(){
         fetch(url + 'api/getbuttons')
-        .then(function(data) {
-            return data.json();
-        }).then(function(parsed){
-        resp(parsed);
-    });
-}
+            //.then(res => res.json())
+            //.then(json => console.log(json))
+            .then((res) => {
+                return res.json()
+            });
+    }
+
 
 }
