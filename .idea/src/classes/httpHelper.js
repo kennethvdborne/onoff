@@ -41,7 +41,7 @@ module.exports = {
     },
 
     getTest: function (){
-        fetch(url + 'api/getbuttons')
+        var f = fetch(url + 'api/getbuttons')
             //.then(res => res.json())é
             //.then(json => console.log(json))
             .then(function(response){
@@ -51,12 +51,14 @@ module.exports = {
                 //console.log(json);
                 return json;
                 //b.blinkSpecificKLedsStart(json, leds);
-            })
-            .resolve(function(json){
-                //console.log(json);
-                return json;
-                //b.blinkSpecificKLedsStart(json, leds);
-            })
+            });
+
+        var cast = Promise.resolve(f);
+        cast.then(function(value) {
+            console.log('value: ' + value);
+            return value;
+        });
+
         //return json;
 
     },
