@@ -76,7 +76,7 @@ module.exports = {
     getTest: async function () {
             const response = await fetch(url + 'api/getbuttons');
             const json = await response.json();
-            console.log(json);
+            console.log(json + 'test');
             return json;
     }
 
