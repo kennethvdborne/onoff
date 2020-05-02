@@ -73,7 +73,7 @@ module.exports = {
             });
     },
 
-    getTest: function () {
+    getTest: async function () {
         const response = await fetch(url + 'api/getbuttons');
         if (!response.ok) {
             throw new Error("HTTP status " + response.status);
