@@ -49,9 +49,14 @@ module.exports = {
             })
             .then(function(json){
                 //console.log(json);
-                return json;
+                //return json;
                 //b.blinkSpecificKLedsStart(json, leds);
             });
+
+        Promise.all([f]).then(function(values) {
+            console.log(values);
+            return values;
+        });
 
         //return json;
 
