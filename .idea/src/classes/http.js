@@ -20,9 +20,9 @@ function d(){
 }
 
 function test () {
-    d().then(result => {
-        return result;
-    })
+    d().then(function(result) {
+return result;
+    });
 }
 
 

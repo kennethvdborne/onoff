@@ -84,7 +84,11 @@ module.exports = {
                 //console.log(json);
                 return json;
                 //b.blinkSpecificKLedsStart(json, leds);
-            });
+            })
+            .then(result => {
+                return result;
+            })
+        ;
 
     },
 
