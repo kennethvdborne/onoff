@@ -68,19 +68,18 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
 }
 
 function blinkConfirm(led) {
-    setTimeout(function () {
-        if (!blinkInProcess) {
-            blinkInProcess = true;
-            blinkInterval = setInterval(function blinking() {
-                if (led.readSync() === 0) {
-                    led.writeSync(1);
-                } else {
-                    led.writeSync(0);
-                }
-            },50);
-            arrayBlinkInterval.push(blinkInterval);
-        }
-    },3000);
+    if (!blinkInProcess) {
+        blinkInProcess = true;
+        blinkInterval = setInterval(function blinking() {
+            if (led.readSync() === 0) {
+                led.writeSync(1);
+            } else {
+                led.writeSync(0);
+            }
+        },50);
+        arrayBlinkInterval.push(blinkInterval);
+    }
+    setTimeout(blinkEnd(led) ,3000);
 }
 
 
