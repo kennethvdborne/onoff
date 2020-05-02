@@ -52,7 +52,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     if (mode === 'Play'){
         for (let i = 0; i < input.length; i++) {
             if (input[i]) {
-                ledsZ.push(leds[i]);
+                ledsSelected.push(leds[i]);
             }
         }
     }
@@ -60,7 +60,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     if (mode === 'Record'){
         for (let i = 0; i < input.length; i++) {
             if (!input[i]) {
-                ledsZ.push(leds[i]);
+                ledsSelected.push(leds[i]);
             }
         }
     }
