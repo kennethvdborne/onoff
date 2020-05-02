@@ -61,6 +61,7 @@ function buttonFunctions(led, x) {
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(x);
         blinkHelper.blinkConfirm(led);
+        httpHelper.getButtons(ledsFunction, 'Record');
         console.log('record...' + x);
     }
     if (playMode) {
@@ -68,6 +69,7 @@ function buttonFunctions(led, x) {
         blinkHelper.blinkEndLeds();
         httpHelper.playScene(x);
         led.writeSync(1);
+        ledPlay.writeSync(1);
         console.log('play...' + x);
     }
     if (stopMode) {
