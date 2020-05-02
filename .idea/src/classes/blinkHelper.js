@@ -79,7 +79,11 @@ function blinkConfirm(led) {
         },50);
         arrayBlinkInterval.push(blinkInterval);
     }
-    setTimeout(blinkEnd(led) ,3000);
+    setTimeout(function () {
+        clearInterval(blinkInterval);
+        blinkInProcess = false;
+        led.writeSync(0);
+    },3000);
 }
 
 
