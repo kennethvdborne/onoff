@@ -53,6 +53,13 @@ module.exports = {
                 //b.blinkSpecificKLedsStart(json, leds);
             });
 
+        Promise.resolve('Success').then(function(f) {
+            console.log(f); // "Success"
+            return f;
+        }, function(f) {
+            // not called
+        });
+
         var cast = Promise.resolve(f);
         cast.then(function(value) {
             console.log('value: ' + value);
