@@ -89,6 +89,7 @@ module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
 module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
+module.exports.blinkConfirm = blinkConfirm;
 
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
