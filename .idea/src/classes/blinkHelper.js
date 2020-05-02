@@ -25,7 +25,6 @@ function blinkEnd(led) {
 
 function blinkStartLeds(ledsInput) {
     leds = ledsInput;
-    console.log(leds.length);
     for (let i = 0; i < leds.length; i++) {
         blinkInProcess = false;
         blinkStart(leds[i]);
@@ -46,34 +45,29 @@ function blinkEndLeds() {
     }
 }
 
-function blinkSpecificLedsStart(input, ledsInput) {
+function blinkSpecificLedsStart(input, ledsInput, mode) {
     leds = [ ...ledsInput ];
-    var ledsZ = [];
-    for (let i = 0; i < input.length; i++) {
-         if (input[i]) {
-             ledsZ.push(leds[i]);
-         }
-    }
-    blinkStartLeds(ledsZ);
-}
+    var ledsSelected = [];
 
-
-function blinkSpecificKLedsStart(input, ledsInput) {
-    leds = [ ...ledsInput ];
-    var ledsZ = [];
-    for (let i = 0; i < input.length; i++) {
-        if (!input[i]) {
-            ledsZ.push(leds[i]);
-            console.log('add led ' +i);
+    if (mode === 'Play'){
+        for (let i = 0; i < input.length; i++) {
+            if (input[i]) {
+                ledsZ.push(leds[i]);
+            }
         }
     }
-    console.log(ledsZ.length + '....input');
-    blinkStartLeds(ledsZ);
+
+    if (mode === 'Record'){
+        for (let i = 0; i < input.length; i++) {
+            if (!input[i]) {
+                ledsZ.push(leds[i]);
+            }
+        }
+    }
+
+    blinkStartLeds(ledsSelected);
 }
 
-function getLeds() {
-    return leds;
-}
 
 
 module.exports.blinkStart = blinkStart;
@@ -81,8 +75,7 @@ module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
 module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
-module.exports.blinkSpecificKLedsStart = blinkSpecificKLedsStart;
-module.exports.getLeds = getLeds;
+
 
 //setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
 

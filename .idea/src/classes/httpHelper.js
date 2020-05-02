@@ -1,6 +1,6 @@
 const url = 'http://169.254.198.144:8080/';
 const fetch = require('node-fetch');
-const b = require('./blinkHelper');
+const blinkHelper = require('./blinkHelper');
 
 module.exports = {
 
@@ -17,13 +17,13 @@ module.exports = {
         fetch(url + '/api/playscene/' + button);
     },
 
-    getButtons: function(leds){
+    getButtons: function(leds, mode){
         fetch(url + 'api/getbuttons')
             .then(function(response){
                 return response.json();
             })
             .then(function(json){
-                b.blinkSpecificLedsStart(json, leds);
+                blinkHelper.blinkSpecificLedsStart(json, leds, mode);
             });
     },
 
