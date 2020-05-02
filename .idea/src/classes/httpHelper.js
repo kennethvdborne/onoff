@@ -40,7 +40,7 @@ module.exports = {
             });
     },
 
-    getTest: async function (){
+    getTest: function (){
         fetch(url + 'api/getbuttons')
             //.then(res => res.json())é
             //.then(json => console.log(json))
