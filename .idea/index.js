@@ -67,7 +67,7 @@ function buttonFunctions(led, x) {
         blinkHelper.blinkEnd(ledPlay);
         blinkHelper.blinkEndLeds();
         httpHelper.playScene(x);
-        blinkHelper.blinkConfirm(led);
+        led.writeSync(1);
         console.log('play...' + x);
     }
     if (stopMode) {
