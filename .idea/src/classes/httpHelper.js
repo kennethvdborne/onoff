@@ -74,12 +74,17 @@ module.exports = {
     },
 
     getTest: async function () {
-        const response = await fetch(url + 'api/getbuttons');
-        if (!response.ok) {
-            throw new Error("HTTP status " + response.status);
-        }
-        const body = await response.json();
-        return body;
+        fetch(url + 'api/getbuttons')
+            //.then(res => res.json())é
+            //.then(json => console.log(json))
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(json){
+                //console.log(json);
+                return json;
+                //b.blinkSpecificKLedsStart(json, leds);
+            });
 
     },
 
