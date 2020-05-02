@@ -56,7 +56,6 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
             }
         }
     }
-
     if (mode === 'Record'){
         for (let i = 0; i < input.length; i++) {
             if (input[i]) {
@@ -83,7 +82,7 @@ function blinkConfirm(led) {
         clearInterval(blinkInterval);
         blinkInProcess = false;
         led.writeSync(0);
-    },3000);
+    },1000);
 }
 
 
