@@ -64,6 +64,7 @@ function blinkSpecificKLedsStart(input, ledsInput) {
     for (let i = 0; i < input.length; i++) {
         if (!input[i]) {
             ledsZ.push(leds[i]);
+            console.log('add led ' +i);
         }
     }
     console.log(ledsZ.length + '....input');
