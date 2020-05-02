@@ -51,7 +51,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
 
     if (mode === 'Play'){
         for (let i = 0; i < input.length; i++) {
-            if (input[i]) {
+            if (!input[i]) {
                 ledsSelected.push(leds[i]);
             }
         }
@@ -59,7 +59,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
 
     if (mode === 'Record'){
         for (let i = 0; i < input.length; i++) {
-            if (!input[i]) {
+            if (input[i]) {
                 ledsSelected.push(leds[i]);
             }
         }
@@ -67,7 +67,6 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
 
     blinkStartLeds(ledsSelected);
 }
-
 
 
 module.exports.blinkStart = blinkStart;

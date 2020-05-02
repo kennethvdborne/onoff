@@ -213,7 +213,6 @@ buttonPlay.watch((err, value) => {
         setTimeout(function(){
             sysPlay = true;
         }, 500);
-        blinkHelper.blinkEnd(ledPlay);
         blinkHelper.blinkEndLeds();
         playMode = false;
     };
@@ -236,7 +235,6 @@ buttonStop.watch((err, value) => {
         setTimeout(function(){
             sysStop = true;
         }, 500);
-        blinkHelper.blinkEnd(ledStop);
         blinkHelper.blinkEndLeds();
         stopMode = false;
     };
@@ -260,7 +258,6 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, 500);
-        blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         recordMode = false;
     };
