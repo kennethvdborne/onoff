@@ -205,7 +205,7 @@ buttonPlay.watch((err, value) => {
             sysPlay = true;
         }, 500);
         blinkHelper.blinkStart(ledPlay);
-        httpHelper.getButtons(ledsFunction);
+        httpHelper.getButtons(ledsFunction, 'Play');
         playMode = true;
     }
     else if (value === 1 && playMode && sysPlay) {
@@ -252,7 +252,7 @@ buttonRecord.watch((err, value) => {
             sysRecord = true;
         }, 500);
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction);
+        httpHelper.getButtons(ledsFunction, 'Record');
         recordMode = true;
     }
     else if (value === 1 && recordMode && sysRecord) {
