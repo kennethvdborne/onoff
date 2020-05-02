@@ -67,6 +67,22 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     blinkStartLeds(ledsSelected);
 }
 
+function blinkConfirm(led) {
+    setTimeout(function () {
+        if (!blinkInProcess) {
+            blinkInProcess = true;
+            blinkInterval = setInterval(function blinking() {
+                if (led.readSync() === 0) {
+                    led.writeSync(1);
+                } else {
+                    led.writeSync(0);
+                }
+            },50);
+            arrayBlinkInterval.push(blinkInterval);
+        }
+    },3000);
+}
+
 
 module.exports.blinkStart = blinkStart;
 module.exports.blinkEnd = blinkEnd;

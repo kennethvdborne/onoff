@@ -55,18 +55,24 @@ const buttonPlay = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
-function buttonFunctions(value, x) {
-    if (value === 1 && recordMode) {
+function buttonFunctions(led, x) {
+    if (recordMode) {
+        blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(x);
+        blinkHelper.blinkConfirm(led);
         console.log('record...' + x);
     }
-    if (value === 1 && playMode) {
+    if (playMode) {
+        blinkHelper.blinkEnd(ledPlay);
         blinkHelper.blinkEndLeds();
         httpHelper.playScene(x);
+        blinkHelper.blinkConfirm(led);
         console.log('play...' + x);
     }
-    if (value === 1 && stopMode) {
+    if (stopMode) {
+        blinkHelper.blinkEnd(ledStop);
+        blinkHelper.blinkConfirm(led);
         console.log('stop ' + x);
     }
 }
@@ -81,7 +87,7 @@ button1.watch((err, value) => {
         setTimeout(function(){
             sys1 = true;
         }, 1000);
-        buttonFunctions(value, 1);
+        buttonFunctions(led1, 1);
     }
 });
 
@@ -94,7 +100,7 @@ button2.watch((err, value) => {
         setTimeout(function(){
             sys2 = true;
         }, 1000);
-        buttonFunctions(value, 2);
+        buttonFunctions(led2, 2);
     }
 });
 
@@ -107,7 +113,7 @@ button3.watch((err, value) => {
         setTimeout(function(){
             sys3 = true;
         }, 1000);
-        buttonFunctions(value, 3);
+        buttonFunctions(led3, 3);
     }
 });
 
@@ -120,7 +126,7 @@ button4.watch((err, value) => {
             setTimeout(function(){
                 sys4 = true;
             }, 1000);
-            buttonFunctions(value, 4);
+            buttonFunctions(led4, 4);
         }
 });
 
@@ -133,7 +139,7 @@ button5.watch((err, value) => {
         setTimeout(function(){
             sys5 = true;
         }, 1000);
-        buttonFunctions(value, 5);
+        buttonFunctions(led5, 5);
     }
 });
 
@@ -146,7 +152,7 @@ button6.watch((err, value) => {
         setTimeout(function(){
             sys6 = true;
         }, 1000);
-        buttonFunctions(value, 6);
+        buttonFunctions(led6, 6);
     }
 });
 
@@ -159,7 +165,7 @@ button7.watch((err, value) => {
         setTimeout(function(){
             sys7 = true;
         }, 1000);
-        buttonFunctions(value, 7);
+        buttonFunctions(led7, 7);
     }
 });
 
@@ -172,7 +178,7 @@ button8.watch((err, value) => {
         setTimeout(function(){
             sys8 = true;
         }, 1000);
-        buttonFunctions(value, 8);
+        buttonFunctions(led8, 8);
     }
 });
 
@@ -185,7 +191,7 @@ button9.watch((err, value) => {
         setTimeout(function(){
             sys9 = true;
         }, 1000);
-        buttonFunctions(value, 9);
+        buttonFunctions(led9, 9);
     }
 });
 
