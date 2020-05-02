@@ -6,7 +6,7 @@ let options = {json: true};
 
 
 
-function test(){
+function d(){
     request((url + 'api/getbuttons'), options, (error, res, body) => {
         if (error) {
             return  console.log(error)
@@ -17,6 +17,12 @@ function test(){
             return body;
         };
     });
+}
+
+function test () {
+    d().then(result => {
+        return result;
+    })
 }
 
 
