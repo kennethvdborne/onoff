@@ -13,8 +13,8 @@ function test(){
         };
 
         if (!error && res.statusCode == 200) {
+            console.log(body);
             return body;
-            // do something with JSON, using the 'body' variable
         };
     });
 }
