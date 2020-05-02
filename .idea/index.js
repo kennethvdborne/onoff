@@ -2,7 +2,6 @@ const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
 const looper = require('./src/classes/looper');
-const http = require('./src/classes/http');
 
 var recordMode = false;
 var playMode = false;
