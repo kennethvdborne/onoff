@@ -56,7 +56,7 @@ const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
 function buttonFunctions(value, x) {
-    console.log(httpHelper.getTest());
+    console.log(httpHelper.getTest2());
     if (value === 1 && recordMode) {
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(x);
