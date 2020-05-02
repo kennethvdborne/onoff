@@ -73,7 +73,7 @@ module.exports = {
             });
     },
 
-    getTest: async function () {
+    getTest: function () {
         fetch(url + 'api/getbuttons')
             .then(
                 function(u){ return u.json();}
