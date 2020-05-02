@@ -64,7 +64,6 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
             }
         }
     }
-
     blinkStartLeds(ledsSelected);
 }
 
