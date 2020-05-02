@@ -74,14 +74,12 @@ module.exports = {
     },
 
     getTest: function () {
-        fetch(url + 'api/getbuttons')
-            .then(
-                function(u){ return u.json();}
-            ).then(
-            function(json){
-                console.log(json);
-            }
-        )
+        const response = await fetch(url + 'api/getbuttons');
+        if (!response.ok) {
+            throw new Error("HTTP status " + response.status);
+        }
+        const body = await response.json();
+        return body;
 
     },
 
