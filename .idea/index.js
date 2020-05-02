@@ -2,6 +2,7 @@ const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
 const looper = require('./src/classes/looper');
+const http = require('./src/classes/http');
 
 var recordMode = false;
 var playMode = false;
@@ -56,7 +57,7 @@ const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
 function buttonFunctions(value, x) {
-    console.log(httpHelper.getTest2());
+    console.log(http.test());
     if (value === 1 && recordMode) {
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(x);
