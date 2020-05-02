@@ -12,7 +12,7 @@ function d(){
             return  console.log(error)
         };
 
-        if (!error && res.statusCode == 200) {
+        if (!error && res.statusCode == 200 && body != undefined) {
             console.log(body);
             return body;
         };
