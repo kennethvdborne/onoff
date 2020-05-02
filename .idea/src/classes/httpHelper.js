@@ -27,44 +27,6 @@ module.exports = {
             });
     },
 
-    getK: function(leds){
-        fetch(url + 'api/getbuttons')
-            //.then(res => res.json())é
-            //.then(json => console.log(json))
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(json){
-                console.log(json);
-                b.blinkSpecificKLedsStart(json, leds);
-            });
-    },
-
-    getTest: function (){
-        var f = fetch(url + 'api/getbuttons')
-            //.then(res => res.json())é
-            //.then(json => console.log(json))
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(json){
-                //console.log(json);
-                //return json;
-                //b.blinkSpecificKLedsStart(json, leds);
-            });
-
-        Promise.all([f]).then(function(values) {
-            console.log(values);
-            return values;
-        });
-
-        //return json;
-
-    },
-
-    getTest2: function(){
-        return getTest();
-    }
 
 
 }
