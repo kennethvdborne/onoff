@@ -59,7 +59,7 @@ function buttonFunctions(led, x) {
     if (recordMode) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
-        httpHelper.recordScene(led, x, ledsFunction);
+        httpHelper.recordScene(led, x, ledsFunction, ledRecord);
         ledRecord.writeSync(1);
         console.log('record...' + x);
     }

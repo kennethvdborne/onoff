@@ -4,7 +4,7 @@ const blinkHelper = require('./blinkHelper');
 
 module.exports = {
 
-    recordScene : function(led, button, ledsFunction) {
+    recordScene : function(led, button, ledsFunction, ledRecord) {
 
         console.log('recordfromhhhtp');
 
@@ -15,7 +15,10 @@ module.exports = {
                     console.log('true...');
                     blinkHelper.blinkConfirm(led, ledsFunction);
                 }
-                else console.log('false...');
+                else {
+                    console.log('false...');
+                    blinkHelper.blinkStart(ledRecord);
+                }
             })
     },
 
