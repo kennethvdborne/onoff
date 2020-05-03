@@ -1,3 +1,4 @@
+const httpHelper = require('./src/classes/httpHelper');
 var blinkInProcess = false;
 var leds;
 var blinkInterval;
@@ -66,7 +67,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     blinkStartLeds(ledsSelected);
 }
 
-function blinkConfirm(led) {
+function blinkConfirm(led, ledsFunction) {
     if (!blinkInProcess) {
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
@@ -82,7 +83,7 @@ function blinkConfirm(led) {
         clearInterval(blinkInterval);
         blinkInProcess = false;
         led.writeSync(0);
-        return 'yes......';
+        httpHelper.getButtons(ledsFunction, 'Record');
     },1000);
 }
 
