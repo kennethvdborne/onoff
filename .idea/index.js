@@ -60,7 +60,7 @@ function buttonFunctions(led, x) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(x);
-        console.log(await blinkHelper.blinkConfirm(led));
+        console.log(blinkHelper.blinkConfirm(led));
 
         httpHelper.getButtons(ledsFunction, 'Record');
         console.log('record...' + x);
