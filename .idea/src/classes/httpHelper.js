@@ -8,7 +8,9 @@ module.exports = {
 
         console.log('recordfromhhhtp');
 
-        fetch(url + '/api/recordscenebis/' + button);
+        (fetch(url + '/api/recordscenebis/' + button))
+            .then(res => res.text())
+            .then(body => console.log(body));
         
     },
 

@@ -1,4 +1,3 @@
-const httpHelper = require('httpHelper');
 var blinkInProcess = false;
 var leds;
 var blinkInterval;
