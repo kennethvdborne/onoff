@@ -11,13 +11,12 @@ module.exports = {
         (fetch(url + '/api/recordscenebis/' + button))
             .then(res => res.text())
             .then(function (res) {
-                if (!res){
-                    console.log('false...');
+                if (res == 'true'){
+                    console.log('true...');
+                    blinkHelper.blinkConfirm(led, ledsFunction);
                 }
-                else console.log('true...');
-                blinkHelper.blinkConfirm(led, ledsFunction);
+                else console.log('false...');
             })
-        
     },
 
     playScene : function (button) {
