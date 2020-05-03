@@ -82,6 +82,7 @@ function blinkConfirm(led) {
         clearInterval(blinkInterval);
         blinkInProcess = false;
         led.writeSync(0);
+        return 'yes......';
     },1000);
 }
 
