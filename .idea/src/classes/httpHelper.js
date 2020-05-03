@@ -4,13 +4,15 @@ const blinkHelper = require('./blinkHelper');
 
 module.exports = {
 
-    recordScene : function(button) {
+    recordScene : function(button, led, ledsFunction) {
 
         console.log('recordfromhhhtp');
 
         (fetch(url + '/api/recordscenebis/' + button))
             .then(res => res.text())
-            .then(body => console.log(body));
+            .then(function (res) {
+                blinkHelper.blinkConfirm(led, ledsFunction);
+            })
         
     },
 

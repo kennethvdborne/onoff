@@ -59,8 +59,8 @@ function buttonFunctions(led, x) {
     if (recordMode) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
-        httpHelper.recordScene(x);
-        blinkHelper.blinkConfirm(led, ledsFunction);
+        httpHelper.recordScene(led, x, ledsFunction);
+        //blinkHelper.blinkConfirm(led, ledsFunction);
         console.log('record...' + x);
     }
     if (playMode) {
