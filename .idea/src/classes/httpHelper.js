@@ -12,9 +12,9 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (!res){
-                    console.log(res);
+                    console.log('false...');
                 }
-                else console.log(res);
+                else console.log('true...');
                 blinkHelper.blinkConfirm(led, ledsFunction);
             })
         
