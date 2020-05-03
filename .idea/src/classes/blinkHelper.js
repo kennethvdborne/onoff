@@ -82,7 +82,6 @@ function blinkConfirm(led, ledsFunction) {
         clearInterval(blinkInterval);
         blinkInProcess = false;
         led.writeSync(0);
-        httpHelper.getButtons(ledsFunction, 'Record');
     },1000);
 }
 
