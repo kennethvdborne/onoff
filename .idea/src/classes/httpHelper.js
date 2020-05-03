@@ -11,6 +11,10 @@ module.exports = {
         (fetch(url + '/api/recordscenebis/' + button))
             .then(res => res.text())
             .then(function (res) {
+                if (!res){
+                    console.log(res);
+                }
+                else console.log(res);
                 blinkHelper.blinkConfirm(led, ledsFunction);
             })
         
