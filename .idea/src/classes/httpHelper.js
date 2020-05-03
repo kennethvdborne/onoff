@@ -4,7 +4,7 @@ const blinkHelper = require('./blinkHelper');
 
 module.exports = {
 
-    recordScene : function(button, led, ledsFunction) {
+    recordScene : function(led, button, ledsFunction) {
 
         console.log('recordfromhhhtp');
 
