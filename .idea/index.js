@@ -302,6 +302,6 @@ process.on('SIGINT', _ => {
 
 fan.writeSync(1);
 
-//looper.loopInit(ledsAll);
+looper.loopInit(ledsAll);
 
 console.log('End of node file');
