@@ -64,10 +64,7 @@ function buttonFunctions(led, x) {
         ledRecord.writeSync(1);
     }
     if (playMode) {
-        console.log(buttonsInUse);
-        console.log(buttonsInUse[x+1]);
-        if (buttonsInUse[x+1]) {
-            console.log('button has a scene');
+        if (!buttonsInUse[x+1]) {
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
             httpHelper.playScene(x);
