@@ -282,7 +282,7 @@ buttonRecord.watch((err, value) => {
 function setButtonsInUse(buttons){
     var newList = [];
     for (let i = 0; i < buttons.length; i++) {
-        newList.push(buttons[i]);
+        newList.push(buttons[i]+i);
         console.log(i + '...' + buttons[i]);
     }
     buttonsInUse = newList;
