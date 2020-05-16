@@ -6,7 +6,7 @@ const looper = require('./src/classes/looper');
 var recordMode = false;
 var playMode = false;
 var stopMode = false;
-var buttonsInUse;
+var buttonsInUse = [];
 
 //Delay for buttons
 var sys1 = true;
@@ -277,7 +277,9 @@ buttonRecord.watch((err, value) => {
 });
 
 function setButtonsInUse(buttons){
-    buttonsInUse = buttons;
+    for (let i = 0; i < buttons.length; i++) {
+        buttonsInUse.push(buttons[i]);
+    }
 }
 
 process.on('SIGINT', _ => {
