@@ -12,18 +12,15 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
-                    console.log('true...');
                     blinkHelper.blinkConfirm(led, ledsFunction);
                 }
                 else {
-                    console.log('false...');
                     blinkHelper.blinkStart(ledRecord);
                 }
             })
     },
 
     playScene : function (button) {
-        console.log('playfromhhhtp');
         fetch(url + '/api/playscene/' + button);
     },
 
@@ -34,6 +31,7 @@ module.exports = {
             })
             .then(function(json){
                 blinkHelper.blinkSpecificLedsStart(json, leds, mode);
+                return json;
             });
     },
 

@@ -6,6 +6,7 @@ const looper = require('./src/classes/looper');
 var recordMode = false;
 var playMode = false;
 var stopMode = false;
+var buttonsInUse;
 
 //Delay for buttons
 var sys1 = true;
@@ -61,20 +62,21 @@ function buttonFunctions(led, x) {
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(led, x, ledsFunction, ledRecord);
         ledRecord.writeSync(1);
-        console.log('record...' + x);
     }
-    if (playMode) {
-        blinkHelper.blinkEnd(ledPlay);
-        blinkHelper.blinkEndLeds();
-        httpHelper.playScene(x);
-        led.writeSync(1);
-        ledPlay.writeSync(1);
-        console.log('play...' + x);
+    if (playMode, x) {
+        if (buttonsInUse[x+1]) {
+            console.log('button has a scene');
+            blinkHelper.blinkEnd(ledPlay);
+            blinkHelper.blinkEndLeds();
+            httpHelper.playScene(x);
+            led.writeSync(1);
+            ledPlay.writeSync(1);
+        }
+
     }
     if (stopMode) {
         blinkHelper.blinkEnd(ledStop);
         blinkHelper.blinkConfirm(led);
-        console.log('stop ' + x);
     }
 }
 
@@ -212,7 +214,7 @@ buttonPlay.watch((err, value) => {
             sysPlay = true;
         }, 500);
         blinkHelper.blinkStart(ledPlay);
-        httpHelper.getButtons(ledsFunction, 'Play');
+        buttonsInUse = httpHelper.getButtons(ledsFunction, 'Play');
         playMode = true;
     }
     else if (value === 1 && playMode && sysPlay) {
