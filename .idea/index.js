@@ -65,6 +65,9 @@ function buttonFunctions(led, x) {
     }
     if (playMode) {
         console.log(buttonsInUse);
+        console.log(x);
+        var y = x+1;
+        console.log(buttonsInUse[y]);
         console.log(buttonsInUse[x+1]);
         if (buttonsInUse[x+1] == true) {
             console.log('ok');
