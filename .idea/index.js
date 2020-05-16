@@ -64,7 +64,7 @@ function buttonFunctions(led, x) {
         ledRecord.writeSync(1);
     }
     if (playMode) {
-        if (!buttonsInUse[x+1]) {
+        if (buttonsInUse[x+1] == 'false') {
             console.log('ok');
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
