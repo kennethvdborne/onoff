@@ -1,6 +1,7 @@
 const url = 'http://localhost:8080/';
 const fetch = require('node-fetch');
 const blinkHelper = require('./blinkHelper');
+const main = require('../../index');
 
 module.exports = {
 
@@ -31,7 +32,7 @@ module.exports = {
             })
             .then(function(json){
                 blinkHelper.blinkSpecificLedsStart(json, leds, mode);
-                return json;
+                main.setButtonsInUse(json);
             });
     },
 

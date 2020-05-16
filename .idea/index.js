@@ -217,7 +217,7 @@ buttonPlay.watch((err, value) => {
             sysPlay = true;
         }, 500);
         blinkHelper.blinkStart(ledPlay);
-        buttonsInUse = httpHelper.getButtons(ledsFunction, 'Play');
+        httpHelper.getButtons(ledsFunction, 'Play');
         playMode = true;
     }
     else if (value === 1 && playMode && sysPlay) {
@@ -277,6 +277,10 @@ buttonRecord.watch((err, value) => {
     };
 });
 
+function setButtonsInUse(buttons){
+    buttonsInUse = buttons;
+}
+
 process.on('SIGINT', _ => {
     led1.unexport();
     led2.unexport();
@@ -308,5 +312,7 @@ process.on('SIGINT', _ => {
 fan.writeSync(1);
 
 looper.loopInit(ledsAll);
+
+module.exports.setButtonsInUse = setButtonsInUse;
 
 console.log('End of node file');
