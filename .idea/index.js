@@ -65,6 +65,7 @@ function buttonFunctions(led, x) {
     }
     if (playMode) {
         console.log(buttonsInUse);
+        console.log(buttonsInUse[x+1]);
         if (buttonsInUse[x+1] == true) {
             console.log('ok');
             blinkHelper.blinkEnd(ledPlay);
