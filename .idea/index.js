@@ -277,9 +277,12 @@ buttonRecord.watch((err, value) => {
 });
 
 function setButtonsInUse(buttons){
+    var newList = [];
     for (let i = 0; i < buttons.length; i++) {
-        buttonsInUse.push(buttons[i]);
+        newList.push(buttons[i]);
     }
+    buttonsInUse = newList;
+    console.log(buttons);
 }
 
 process.on('SIGINT', _ => {
