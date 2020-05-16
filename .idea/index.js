@@ -66,9 +66,8 @@ function buttonFunctions(led, x) {
     if (playMode) {
         console.log(buttonsInUse);
         console.log(x);
-        var y = x+1;
-        console.log(buttonsInUse[y]);
-        console.log(buttonsInUse[x+1]);
+        var y = x-1;
+        console.log(buttonsInUse[x-1]);
         if (buttonsInUse[x+1] == true) {
             console.log('ok');
             blinkHelper.blinkEnd(ledPlay);
@@ -282,7 +281,7 @@ buttonRecord.watch((err, value) => {
 function setButtonsInUse(buttons){
     var newList = [];
     for (let i = 0; i < buttons.length; i++) {
-        newList.push(i);
+        newList.push(buttons[i]);
         console.log(i + '...' + buttons[i]);
     }
     buttonsInUse = newList;
