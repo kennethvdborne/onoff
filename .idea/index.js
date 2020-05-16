@@ -280,6 +280,7 @@ function setButtonsInUse(buttons){
     var newList = [];
     for (let i = 0; i < buttons.length; i++) {
         newList.push(buttons[i]);
+        console.log(i + '...' + buttons[i]);
     }
     buttonsInUse = newList;
     console.log(buttons);
