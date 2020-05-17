@@ -4,12 +4,9 @@ var blinkInterval;
 var arrayBlinkInterval = [];
 
 function blinkStart(led) {
-    console.log('blink slow');
     if (!blinkInProcess) {
-        console.log('blink slow 1');
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
-            console.log('blink slow 2');
             if (led.readSync() === 0) {
                 led.writeSync(1);
             } else {
@@ -21,18 +18,15 @@ function blinkStart(led) {
 }
 
 function blinkFastStart(led) {
-    console.log('blink fast');
     if (!blinkInProcess) {
-        console.log('blink fast 1');
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
-            console.log('blink fast 2');
             if (led.readSync() === 0) {
                 led.writeSync(1);
             } else {
                 led.writeSync(0);
             }
-        },600);
+        },100);
         arrayBlinkInterval.push(blinkInterval);
     }
 }
