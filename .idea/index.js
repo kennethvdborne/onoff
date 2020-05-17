@@ -72,7 +72,7 @@ function buttonFunctions(led, x) {
             httpHelper.recordSceneMultiple(led, x, ledsFunction, ledRecord);
             ledRecord.writeSync(1);
         }
-        else if (recordedLed = led) {
+        else if (recordedLed == led) {
             httpHelper.stopRecording();
         }
 
