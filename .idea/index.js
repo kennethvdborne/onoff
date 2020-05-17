@@ -61,6 +61,7 @@ function buttonFunctions(led, x) {
     if (recordMode == 1) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
+        led.writeSync(1);
         httpHelper.recordScene(led, x, ledsFunction, ledRecord);
         ledRecord.writeSync(1);
     }

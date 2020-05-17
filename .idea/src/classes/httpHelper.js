@@ -11,6 +11,7 @@ function recordScene(led, button, ledsFunction, ledRecord) {
         .then(res => res.text())
         .then(function (res) {
             if (res == 'true'){
+                led.writeSync(0);
                 blinkHelper.blinkConfirm(led);
             }
             else {
