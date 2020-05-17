@@ -83,8 +83,8 @@ function buttonFunctions(led, x) {
         if (buttonsInUse[x-1] == false) {
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
-            httpHelper.playScene(x);
-            led.writeSync(1);
+            blinkHelper.blinkStart(led);
+            httpHelper.playScene(x, led);
             ledPlay.writeSync(1);
         }
     }

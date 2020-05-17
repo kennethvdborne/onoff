@@ -60,8 +60,19 @@ function stopRecording(led, ledsFunction, ledRecord) {
         })
 }
 
-function playScene(button) {
-    fetch(url + '/api/playscene/' + button);
+
+function playScene(button, led) {
+    (fetch(url + '/api/playscene/' + button))
+        .then(res => res.text())
+        .then(function (res) {
+            if (res == 'true'){
+                console.log('play ended');
+                led.writeSync(1);
+            }
+            else {
+                console.log('error');
+            }
+        })
 }
 
 function getButtons(leds, mode){
