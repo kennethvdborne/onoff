@@ -80,7 +80,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     blinkStartLeds(ledsSelected);
 }
 
-function blinkConfirm(led, ledsFunction) {
+function blinkConfirm(led) {
     if (!blinkInProcess) {
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {

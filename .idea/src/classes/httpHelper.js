@@ -5,7 +5,7 @@ const main = require('../../index');
 
 module.exports = {
 
-    recordScene : function(led, button, ledsFunction, ledRecord) {
+    recordScene : function(led, button, ledRecord) {
 
         console.log('recordfromhhhtp');
 
@@ -13,7 +13,7 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
-                    blinkHelper.blinkConfirm(led, ledsFunction);
+                    blinkHelper.blinkConfirm(led);
                 }
                 else {
                     blinkHelper.blinkStart(ledRecord);
@@ -21,7 +21,7 @@ module.exports = {
             })
     },
 
-    recordSceneMultiple : function(led, button, ledsFunction, ledRecord) {
+    recordSceneMultiple : function(led, button, ledRecord) {
 
         console.log('recordfromhhhtp');
 
@@ -29,7 +29,7 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
-                    blinkHelper.blinkConfirm(led, ledsFunction);
+                    blinkHelper.blinkConfirm(led);
                 }
                 else {
                     blinkHelper.blinkStart(ledRecord);
@@ -37,7 +37,7 @@ module.exports = {
             })
     },
 
-    stopRecording : function(led) {
+    stopRecording : function(led, ledRecord) {
 
         console.log('stoprecording');
 
@@ -45,7 +45,7 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
-                    blinkHelper.blinkConfirm(led, ledsFunction);
+                    blinkHelper.blinkConfirm(led);
                 }
                 else {
                     blinkHelper.blinkFastStart(ledRecord);

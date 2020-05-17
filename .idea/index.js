@@ -61,7 +61,7 @@ function buttonFunctions(led, x) {
     if (recordMode == 1) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
-        httpHelper.recordScene(led, x, ledsFunction, ledRecord);
+        httpHelper.recordScene(led, x, ledRecord);
         ledRecord.writeSync(1);
     }
     if (recordMode == 2) {
@@ -69,12 +69,12 @@ function buttonFunctions(led, x) {
             blinkHelper.blinkEnd(ledRecord);
             blinkHelper.blinkEndLeds();
             led.writeSync(1);
-            httpHelper.recordSceneMultiple(led, x, ledsFunction, ledRecord);
+            httpHelper.recordSceneMultiple(led, x, ledRecord);
             ledRecord.writeSync(1);
             recordedLed = led;
         }
         else if (recordedLed == led) {
-            httpHelper.stopRecording();
+            httpHelper.stopRecording(led, ledRecord);
         }
 
     }
