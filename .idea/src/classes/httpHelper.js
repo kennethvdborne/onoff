@@ -51,6 +51,7 @@ function stopRecording(led, ledsFunction, ledRecord) {
             }
             else {
                 console.log('false recording');
+                led.writeSync(0);
                 blinkHelper.blinkFastStart(ledRecord);
                 getButtons(ledsFunction, 'Record');
             }
