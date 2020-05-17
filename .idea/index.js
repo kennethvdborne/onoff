@@ -3,7 +3,7 @@ const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
 const looper = require('./src/classes/looper');
 
-var recordMode = false;
+var recordMode = 0;
 var playMode = false;
 var stopMode = false;
 var buttonsInUse = [];
@@ -64,19 +64,13 @@ function buttonFunctions(led, x) {
         ledRecord.writeSync(1);
     }
     if (playMode) {
-        console.log(buttonsInUse);
-        console.log(x);
-        var y = x-1;
-        console.log(buttonsInUse[x-1]);
         if (buttonsInUse[x-1] == false) {
-            console.log('ok');
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
             httpHelper.playScene(x);
             led.writeSync(1);
             ledPlay.writeSync(1);
         }
-
     }
     if (stopMode) {
         blinkHelper.blinkEnd(ledStop);
@@ -203,7 +197,7 @@ button9.watch((err, value) => {
 });
 
 function allModes() {
-    if (playMode || recordMode || stopMode) {
+    if (playMode || recordMode != 0 || stopMode) {
         return true;
     }
 }
@@ -263,11 +257,20 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, 500);
+        recordMode = 1;
         blinkHelper.blinkStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record');
-        recordMode = true;
     }
-    else if (value === 1 && recordMode && sysRecord) {
+    if (value === 1 && recordMode == 1 && sysRecord) {
+        sysRecord = false;
+        setTimeout(function(){
+            sysRecord = true;
+        }, 500);
+        recordMode = 2;
+        blinkHelper.blinkStart(ledRecord);
+        httpHelper.getButtons(ledsFunction, 'Record');
+    }
+    else if (value === 1 && recordMode == 2 && sysRecord) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
@@ -279,13 +282,7 @@ buttonRecord.watch((err, value) => {
 });
 
 function setButtonsInUse(buttons){
-    var newList = [];
-    for (let i = 0; i < buttons.length; i++) {
-        newList.push(buttons[i]);
-        console.log(i + '...' + buttons[i]);
-    }
-    buttonsInUse = newList;
-    console.log(buttons);
+    buttonsInUse = buttons;
 }
 
 process.on('SIGINT', _ => {
