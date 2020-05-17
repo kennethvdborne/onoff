@@ -29,7 +29,8 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
-                    blinkHelper.blinkConfirm(led);
+                    console.log('rec started');
+                    led.writeSync(1);
                 }
                 else {
                     blinkHelper.blinkStart(ledRecord);
@@ -46,6 +47,7 @@ module.exports = {
             .then(function (res) {
                 if (res == 'true'){
                     console.log('true recording');
+                    led.writeSync(0);
                     blinkHelper.blinkConfirm(led);
                 }
                 else {
