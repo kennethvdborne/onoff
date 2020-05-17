@@ -15,6 +15,7 @@ function recordScene(led, button, ledsFunction, ledRecord) {
                 blinkHelper.blinkConfirm(led);
             }
             else {
+                led.writeSync(0);
                 blinkHelper.blinkStart(ledRecord);
                 getButtons(ledsFunction, 'Record');
             }
