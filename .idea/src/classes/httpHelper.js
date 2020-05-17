@@ -70,6 +70,7 @@ function playScene(button, led) {
                 led.writeSync(1);
             }
             else {
+                console.log(res);
                 console.log('error');
             }
         })
