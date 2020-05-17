@@ -67,6 +67,7 @@ function playScene(button, led) {
         .then(function (res) {
             if (res == 'true'){
                 console.log('play ended');
+                blinkHelper.blinkEndLeds();
                 led.writeSync(1);
             }
             else {
