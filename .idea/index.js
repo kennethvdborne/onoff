@@ -74,6 +74,7 @@ function buttonFunctions(led, x) {
         }
         else if (recordedLed == led) {
             httpHelper.stopRecording(led, ledRecord);
+            recordedLed = null;
         }
 
     }
