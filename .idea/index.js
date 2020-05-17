@@ -267,7 +267,9 @@ buttonRecord.watch((err, value) => {
             sysRecord = true;
         }, 500);
         recordMode = 2;
-        blinkHelper.blinkStart(ledRecord);
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkFastStart(ledRecord);
+        blinkHelper.blinkEndLeds();
         httpHelper.getButtons(ledsFunction, 'Record');
     }
     else if (value === 1 && recordMode == 2 && sysRecord) {

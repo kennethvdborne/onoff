@@ -17,6 +17,20 @@ function blinkStart(led) {
     }
 }
 
+function blinkFastStart(led) {
+    if (!blinkInProcess) {
+        blinkInProcess = true;
+        blinkInterval = setInterval(function blinking() {
+            if (led.readSync() === 0) {
+                led.writeSync(1);
+            } else {
+                led.writeSync(0);
+            }
+        },100);
+        arrayBlinkInterval.push(blinkInterval);
+    }
+}
+
 function blinkEnd(led) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
@@ -87,6 +101,7 @@ function blinkConfirm(led, ledsFunction) {
 
 
 module.exports.blinkStart = blinkStart;
+module.exports.blinkFastStart = blinkFastStart;
 module.exports.blinkEnd = blinkEnd;
 module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
