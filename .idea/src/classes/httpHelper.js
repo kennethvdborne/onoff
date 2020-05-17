@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const blinkHelper = require('./blinkHelper');
 const main = require('../../index');
 
-function recordScene(led, button, ledRecord) {
+function recordScene(led, button, ledsFunction, ledRecord) {
 
     console.log('recordfromhhhtp');
 
@@ -15,6 +15,7 @@ function recordScene(led, button, ledRecord) {
             }
             else {
                 blinkHelper.blinkStart(ledRecord);
+                getButtons(ledsFunction, 'Record');
             }
         })
 }
@@ -32,12 +33,11 @@ function recordSceneMultiple(led, button, ledRecord) {
             }
             else {
                 blinkHelper.blinkStart(ledRecord);
-                getButtons(ledsFunction, 'Record');
             }
         })
 }
 
-function stopRecording(led, ledRecord) {
+function stopRecording(led, ledsFunction, ledRecord) {
 
     console.log('stoprecording');
 
