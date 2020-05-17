@@ -61,7 +61,7 @@ function buttonFunctions(led, x) {
     if (recordMode == 1) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
-        httpHelper.recordScene(led, x, ledRecord);
+        httpHelper.recordScene(led, x, ledsFunction, ledRecord);
         ledRecord.writeSync(1);
     }
     if (recordMode == 2) {
@@ -73,7 +73,7 @@ function buttonFunctions(led, x) {
             recordedLed = led;
         }
         else if (recordedLed == led) {
-            httpHelper.stopRecording(led, ledRecord);
+            httpHelper.stopRecording(led, ledsFunction, ledRecord);
             recordedLed = null;
         }
 
