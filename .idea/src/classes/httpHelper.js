@@ -45,9 +45,11 @@ module.exports = {
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
+                    console.log('true recording');
                     blinkHelper.blinkConfirm(led);
                 }
                 else {
+                    console.log('false recording');
                     blinkHelper.blinkFastStart(ledRecord);
                 }
             })
