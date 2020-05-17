@@ -57,10 +57,16 @@ const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
 function buttonFunctions(led, x) {
-    if (recordMode) {
+    if (recordMode == 1) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         httpHelper.recordScene(led, x, ledsFunction, ledRecord);
+        ledRecord.writeSync(1);
+    }
+    if (recordMode == 2) {
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
+        httpHelper.recordSceneMultiple(led, x, ledsFunction, ledRecord);
         ledRecord.writeSync(1);
     }
     if (playMode) {

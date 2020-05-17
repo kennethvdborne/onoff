@@ -9,7 +9,23 @@ module.exports = {
 
         console.log('recordfromhhhtp');
 
-        (fetch(url + '/api/recordscenebis/' + button))
+        (fetch(url + '/api/recordSceneSingleFrame/' + button))
+            .then(res => res.text())
+            .then(function (res) {
+                if (res == 'true'){
+                    blinkHelper.blinkConfirm(led, ledsFunction);
+                }
+                else {
+                    blinkHelper.blinkStart(ledRecord);
+                }
+            })
+    },
+
+    recordSceneMultiple : function(led, button, ledsFunction, ledRecord) {
+
+        console.log('recordfromhhhtp');
+
+        (fetch(url + '/api/recordSceneMultipleFrame/' + button))
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
