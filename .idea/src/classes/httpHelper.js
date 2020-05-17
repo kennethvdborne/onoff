@@ -37,6 +37,22 @@ module.exports = {
             })
     },
 
+    stopRecording : function(led) {
+
+        console.log('stoprecording');
+
+        (fetch(url + '/api/stopRecording'))
+            .then(res => res.text())
+            .then(function (res) {
+                if (res == 'true'){
+                    blinkHelper.blinkConfirm(led, ledsFunction);
+                }
+                else {
+                    blinkHelper.blinkFastStart(ledRecord);
+                }
+            })
+    },
+
     playScene : function (button) {
         fetch(url + '/api/playscene/' + button);
     },

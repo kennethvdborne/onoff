@@ -7,6 +7,7 @@ var recordMode = 0;
 var playMode = false;
 var stopMode = false;
 var buttonsInUse = [];
+var recordedLed;
 
 //Delay for buttons
 var sys1 = true;
@@ -64,10 +65,17 @@ function buttonFunctions(led, x) {
         ledRecord.writeSync(1);
     }
     if (recordMode == 2) {
-        blinkHelper.blinkEnd(ledRecord);
-        blinkHelper.blinkEndLeds();
-        httpHelper.recordSceneMultiple(led, x, ledsFunction, ledRecord);
-        ledRecord.writeSync(1);
+        if (recordedLed == null) {
+            blinkHelper.blinkEnd(ledRecord);
+            blinkHelper.blinkEndLeds();
+            led.writeSync(1);
+            httpHelper.recordSceneMultiple(led, x, ledsFunction, ledRecord);
+            ledRecord.writeSync(1);
+        }
+        else if (recordedLed = led) {
+            httpHelper.stopRecording();
+        }
+
     }
     if (playMode) {
         if (buttonsInUse[x-1] == false) {
