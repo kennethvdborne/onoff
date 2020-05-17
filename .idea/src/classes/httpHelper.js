@@ -25,7 +25,7 @@ module.exports = {
 
         console.log('recordfromhhhtp');
 
-        (fetch(url + '/api/recordSceneMultipleFrame/' + button))
+        (fetch(url + '/api/recordSceneMultipleFrames/' + button))
             .then(res => res.text())
             .then(function (res) {
                 if (res == 'true'){
