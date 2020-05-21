@@ -295,6 +295,10 @@ function shutdown(button){
             i++;
             console.log('stop ' + i);
         }
+        else {
+            i = 0;
+            interval = null;
+        }
     },100);
 }
 
