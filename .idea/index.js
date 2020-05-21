@@ -352,7 +352,7 @@ var exec = require('child_process').exec;
 
 // Create shutdown function
 function shutdown1(callback){
-    exec('shutdown now', function(error, stdout, stderr){ callback(stdout); });
+    exec('sudo shutdown now', function(error, stdout, stderr){ callback(stdout); });
 }
 
 console.log('End of node file');
