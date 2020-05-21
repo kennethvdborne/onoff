@@ -5,7 +5,6 @@ const looper = require('./src/classes/looper');
 
 var recordMode = 0;
 var playMode = false;
-var stopMode = false;
 var buttonsInUse = [];
 var recordedLed;
 
@@ -77,7 +76,6 @@ function buttonFunctions(led, x) {
             httpHelper.stopRecording(led, ledsFunction, ledRecord);
             recordedLed = null;
         }
-
     }
     if (playMode) {
         if (buttonsInUse[x-1] == false) {
@@ -213,7 +211,7 @@ button9.watch((err, value) => {
 });
 
 function allModes() {
-    if (playMode || recordMode != 0 || stopMode) {
+    if (playMode || recordMode != 0) {
         return true;
     }
 }
@@ -246,22 +244,9 @@ buttonStop.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !allModes() && sysStop) {
-        sysStop = false;
-        setTimeout(function(){
-            sysStop = true;
-        }, 500);
-        blinkHelper.blinkStart(ledStop);
-        stopMode = true;
+    if (value === 1) {
+       shutdown(buttonStop);
     }
-    else if (value === 1 && stopMode && sysStop) {
-        sysStop = false;
-        setTimeout(function(){
-            sysStop = true;
-        }, 500);
-        blinkHelper.blinkEnd(ledStop);
-        stopMode = false;
-    };
 });
 
 buttonRecord.watch((err, value) => {
@@ -301,6 +286,15 @@ buttonRecord.watch((err, value) => {
 
 function setButtonsInUse(buttons){
     buttonsInUse = buttons;
+}
+
+function shutdown(button){
+    var i = 0;
+    do {
+        console.log('stop ' + i);
+        i++;
+    }
+    while (button.readSync() == 1);
 }
 
 process.on('SIGINT', _ => {

@@ -66,7 +66,6 @@ function playScene(button, led) {
         .then(res => res.text())
         .then(function (res) {
             if (res == 'true'){
-                console.log('play ended');
                 blinkHelper.blinkEndLeds();
                 led.writeSync(1);
             }
@@ -88,9 +87,20 @@ function getButtons(leds, mode){
         });
 }
 
+function stop(leds, mode){
+    fetch(url + 'api/stop')
+}
+
+function pause(leds, mode, bool){
+    fetch(url + 'api/pause/' + bool)
+}
+
 module.exports.recordScene = recordScene;
 module.exports.recordSceneMultiple = recordSceneMultiple;
 module.exports.stopRecording = stopRecording;
 module.exports.playScene = playScene;
 module.exports.getButtons = getButtons;
+module.exports.stop = stop;
+module.exports.pause = pause;
+
 
