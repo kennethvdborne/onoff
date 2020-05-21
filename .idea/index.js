@@ -246,7 +246,7 @@ buttonStop.watch((err, value) => {
         throw err;
     }
     if (value === 1) {
-       shutdown(buttonStop);
+       shutdownPi(buttonStop);
     }
 });
 
@@ -289,7 +289,7 @@ function setButtonsInUse(buttons){
     buttonsInUse = buttons;
 }
 
-function shutdown(button){
+function shutdownPi(button){
     var i = 0;
     var interval = setInterval(function () {
         if (button.readSync() == 1) {
