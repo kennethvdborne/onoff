@@ -297,7 +297,7 @@ function shutdownPi(button){
             console.log('stop ' + i);
             if (i == 50){
                 console.log('shutdown now......');
-                shutdown.shutdown(function(output){
+                shutdown1(function(output){
                     console.log(output);
                 });
             }
@@ -346,5 +346,13 @@ fan.writeSync(1);
 looper.loopInit(ledsAll);
 
 module.exports.setButtonsInUse = setButtonsInUse;
+
+// Require child_process
+var exec = require('child_process').exec;
+
+// Create shutdown function
+function shutdown1(callback){
+    exec('shutdown now', function(error, stdout, stderr){ callback(stdout); });
+}
 
 console.log('End of node file');
