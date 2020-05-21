@@ -2,7 +2,7 @@ const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
 const looper = require('./src/classes/looper');
-const shutdown = require('electron-shutdown-command');
+const shutdown = require('./src/classes/shutdown');
 
 var recordMode = 0;
 var playMode = false;
@@ -297,7 +297,9 @@ function shutdownPi(button){
             console.log('stop ' + i);
             if (i == 50){
                 console.log('shutdown now......');
-                shutdown.shutdown();
+                shutdown.shutdown(function(output){
+                    console.log(output);
+                });
             }
         }
         else {
