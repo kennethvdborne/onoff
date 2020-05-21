@@ -297,9 +297,13 @@ function shutdown(button){
         }
         else {
             i = 0;
-            interval = null;
+            clear();
         }
     },100);
+
+    function clear(){
+        clearInterval(blinkInterval);
+    }
 }
 
 process.on('SIGINT', _ => {
