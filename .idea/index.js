@@ -290,20 +290,22 @@ function setButtonsInUse(buttons){
 }
 
 function shutdownPi(button){
+    ledStop.writeSync(1);
     var i = 0;
     var interval = setInterval(function () {
         if (button.readSync() == 1) {
             i++;
-            console.log('stop ' + i);
             if (i == 50){
+                blinkHelper.blinkConfirm(ledStop);
                 console.log('shutdown now......');
-                shutdown1(function(output){
+                shutdown.shutdown(function(output){
                     console.log(output);
                 });
             }
         }
         else {
             i = 0;
+            ledStop.writeSync(0);
             clear();
         }
     },100);
@@ -346,13 +348,5 @@ fan.writeSync(1);
 looper.loopInit(ledsAll);
 
 module.exports.setButtonsInUse = setButtonsInUse;
-
-// Require child_process
-var exec = require('child_process').exec;
-
-// Create shutdown function
-function shutdown1(callback){
-    exec('sudo shutdown now', function(error, stdout, stderr){ callback(stdout); });
-}
 
 console.log('End of node file');
