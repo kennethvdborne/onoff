@@ -290,11 +290,12 @@ function setButtonsInUse(buttons){
 
 function shutdown(button){
     var i = 0;
-    do {
-        console.log('stop ' + i);
-        i++;
-    }
-    while (button.readSync() == 1);
+    var interval = setInterval(function () {
+        if (button.readSync() == 1) {
+            i++;
+            console.log('stop ' + i);
+        }
+    },100);
 }
 
 process.on('SIGINT', _ => {
