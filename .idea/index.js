@@ -302,7 +302,7 @@ function shutdown(button){
     },100);
 
     function clear(){
-        clearInterval(blinkInterval);
+        clearInterval(interval);
     }
 }
 
