@@ -2,6 +2,7 @@ const Gpio = require('onoff').Gpio;
 const blinkHelper = require('./src/classes/blinkHelper');
 const httpHelper = require('./src/classes/httpHelper');
 const looper = require('./src/classes/looper');
+const shutdown = require('./src/classes/shutdown');
 
 var recordMode = 0;
 var playMode = false;
@@ -294,6 +295,10 @@ function shutdown(button){
         if (button.readSync() == 1) {
             i++;
             console.log('stop ' + i);
+            if (i == 50){
+                console.log('shutdown now......');
+                shutdown.shutdown();
+            }
         }
         else {
             i = 0;
