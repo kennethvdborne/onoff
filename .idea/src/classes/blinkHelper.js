@@ -61,26 +61,9 @@ function blinkEndLeds() {
 
 function stopLeds(ledsInput, ledStop, playingLed){
     leds = [ ...ledsInput ];
-    try {
-        if (arrayBlinkInterval.length > 0) {
-            for (let i = 0; i < arrayBlinkInterval.length; i++) {
-                clearInterval(arrayBlinkInterval[i]);
-            }
-            for (let i = 0; i < leds.length; i++) {
-                leds[i].writeSync(0);
-                if (i = les.length-1){
-                    blinkConfirm(ledStop);
-                    if (playingLed != null){
-                        playingLed.writeSync(0);
-                    }
-                }
-            }
-        }
-    } catch(e) {
-        console.log('error');
-    }
+        blinkEndLeds();
     setTimeout(function () {
-        console.log('error');
+        blinkEndLeds()
     },500);
 }
 
