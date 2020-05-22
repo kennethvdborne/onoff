@@ -74,6 +74,9 @@ function stopLeds(ledsInput, ledStop){
     } catch(e) {
         console.log('error');
     }
+    setTimeout(function () {
+        blinkConfirm(ledStop);
+    },1000);
 }
 
 function blinkSpecificLedsStart(input, ledsInput, mode) {
