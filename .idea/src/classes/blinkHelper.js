@@ -59,16 +59,14 @@ function blinkEndLeds() {
     }
 }
 
-function endAllLeds(led, playingLed){
+function stopLeds(led, playingLed, ledStop){
     blinkEndLeds();
+    led.writeSync(0);
+    if (playingLed != null){
+        playingLed.writeSync(0);
+    }
     console.log('end blink');
-    setTimeout(function () {
-        console.log('write 0');
-        led.writeSync(0);
-        if (playingLed != null){
-            playingLed.writeSync(0);
-        }
-    },500);
+    blinkConfirm(ledStop);
 
 }
 
@@ -120,6 +118,6 @@ module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
 module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
 module.exports.blinkConfirm = blinkConfirm;
-module.exports.endAllLeds = endAllLeds;
+module.exports.stopLeds = stopLeds;
 
 
