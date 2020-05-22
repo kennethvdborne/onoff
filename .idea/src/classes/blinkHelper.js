@@ -19,6 +19,7 @@ function blinkStart(led) {
 
 function blinkFastStart(led) {
     if (!blinkInProcess) {
+        console.log('start blink');
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
             if (led.readSync() === 0) {
