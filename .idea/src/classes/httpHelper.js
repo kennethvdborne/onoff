@@ -89,11 +89,13 @@ function getButtons(leds, mode){
 
 function stop(){
     fetch(url + 'api/stop')
+        .then(res => res.text())
     console.log('sending stop request')
 }
 
 function pause(leds, mode, bool){
     fetch(url + 'api/pause/' + bool)
+        .then(res => res.text())
 }
 
 module.exports.recordScene = recordScene;
