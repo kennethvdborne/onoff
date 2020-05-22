@@ -59,6 +59,13 @@ function blinkEndLeds() {
     }
 }
 
+function endAllLeds(leds){
+    blinkEndLeds();
+    for (let i = 0; i < leds.length; i++) {
+        leds[i].writeSync(0);
+    }
+}
+
 function blinkSpecificLedsStart(input, ledsInput, mode) {
     leds = [ ...ledsInput ];
     var ledsSelected = [];
@@ -107,7 +114,6 @@ module.exports.blinkStartLeds = blinkStartLeds;
 module.exports.blinkEndLeds = blinkEndLeds;
 module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
 module.exports.blinkConfirm = blinkConfirm;
-
-
-//setTimeout(endBlink(), 5000); //stop blinking after 5 seconds
+module.exports.endAllLeds = endAllLeds;
+ds
 

@@ -249,7 +249,7 @@ buttonStop.watch((err, value) => {
     if (value === 1) {
        shutdownPi(buttonStop);
     }
-    if (value === 1 && !allModes() && sysStop) {
+    if (value === 1 && sysStop) {
         sysStop = false;
         setTimeout(function(){
             sysStop = true;
