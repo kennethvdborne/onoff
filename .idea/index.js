@@ -254,7 +254,6 @@ buttonStop.watch((err, value) => {
         setTimeout(function(){
             sysStop = true;
         }, 500);
-        stopMode = 1;
         blinkHelper.blinkConfirm(ledStop);
         httpHelper.stop();
     }
@@ -357,7 +356,7 @@ process.on('SIGINT', _ => {
 
 fan.writeSync(1);
 
-looper.loopInit(ledsAll);
+//looper.loopInit(ledsAll);
 
 module.exports.setButtonsInUse = setButtonsInUse;
 
