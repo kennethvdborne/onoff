@@ -6,6 +6,7 @@ const shutdown = require('./src/classes/shutdown');
 
 var recordMode = 0;
 var playMode = false;
+var stopMode = false;
 var buttonsInUse = [];
 var recordedLed;
 
@@ -212,7 +213,7 @@ button9.watch((err, value) => {
 });
 
 function allModes() {
-    if (playMode || recordMode != 0) {
+    if (playMode || recordMode != 0 || stopMode) {
         return true;
     }
 }
@@ -247,6 +248,15 @@ buttonStop.watch((err, value) => {
     }
     if (value === 1) {
        shutdownPi(buttonStop);
+    }
+    if (value === 1 && !allModes() && sysStop) {
+        sysStop = false;
+        setTimeout(function(){
+            sysStop = true;
+        }, 500);
+        stopMode = 1;
+        blinkHelper.blinkConfirm(ledStop);
+        httpHelper.stop();
     }
 });
 
@@ -297,6 +307,8 @@ function shutdownPi(button){
             i++;
             if (i == 50){
                 blinkHelper.blinkConfirm(ledStop);
+                blinkHelper.blinkConfirm(ledPlay);
+                blinkHelper.blinkConfirm(ledRecord);
                 console.log('shutdown now......');
                 shutdown.shutdown(function(output){
                     console.log(output);

@@ -87,8 +87,9 @@ function getButtons(leds, mode){
         });
 }
 
-function stop(leds, mode){
+function stop(){
     fetch(url + 'api/stop')
+    console.log('sending stop request')
 }
 
 function pause(leds, mode, bool){
