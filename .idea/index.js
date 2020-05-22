@@ -254,9 +254,9 @@ buttonStop.watch((err, value) => {
         setTimeout(function(){
             sysStop = true;
         }, 500);
-        blinkHelper.blinkConfirm(ledStop);
         httpHelper.stop();
         blinkHelper.endAllLeds(ledsAll);
+        blinkHelper.blinkConfirm(ledStop);
     }
 });
 

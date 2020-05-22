@@ -67,7 +67,7 @@ function endAllLeds(leds){
         for (let i = 0; i < leds.length; i++) {
             leds[i].writeSync(0);
         }
-    },1000);
+    },500);
 
 }
 
