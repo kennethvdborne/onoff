@@ -9,6 +9,7 @@ var playMode = false;
 var stopMode = false;
 var buttonsInUse = [];
 var recordedLed;
+var playingLed;
 
 //Delay for buttons
 var sys1 = true;
@@ -84,6 +85,7 @@ function buttonFunctions(led, x) {
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
             blinkHelper.blinkStart(led);
+            playingLed = led;
             httpHelper.playScene(x, led);
             ledPlay.writeSync(1);
         }
@@ -255,8 +257,7 @@ buttonStop.watch((err, value) => {
             sysStop = true;
         }, 500);
         httpHelper.stop();
-        var arr = ledsFunction.push(ledPlay);
-        blinkHelper.endAllLeds(arr);
+        blinkHelper.endAllLeds(ledPlay, playingLed);
         blinkHelper.blinkConfirm(ledStop);
     }
 });

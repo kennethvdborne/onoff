@@ -59,13 +59,14 @@ function blinkEndLeds() {
     }
 }
 
-function endAllLeds(leds){
+function endAllLeds(led, playingLed){
     blinkEndLeds();
     console.log('end blink');
     setTimeout(function () {
         console.log('write 0');
-        for (let i = 0; i < leds.length; i++) {
-            leds[i].writeSync(0);
+        led.writeSync(0);
+        if (playingLed != null){
+            playingLed.writeSync(0);
         }
     },500);
 
