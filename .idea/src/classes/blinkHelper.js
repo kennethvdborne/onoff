@@ -78,7 +78,7 @@ function stopLeds(ledsInput, ledStop, playingLed){
         if (playingLed != null){
             playingLed.writeSync(0);
         }
-    },250);
+    },500);
 }
 
 function blinkSpecificLedsStart(input, ledsInput, mode) {
