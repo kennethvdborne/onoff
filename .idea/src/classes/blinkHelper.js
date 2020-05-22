@@ -68,16 +68,19 @@ function stopLeds(ledsInput, ledStop, playingLed){
             }
             for (let i = 0; i < leds.length; i++) {
                 leds[i].writeSync(0);
+                if (i = les.length-1){
+                    blinkConfirm(ledStop);
+                    if (playingLed != null){
+                        playingLed.writeSync(0);
+                    }
+                }
             }
         }
     } catch(e) {
         console.log('error');
     }
     setTimeout(function () {
-        blinkConfirm(ledStop);
-        if (playingLed != null){
-            playingLed.writeSync(0);
-        }
+        console.log('error');
     },500);
 }
 
