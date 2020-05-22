@@ -54,8 +54,8 @@ function blinkEndLeds() {
             for (let i = 0; i < leds.length; i++) {
                 leds[i].writeSync(0);
             }
-            blinkInProcess = false;
         }
+        blinkInProcess = false;
     } catch(e) {
         console.log('error');
     }
