@@ -59,7 +59,7 @@ function blinkEndLeds() {
     }
 }
 
-function stopLeds(leds, ledStop){
+function stopLeds(ledsInput, ledStop){
     leds = [ ...ledsInput ];
     try {
         if (arrayBlinkInterval.length > 0) {
