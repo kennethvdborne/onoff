@@ -59,13 +59,26 @@ function blinkEndLeds() {
     }
 }
 
-function stopLeds(led, playingLed, ledStop){
-    blinkEndLeds();
+function stopLeds(led, playingLed){
+    try {
+        if (arrayBlinkInterval.length > 0) {
+            for (let i = 0; i < arrayBlinkInterval.length; i++) {
+                clearInterval(arrayBlinkInterval[i]);
+            }
+            for (let i = 0; i < leds.length; i++) {
+                leds[i].writeSync(0);
+            }
+        }
+    } catch(e) {
+        console.log('error');
+    }
+
+    console.log('write 0');
     led.writeSync(0);
     if (playingLed != null){
         playingLed.writeSync(0);
     }
-    console.log('end blink');
+
     blinkConfirm(ledStop);
 
 }
