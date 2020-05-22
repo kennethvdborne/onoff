@@ -59,12 +59,13 @@ function blinkEndLeds() {
     }
 }
 
-function stopLeds(ledsInput, ledStop, playingLed){
+function stopLeds(ledsInput, ledStop){
     leds = [ ...ledsInput ];
         blinkEndLeds();
     setTimeout(function () {
-        blinkEndLeds()
-    },500);
+        blinkEndLeds();
+        blinkConfirm(ledStop);
+    },750);
 }
 
 function blinkSpecificLedsStart(input, ledsInput, mode) {

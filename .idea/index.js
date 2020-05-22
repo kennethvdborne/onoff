@@ -257,7 +257,8 @@ buttonStop.watch((err, value) => {
             sysStop = true;
         }, 500);
         httpHelper.stop();
-        blinkHelper.stopLeds(ledsAll, ledStop, playingLed);
+        playMode = false;
+        blinkHelper.stopLeds(ledsAll, ledStop);
     }
 });
 
