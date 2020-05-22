@@ -75,7 +75,9 @@ function stopLeds(ledsInput, ledStop, playingLed){
     }
     setTimeout(function () {
         blinkConfirm(ledStop);
-        playingLed.writeSync(0);
+        if (playingLed != null){
+            playingLed.writeSync(0);
+        }
     },250);
 }
 
