@@ -59,7 +59,7 @@ function blinkEndLeds() {
     }
 }
 
-function stopLeds(ledsInput, ledStop){
+function stopLeds(ledsInput, ledStop, playingLed){
     leds = [ ...ledsInput ];
     try {
         if (arrayBlinkInterval.length > 0) {
@@ -70,13 +70,13 @@ function stopLeds(ledsInput, ledStop){
                 leds[i].writeSync(0);
             }
         }
-        blinkConfirm(ledStop);
     } catch(e) {
         console.log('error');
     }
     setTimeout(function () {
         blinkConfirm(ledStop);
-    },1000);
+        playingLed.writeSync(0);
+    },250);
 }
 
 function blinkSpecificLedsStart(input, ledsInput, mode) {
