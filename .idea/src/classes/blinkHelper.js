@@ -59,7 +59,7 @@ function blinkEndLeds() {
     }
 }
 
-function stopLeds(led, playingLed){
+function stopLeds(led, playingLed, ledStop){
     try {
         if (arrayBlinkInterval.length > 0) {
             for (let i = 0; i < arrayBlinkInterval.length; i++) {
@@ -75,9 +75,7 @@ function stopLeds(led, playingLed){
 
     console.log('write 0');
     led.writeSync(0);
-    if (playingLed != null){
-        playingLed.writeSync(0);
-    }
+
 
     blinkConfirm(ledStop);
 
