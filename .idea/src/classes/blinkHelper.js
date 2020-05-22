@@ -61,9 +61,14 @@ function blinkEndLeds() {
 
 function endAllLeds(leds){
     blinkEndLeds();
-    for (let i = 0; i < leds.length; i++) {
-        leds[i].writeSync(0);
-    }
+    console.log('end blink');
+    setTimeout(function () {
+        console.log('write 0');
+        for (let i = 0; i < leds.length; i++) {
+            leds[i].writeSync(0);
+        }
+    },1000);
+
 }
 
 function blinkSpecificLedsStart(input, ledsInput, mode) {
