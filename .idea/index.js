@@ -90,10 +90,6 @@ function buttonFunctions(led, x) {
             ledPlay.writeSync(1);
         }
     }
-    if (stopMode) {
-        blinkHelper.blinkEnd(ledStop);
-        blinkHelper.blinkConfirm(ledStop);
-    }
 }
 
 //Watch Output
@@ -251,7 +247,7 @@ buttonStop.watch((err, value) => {
     if (value === 1) {
        shutdownPi(buttonStop);
     }
-    if (value === 1 && sysStop) {
+    if (value === 1 && sysStop && playMode) {
         sysStop = false;
         setTimeout(function(){
             sysStop = true;
