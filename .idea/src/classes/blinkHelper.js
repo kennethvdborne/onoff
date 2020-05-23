@@ -64,9 +64,9 @@ function blinkEndLeds() {
 function stopLeds(ledsInput, ledStop){
     leds = [ ...ledsInput ];
         blinkEndLeds();
-        ledStop.writeSync(1);
     setTimeout(function () {
         blinkEndLeds();
+        blinkConfirm(ledstop);
     },1000);
 }
 
