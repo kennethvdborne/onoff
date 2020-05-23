@@ -92,7 +92,7 @@ function buttonFunctions(led, x) {
     }
     if (stopMode) {
         blinkHelper.blinkEnd(ledStop);
-        blinkHelper.blinkConfirm(led);
+        blinkHelper.blinkConfirm(ledStop);
     }
 }
 

@@ -5,6 +5,7 @@ var arrayBlinkInterval = [];
 
 function blinkStart(led) {
     if (!blinkInProcess) {
+        console.log('start blink');
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
             if (led.readSync() === 0) {
@@ -19,7 +20,6 @@ function blinkStart(led) {
 
 function blinkFastStart(led) {
     if (!blinkInProcess) {
-        console.log('start blink');
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
             if (led.readSync() === 0) {
@@ -64,6 +64,7 @@ function blinkEndLeds() {
 function stopLeds(ledsInput, ledStop){
     leds = [ ...ledsInput ];
         blinkEndLeds();
+        //ledStop.writeSync(1);
     setTimeout(function () {
         blinkEndLeds();
     },1000);
