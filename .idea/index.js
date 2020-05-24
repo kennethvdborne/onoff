@@ -7,6 +7,7 @@ const shutdown = require('./src/classes/shutdown');
 var recordMode = 0;
 var playMode = false;
 var stopMode = false;
+var pauseMode = false;
 var buttonsInUse = [];
 var recordedLed;
 var playingLed;
@@ -90,9 +91,13 @@ function buttonFunctions(led, x) {
             ledPlay.writeSync(1);
         }
     }
-    else if (playMode && led == playingLed){
+    else if (playMode && led == playingLed && pauseMode){
         console.log('pause');
         httpHelper.pause(true);
+    }
+    else if (playMode && led == playingLed && !pauseMode){
+        console.log('pause false');
+        httpHelper.pause(false);
     }
 }
 
