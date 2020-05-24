@@ -91,11 +91,11 @@ function buttonFunctions(led, x) {
             ledPlay.writeSync(1);
         }
     }
-    else if (playMode && led == playingLed && pauseMode){
+    else if (playMode && led == playingLed && !pauseMode){
         console.log('pause');
         httpHelper.pause(true);
     }
-    else if (playMode && led == playingLed && !pauseMode){
+    else if (playMode && led == playingLed && pauseMode){
         console.log('pause false');
         httpHelper.pause(false);
     }
