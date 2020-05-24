@@ -90,6 +90,9 @@ function buttonFunctions(led, x) {
             ledPlay.writeSync(1);
         }
     }
+    if (playMode && led == playingLed){
+        consolelog('pause');
+        httpHelperpause(true);   }
 }
 
 //Watch Output
