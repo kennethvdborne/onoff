@@ -94,7 +94,7 @@ function stop(){
     console.log('sending stop request')
 }
 
-function pause(leds, mode, bool){
+function pause(bool){
     fetch(url + 'api/pause/' + bool)
         .then(res => res.text())
 }
