@@ -7,12 +7,14 @@ var timeOutFast = 100;
 
 function setTimeOutSlow(x){
     timeOutSlow = x;
+    console.log(timeOutSlow);
 }
 
 function blinkStart(led) {
     if (!blinkInProcess) {
         blinkInProcess = true;
         blinkInterval = setInterval(function blinking() {
+            console.log(timeOutSlow + ' blink')
             if (led.readSync() === 0) {
                 led.writeSync(1);
             } else {
