@@ -92,7 +92,7 @@ function buttonFunctions(led, x) {
     }
     if (playMode && led == playingLed){
         console.log('pause');
-        httpHelperpause(true);
+        httpHelper.pause(true);
     }
 }
 
