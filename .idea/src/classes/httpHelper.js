@@ -94,18 +94,15 @@ function stop(){
     console.log('sending stop request')
 }
 
-function pause(bool, ledPlay, playingLed){
+function pause(bool, playingLed){
     fetch(url + 'api/pause/' + bool)
         .then(res => res.text())
 
     if (bool){
-        ledPlay.writeSync(0);
-        blinkHelper.blinkStart(ledPlay);
+        blinkHelper.setTimeOutSlow(600);
     }
     else {
-        blinkHelper.blinkEnd(ledPlay);
-        blinkHelper.blinkStart(playingLed);
-        ledPlay.writeSync(1);
+        blinkHelper.setTimeOutSlow(300);
     }
 }
 

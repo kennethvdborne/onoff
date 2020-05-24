@@ -83,23 +83,23 @@ function buttonFunctions(led, x) {
     }
     if (playMode && playingLed == null) {
         if (buttonsInUse[x-1] == false) {
+            playingLed = led;
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
-            blinkHelper.blinkStart(led);
-            playingLed = led;
-            httpHelper.playScene(x, led);
+            blinkHelper.blinkStart(playingLed);
+            httpHelper.playScene(x, playingLed);
             ledPlay.writeSync(1);
         }
     }
     else if (playMode && led == playingLed && !pauseMode){
         console.log('pause true');
         pauseMode = true;
-        httpHelper.pause(pauseMode, ledPlay, playingLed);
+        httpHelper.pause(pauseMode, playingLed);
     }
     else if (playMode && led == playingLed && pauseMode){
         console.log('pause false');
         pauseMode = false;
-        httpHelper.pause(pauseMode, ledPlay, playingLed);
+        httpHelper.pause(pauseMode, playingLed);
     }
 }
 

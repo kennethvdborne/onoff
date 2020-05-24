@@ -2,6 +2,12 @@ var blinkInProcess = false;
 var leds;
 var blinkInterval;
 var arrayBlinkInterval = [];
+var timeOutSlow = 300;
+var timeOutFast = 100;
+
+function setTimeOutSlow(x){
+    timeOutSlow = x;
+}
 
 function blinkStart(led) {
     if (!blinkInProcess) {
@@ -12,7 +18,7 @@ function blinkStart(led) {
             } else {
                 led.writeSync(0);
             }
-        },300);
+        },timeOutSlow);
         arrayBlinkInterval.push(blinkInterval);
     }
 }
@@ -26,7 +32,7 @@ function blinkFastStart(led) {
             } else {
                 led.writeSync(0);
             }
-        },100);
+        },timeOutFast);
         arrayBlinkInterval.push(blinkInterval);
     }
 }
@@ -121,5 +127,6 @@ module.exports.blinkEndLeds = blinkEndLeds;
 module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
 module.exports.blinkConfirm = blinkConfirm;
 module.exports.stopLeds = stopLeds;
+module.exports.setTimeOutSlow = setTimeOutSlow;
 
 
