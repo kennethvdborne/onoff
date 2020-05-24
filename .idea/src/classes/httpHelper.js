@@ -94,14 +94,19 @@ function stop(){
     console.log('sending stop request')
 }
 
-function pause(bool, led){
+function pause(bool, ledPlay, playingLed){
     fetch(url + 'api/pause/' + bool)
         .then(res => res.text())
 
     if (bool){
+        ledPlay.writeSync(0);
         blinkHelper.blinkStart(led);
     }
-    else blinkHelper.blinkEnd(led);
+    else {
+        blinkHelper.blinkEnd(led);
+        blinkHelper.blinkStart(playingLed);
+        ledPlay.writeSync(1);
+    }
 }
 
 module.exports.recordScene = recordScene;
