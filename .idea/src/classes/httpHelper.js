@@ -99,7 +99,7 @@ function pause(bool, playingLed){
         .then(res => res.text())
 
     if (bool){
-        blinkHelper.setTimeOutSlow(600);
+        blinkHelper.setTimeOutSlow(2000);
     }
     else {
         blinkHelper.setTimeOutSlow(300);
