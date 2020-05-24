@@ -100,10 +100,10 @@ function pause(bool, ledPlay, playingLed){
 
     if (bool){
         ledPlay.writeSync(0);
-        blinkHelper.blinkStart(led);
+        blinkHelper.blinkStart(ledPlay);
     }
     else {
-        blinkHelper.blinkEnd(led);
+        blinkHelper.blinkEnd(ledPlay);
         blinkHelper.blinkStart(playingLed);
         ledPlay.writeSync(1);
     }
