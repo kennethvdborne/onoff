@@ -11,6 +11,8 @@ var pauseMode = false;
 var buttonsInUse = [];
 var recordedLed;
 var playingLed;
+var debounceTime1 = 500;
+var debounceTime2 = 750;
 
 //Delay for buttons
 var sys1 = true;
@@ -112,7 +114,7 @@ button1.watch((err, value) => {
         sys1 = false;
         setTimeout(function(){
             sys1 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led1, 1);
     }
 });
@@ -125,7 +127,7 @@ button2.watch((err, value) => {
         sys2 = false;
         setTimeout(function(){
             sys2 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led2, 2);
     }
 });
@@ -138,7 +140,7 @@ button3.watch((err, value) => {
         sys3 = false;
         setTimeout(function(){
             sys3 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led3, 3);
     }
 });
@@ -151,7 +153,7 @@ button4.watch((err, value) => {
             sys4 = false;
             setTimeout(function(){
                 sys4 = true;
-            }, 1000);
+            }, debounceTime2);
             buttonFunctions(led4, 4);
         }
 });
@@ -164,7 +166,7 @@ button5.watch((err, value) => {
         sys5 = false;
         setTimeout(function(){
             sys5 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led5, 5);
     }
 });
@@ -177,7 +179,7 @@ button6.watch((err, value) => {
         sys6 = false;
         setTimeout(function(){
             sys6 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led6, 6);
     }
 });
@@ -190,7 +192,7 @@ button7.watch((err, value) => {
         sys7 = false;
         setTimeout(function(){
             sys7 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led7, 7);
     }
 });
@@ -203,7 +205,7 @@ button8.watch((err, value) => {
         sys8 = false;
         setTimeout(function(){
             sys8 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led8, 8);
     }
 });
@@ -216,7 +218,7 @@ button9.watch((err, value) => {
         sys9 = false;
         setTimeout(function(){
             sys9 = true;
-        }, 1000);
+        }, debounceTime2);
         buttonFunctions(led9, 9);
     }
 });
@@ -235,7 +237,7 @@ buttonPlay.watch((err, value) => {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
-        }, 500);
+        }, debounceTime1);
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play');
         playMode = true;
@@ -244,7 +246,7 @@ buttonPlay.watch((err, value) => {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
-        }, 500);
+        }, debounceTime1);
         blinkHelper.blinkEnd(ledPlay);
         blinkHelper.blinkEndLeds();
         playMode = false;
@@ -262,7 +264,7 @@ buttonStop.watch((err, value) => {
         sysStop = false;
         setTimeout(function(){
             sysStop = true;
-        }, 500);
+        }, debounceTime1);
         httpHelper.stop();
         playMode = false;
         blinkHelper.stopLeds(ledsAll, ledStop);
@@ -277,7 +279,7 @@ buttonRecord.watch((err, value) => {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
-        }, 500);
+        }, debounceTime1);
         recordMode = 1;
         blinkHelper.blinkStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record');
@@ -286,7 +288,7 @@ buttonRecord.watch((err, value) => {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
-        }, 500);
+        }, debounceTime1);
         recordMode = 2;
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
@@ -297,7 +299,7 @@ buttonRecord.watch((err, value) => {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
-        }, 500);
+        }, debounceTime1);
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         recordMode = false;
