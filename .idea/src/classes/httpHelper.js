@@ -94,9 +94,14 @@ function stop(){
     console.log('sending stop request')
 }
 
-function pause(bool){
+function pause(bool, led){
     fetch(url + 'api/pause/' + bool)
         .then(res => res.text())
+
+    if (bool){
+        blinkHelper.blinkStart(led);
+    }
+    else blinkHelper.blinkEnd(led);
 }
 
 module.exports.recordScene = recordScene;
