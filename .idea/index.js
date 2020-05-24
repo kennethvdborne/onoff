@@ -90,7 +90,7 @@ function buttonFunctions(led, x) {
             ledPlay.writeSync(1);
         }
     }
-    if (playMode && led == playingLed){
+    else if (playMode && led == playingLed){
         console.log('pause');
         httpHelper.pause(true);
     }
