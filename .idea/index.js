@@ -80,7 +80,7 @@ function buttonFunctions(led, x) {
             recordedLed = null;
         }
     }
-    if (playMode) {
+    if (playMode && playingLed == null) {
         if (buttonsInUse[x-1] == false) {
             blinkHelper.blinkEnd(ledPlay);
             blinkHelper.blinkEndLeds();
@@ -91,8 +91,9 @@ function buttonFunctions(led, x) {
         }
     }
     if (playMode && led == playingLed){
-        consolelog('pause');
-        httpHelperpause(true);   }
+        console.log('pause');
+        httpHelperpause(true);
+    }
 }
 
 //Watch Output
@@ -296,10 +297,6 @@ buttonRecord.watch((err, value) => {
     };
 });
 
-function setButtonsInUse(buttons){
-    buttonsInUse = buttons;
-}
-
 function shutdownPi(button){
     ledStop.writeSync(1);
     var i = 0;
@@ -360,6 +357,15 @@ fan.writeSync(1);
 
 //looper.loopInit(ledsAll);
 
+function setButtonsInUse(buttons){
+    buttonsInUse = buttons;
+}
+
+function setPlayingLed(led){
+    playingLed = led;
+}
+
 module.exports.setButtonsInUse = setButtonsInUse;
+module.exports.setPlayingLed = setPlayingLed;
 
 console.log('End of node file');
