@@ -99,10 +99,12 @@ function pause(bool, playingLed){
         .then(res => res.text())
 
     if (bool){
-        blinkHelper.setTimeOutSlow(2000);
+        blinkHelper.blinkEnd(playingLed);
+        blinkHelper.blinkStartSlow(playingLed);
     }
     else {
-        blinkHelper.setTimeOutSlow(300);
+        blinkHelper.blinkEnd(playingLed);
+        blinkHelper.blinkStart(playingLed);
     }
 }
 
