@@ -364,7 +364,7 @@ process.on('SIGINT', _ => {
 
 fan.writeSync(1);
 
-//looper.loopInit(ledsAll);
+looper.loopInit(ledsAll);
 
 function setButtonsInUse(buttons){
     buttonsInUse = buttons;
