@@ -85,7 +85,6 @@ function getButtons(leds, mode){
         .then(function(json){
             blinkHelper.blinkSpecificLedsStart(json, leds, mode);
             main.setButtonsInUse(json);
-            console.log(json);
         });
 }
 
@@ -101,7 +100,6 @@ function getPages(){
             return response.json();
         })
         .then(function(json){
-            console.log(json);
             main.setPages(json);
         });
 }
