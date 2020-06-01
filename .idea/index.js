@@ -5,7 +5,7 @@ const looper = require('./src/classes/looper');
 const shutdown = require('./src/classes/shutdown');
 
 var recordMode = 0;
-var playMode = false;
+var playMode = 0;
 var stopMode = false;
 var pauseMode = false;
 var buttonsInUse = [];
@@ -13,6 +13,7 @@ var recordedLed;
 var playingLed;
 var debounceTime1 = 500;
 var debounceTime2 = 750;
+var buttonPages = 1;
 
 //Delay for buttons
 var sys1 = true;
@@ -62,6 +63,7 @@ const buttonPlay = new Gpio(21, 'in', 'both');
 const buttonStop = new Gpio(20, 'in', 'both');
 const buttonRecord = new Gpio(26, 'in', 'both');
 
+//Main function for white buttons depending on mode
 function buttonFunctions(led, x) {
     if (recordMode == 1) {
         blinkHelper.blinkEnd(ledRecord);
@@ -83,7 +85,7 @@ function buttonFunctions(led, x) {
             recordedLed = null;
         }
     }
-    if (playMode && playingLed == null) {
+    if (playMode == 1 && playingLed == null) {
         if (buttonsInUse[x-1] == false) {
             playingLed = led;
             blinkHelper.blinkEnd(ledPlay);
@@ -93,12 +95,32 @@ function buttonFunctions(led, x) {
             ledPlay.writeSync(1);
         }
     }
-    else if (playMode && led == playingLed && !pauseMode){
+    if (playMode == 2 && playingLed == null) {
+        if (buttonsInUse[x+8] == false) {
+            playingLed = led;
+            blinkHelper.blinkEnd(ledPlay);
+            blinkHelper.blinkEndLeds();
+            blinkHelper.blinkStart(playingLed);
+            httpHelper.playScene((x+9), playingLed);
+            ledPlay.writeSync(1);
+        }
+    }
+    if (playMode == 3 && playingLed == null) {
+        if (buttonsInUse[x+17] == false) {
+            playingLed = led;
+            blinkHelper.blinkEnd(ledPlay);
+            blinkHelper.blinkEndLeds();
+            blinkHelper.blinkStart(playingLed);
+            httpHelper.playScene((x+18), playingLed);
+            ledPlay.writeSync(1);
+        }
+    }
+    if (playMode != 0 && led == playingLed && !pauseMode){
         console.log('pause true');
         pauseMode = true;
         httpHelper.pause(pauseMode, playingLed);
     }
-    else if (playMode && led == playingLed && pauseMode){
+    else if (playMode != 0 && led == playingLed && pauseMode){
         console.log('pause false');
         pauseMode = false;
         httpHelper.pause(pauseMode, playingLed);
@@ -224,35 +246,58 @@ button9.watch((err, value) => {
 });
 
 function allModes() {
-    if (playMode || recordMode != 0 || stopMode) {
+    if (playMode != 0 || recordMode != 0 || stopMode) {
         return true;
     }
 }
 
+//Play
 buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !allModes() && sysPlay) {
+    if (value === 1 && (playMode == 0 && buttonPages == 1) && sysPlay) {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
         }, debounceTime1);
+        blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
-        httpHelper.getButtons(ledsFunction, 'Play');
-        playMode = true;
+        httpHelper.getButtons(ledsFunction, 'Play1');
+        playMode = 1;
     }
-    else if (value === 1 && playMode && sysPlay) {
+    else if (value === 1 && (playMode == 1 && buttonPages == 2) && sysPlay) {
+        sysPlay = false;
+        setTimeout(function(){
+            sysPlay = true;
+        }, debounceTime1);
+        blinkHelper.blinkEndLeds();
+        blinkHelper.blinkStart(ledPlay);
+        httpHelper.getButtons(ledsFunction, 'Play2');
+        playMode = 2;
+    }
+    else if (value === 1 && (playMode == 2 && buttonPages == 3) && sysPlay) {
+        sysPlay = false;
+        setTimeout(function(){
+            sysPlay = true;
+        }, debounceTime1);
+        blinkHelper.blinkEndLeds();
+        blinkHelper.blinkStart(ledPlay);
+        httpHelper.getButtons(ledsFunction, 'Play3');
+        playMode = 3;
+    }
+    else if (value === 1 && sysPlay) {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
         }, debounceTime1);
         blinkHelper.blinkEnd(ledPlay);
         blinkHelper.blinkEndLeds();
-        playMode = false;
+        playMode = 0;
     };
 });
 
+//Stop
 buttonStop.watch((err, value) => {
     if (err) {
         throw err;
@@ -260,17 +305,18 @@ buttonStop.watch((err, value) => {
     if (value === 1) {
        shutdownPi(buttonStop);
     }
-    if (value === 1 && sysStop && playMode) {
+    if (value === 1 && sysStop && playMode != 0) {
         sysStop = false;
         setTimeout(function(){
             sysStop = true;
         }, debounceTime1);
         httpHelper.stop();
-        playMode = false;
+        playMode = 0;
         blinkHelper.stopLeds(ledsAll, ledStop);
     }
 });
 
+//Record
 buttonRecord.watch((err, value) => {
     if (err) {
         throw err;
@@ -306,6 +352,7 @@ buttonRecord.watch((err, value) => {
     };
 });
 
+//Shutdown the device
 function shutdownPi(button){
     ledStop.writeSync(1);
     var i = 0;
@@ -334,6 +381,7 @@ function shutdownPi(button){
     }
 }
 
+//Release all GPIO's
 process.on('SIGINT', _ => {
     led1.unexport();
     led2.unexport();
@@ -364,8 +412,6 @@ process.on('SIGINT', _ => {
 
 fan.writeSync(1);
 
-looper.loopInit(ledsAll);
-
 function setButtonsInUse(buttons){
     buttonsInUse = buttons;
 }
@@ -374,7 +420,13 @@ function setPlayingLed(led){
     playingLed = led;
 }
 
+function setPages(pages){
+    buttonPages = pages;
+}
+
+//Startup sequence
+looper.loopInit(ledsAll);
+
 module.exports.setButtonsInUse = setButtonsInUse;
 module.exports.setPlayingLed = setPlayingLed;
-
-console.log('End of node file');
+module.exports.setPages = setPages;

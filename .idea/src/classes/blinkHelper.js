@@ -3,7 +3,7 @@ var leds;
 var blinkInterval;
 var arrayBlinkInterval = [];
 
-
+//Blinking single led
 function blinkStart(led) {
     if (!blinkInProcess) {
         blinkInProcess = true;
@@ -18,6 +18,7 @@ function blinkStart(led) {
     }
 }
 
+//Blinking single led slow
 function blinkStartSlow(led) {
     if (!blinkInProcess) {
         blinkInProcess = true;
@@ -32,6 +33,7 @@ function blinkStartSlow(led) {
     }
 }
 
+//Blinking single led fast
 function blinkFastStart(led) {
     if (!blinkInProcess) {
         blinkInProcess = true;
@@ -46,12 +48,14 @@ function blinkFastStart(led) {
     }
 }
 
+//Blinking end single led
 function blinkEnd(led) {
     clearInterval(blinkInterval);
     blinkInProcess = false;
     led.writeSync(0);
 }
 
+//Blinking multiple leds
 function blinkStartLeds(ledsInput) {
     leds = ledsInput;
     for (let i = 0; i < leds.length; i++) {
@@ -59,6 +63,8 @@ function blinkStartLeds(ledsInput) {
         blinkStart(leds[i]);
     }
 }
+
+//Blinking end multiple leds
 function blinkEndLeds() {
     try {
         if (arrayBlinkInterval.length > 0) {
@@ -75,6 +81,7 @@ function blinkEndLeds() {
     }
 }
 
+//Stop function stop existing blinking leds also on callback
 function stopLeds(ledsInput, ledStop){
     leds = [ ...ledsInput ];
         blinkEndLeds();
@@ -87,12 +94,27 @@ function stopLeds(ledsInput, ledStop){
     },1000);
 }
 
+//Blinking multiple leds depending on mode
 function blinkSpecificLedsStart(input, ledsInput, mode) {
     leds = [ ...ledsInput ];
     var ledsSelected = [];
 
-    if (mode === 'Play'){
-        for (let i = 0; i < input.length; i++) {
+    if (mode === 'Play1'){
+        for (let i = 0; i < (input.length-18); i++) {
+            if (!input[i]) {
+                ledsSelected.push(leds[i]);
+            }
+        }
+    }
+    if (mode === 'Play2'){
+        for (let i = 9; i < (input.length - 9); i++) {
+            if (!input[i]) {
+                ledsSelected.push(leds[i]);
+            }
+        }
+    }
+    if (mode === 'Play3'){
+        for (let i = 18; i < input.length; i++) {
             if (!input[i]) {
                 ledsSelected.push(leds[i]);
             }
@@ -108,6 +130,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     blinkStartLeds(ledsSelected);
 }
 
+//Confirmation blink
 function blinkConfirm(led) {
     if (!blinkInProcess) {
         blinkInProcess = true;

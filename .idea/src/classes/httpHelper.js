@@ -94,6 +94,17 @@ function stop(){
     console.log('sending stop request')
 }
 
+function getPages(){
+    fetch(url + 'api/getPages')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(json){
+            console.log(json);
+            main.setPages(json);
+        });
+}
+
 function pause(bool, playingLed){
     fetch(url + 'api/pause/' + bool)
         .then(res => res.text())
