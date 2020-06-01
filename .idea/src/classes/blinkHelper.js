@@ -154,24 +154,18 @@ function blinkConfirm(led) {
 function blinkPage(led, page) {
     function pageBlink() {
         for (let i = 0; i < page; i++) {
-            if (led.readSync() === 0) {
-                setTimeout(function () {
-                    if (led.readSync() === 0) {
-                        led.writeSync(1);
-                    } else {
-                        led.writeSync(0);
-                    }
-                    console.log('x');
-                }, 100)
-            }
+            setTimeout(function () {
+                if (led.readSync() === 0) {
+                    led.writeSync(1);
+                } else {
+                    led.writeSync(0);
+                }
+            }, 100)
+
         }
     }
     blinkInterval = setInterval(function blinking() {
-        if (led.readSync() === 0) {
-            led.writeSync(1);
-        } else {
-            led.writeSync(0);
-        }
+        pageBlink();
     },1000);
     arrayBlinkInterval.push(blinkInterval);
 
