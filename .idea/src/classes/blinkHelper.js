@@ -84,7 +84,7 @@ function blinkEndLeds() {
 //Stop function stop existing blinking leds also on callback
 function stopLeds(ledsInput, ledStop){
     leds = [ ...ledsInput ];
-        blinkEndLeds();
+    blinkEndLeds();
     setTimeout(function () {
         blinkEndLeds();
         if (ledStop.readSync() != 1){
@@ -151,6 +151,27 @@ function blinkConfirm(led) {
     },1000);
 }
 
+function blinkPage(led, page) {
+    blinkInterval = setInterval(function blinking() {
+        pageBlink()
+    },1000);
+    arrayBlinkInterval.push(blinkInterval);
+
+    function pageBlink() {
+        for (let i = 0; i < page; i++) {
+            if (led.readSync() === 0) {
+                setTimeout(function () {
+                    if (led.readSync() === 0) {
+                        led.writeSync(1);
+                    } else {
+                        led.writeSync(0);
+                    }
+                }, 100)
+            }
+        }
+    }
+}
+
 
 module.exports.blinkStart = blinkStart;
 module.exports.blinkFastStart = blinkFastStart;
@@ -161,5 +182,5 @@ module.exports.blinkSpecificLedsStart = blinkSpecificLedsStart;
 module.exports.blinkConfirm = blinkConfirm;
 module.exports.stopLeds = stopLeds;
 module.exports.blinkStartSlow = blinkStartSlow;
-
+module.exports.blinkPage = blinkPage;
 

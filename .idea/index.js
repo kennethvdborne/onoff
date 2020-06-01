@@ -264,6 +264,7 @@ buttonPlay.watch((err, value) => {
         httpHelper.getPages();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play1');
+        blinkHelper.blinkPage(ledMain, 1);
         playMode = 1;
     }
     else if (value === 1 && (playMode == 1 && buttonPages > 1) && sysPlay) {
@@ -275,6 +276,7 @@ buttonPlay.watch((err, value) => {
         blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play2');
+        blinkHelper.blinkPage(ledMain, 2);
         playMode = 2;
     }
     else if (value === 1 && (playMode == 2 && buttonPages > 2) && sysPlay) {
@@ -286,6 +288,7 @@ buttonPlay.watch((err, value) => {
         blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play3');
+        blinkHelper.blinkPage(ledMain, 3);
         playMode = 3;
     }
     else if (value === 1 && sysPlay) {
