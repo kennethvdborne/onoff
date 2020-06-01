@@ -126,5 +126,6 @@ module.exports.playScene = playScene;
 module.exports.getButtons = getButtons;
 module.exports.stop = stop;
 module.exports.pause = pause;
+module.exports.getPages = getPages;
 
 
