@@ -261,6 +261,7 @@ buttonPlay.watch((err, value) => {
         setTimeout(function(){
             sysPlay = true;
         }, debounceTime1);
+        httpHelper.getPages();
         blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play1');
