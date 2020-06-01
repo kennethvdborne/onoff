@@ -431,6 +431,7 @@ function setPages(pages){
 
 //Startup sequence
 looper.loopInit(ledsAll);
+ledMain.writeSync(1);
 
 module.exports.setButtonsInUse = setButtonsInUse;
 module.exports.setPlayingLed = setPlayingLed;
