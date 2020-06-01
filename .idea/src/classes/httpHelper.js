@@ -85,6 +85,7 @@ function getButtons(leds, mode){
         .then(function(json){
             blinkHelper.blinkSpecificLedsStart(json, leds, mode);
             main.setButtonsInUse(json);
+            console.log(json);
         });
 }
 
