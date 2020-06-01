@@ -262,7 +262,7 @@ buttonPlay.watch((err, value) => {
             sysPlay = true;
         }, debounceTime1);
         httpHelper.getPages();
-        blinkHelper.blinkEndLeds();
+        //blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play1');
         playMode = 1;
@@ -272,7 +272,7 @@ buttonPlay.watch((err, value) => {
         setTimeout(function(){
             sysPlay = true;
         }, debounceTime1);
-        blinkHelper.blinkEndLeds();
+        //blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play2');
         playMode = 2;
@@ -282,7 +282,7 @@ buttonPlay.watch((err, value) => {
         setTimeout(function(){
             sysPlay = true;
         }, debounceTime1);
-        blinkHelper.blinkEndLeds();
+        //blinkHelper.blinkEndLeds();
         blinkHelper.blinkStart(ledPlay);
         httpHelper.getButtons(ledsFunction, 'Play3');
         playMode = 3;
