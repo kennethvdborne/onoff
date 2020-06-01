@@ -170,7 +170,7 @@ function blinkPage(led, page) {
         if (led.readSync() === 0) {
             led.writeSync(1);
         } else {
-            led.writeSync(0);
+            led.writeSync(1);
         }
         console.log('blink page');
     },1000);
