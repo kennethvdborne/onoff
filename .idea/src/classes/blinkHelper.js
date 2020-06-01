@@ -163,14 +163,14 @@ function blinkPage(led, page) {
                 }
                 i++;
                 pageBlink();
-            }, 100)
+            }, 150)
 
         }
     }
     blinkInterval = setInterval(function blinking() {
         i = 0;
         pageBlink();
-    },1000);
+    },1500);
     arrayBlinkInterval.push(blinkInterval);
 
 }
