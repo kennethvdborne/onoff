@@ -256,7 +256,7 @@ buttonPlay.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && (playMode == 0 && buttonPages == 1) && sysPlay) {
+    if (value === 1 && playMode == 0 && sysPlay) {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
@@ -267,7 +267,7 @@ buttonPlay.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Play1');
         playMode = 1;
     }
-    else if (value === 1 && (playMode == 1 && buttonPages == 2) && sysPlay) {
+    else if (value === 1 && (playMode == 1 && buttonPages > 1) && sysPlay) {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
@@ -277,7 +277,7 @@ buttonPlay.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Play2');
         playMode = 2;
     }
-    else if (value === 1 && (playMode == 2 && buttonPages == 3) && sysPlay) {
+    else if (value === 1 && (playMode == 2 && buttonPages > 2) && sysPlay) {
         sysPlay = false;
         setTimeout(function(){
             sysPlay = true;
