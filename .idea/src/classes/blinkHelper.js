@@ -115,7 +115,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
         }
     }
     if (mode === 'Play3'){
-        for (let i = 18; i < (input.length - 18); i++) {
+        for (let i = 18; i < input.length; i++) {
             if (!input[i]) {
                 ledsSelected.push(leds[i -18]);
             }
