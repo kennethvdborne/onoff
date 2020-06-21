@@ -5,6 +5,7 @@ const looper = require('./src/classes/looper');
 const shutdown = require('./src/classes/shutdown');
 
 var recordMode = 0;
+var recordDetailMode = 0;
 var playMode = 0;
 var stopMode = false;
 var pauseMode = false;
@@ -65,18 +66,34 @@ const buttonRecord = new Gpio(26, 'in', 'both');
 
 //Main function for white buttons depending on mode
 function buttonFunctions(led, x) {
-    if (recordMode == 1) {
+    if (recordDetailMode == 1) {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         led.writeSync(1);
-        httpHelper.recordScene(led, x, ledsFunction, ledRecord);
+        if (recordMode == 1){
+            httpHelper.recordScene(led, x, ledsFunction, ledRecord);
+        }
+        else if (recordMode == 2) {
+            httpHelper.recordScene(led, (x + 9), ledsFunction, ledRecord);
+        }
+        else if (recordMode == 3) {
+            httpHelper.recordScene(led, (x + 18), ledsFunction, ledRecord);
+        }
         ledRecord.writeSync(1);
     }
-    if (recordMode == 2) {
+    if (recordDetailMode == 2) {
         if (recordedLed == null) {
             blinkHelper.blinkEnd(ledRecord);
             blinkHelper.blinkEndLeds();
-            httpHelper.recordSceneMultiple(led, x, ledRecord);
+            if (recordMode == 1){
+                httpHelper.recordSceneMultiple(led, x, ledRecord);
+            }
+            else if (recordMode == 2) {
+                httpHelper.recordSceneMultiple(led, (x + 9), ledRecord);
+            }
+            else if (recordMode == 3) {
+                httpHelper.recordSceneMultiple(led, (x + 18), ledRecord);
+            }
             ledRecord.writeSync(1);
             recordedLed = led;
         }
@@ -326,27 +343,74 @@ buttonRecord.watch((err, value) => {
     if (err) {
         throw err;
     }
-    if (value === 1 && !allModes() && sysRecord) {
+    if (value === 1 && recordDetailMode == 0 && sysRecord) {
+        sysRecord = false;
+        setTimeout(function(){
+            sysRecord = true;
+        }, debounceTime1);
+        httpHelper.getPages();
+        recordMode = 1;
+        recordDetailMode = 1;
+        blinkHelper.blinkStart(ledRecord);
+        httpHelper.getButtons(ledsFunction, 'Record');
+        blinkHelper.blinkPage(ledMain, 1);
+    }
+    else if (value === 1 && recordDetailMode == 1 && recordMode == 1 && sysRecord) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
         recordMode = 1;
+        recordDetailMode = 2;
         blinkHelper.blinkStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record');
+        blinkHelper.blinkPage(ledMain, 1);
     }
-    if (value === 1 && recordMode == 1 && sysRecord) {
+    else if (value === 1 && recordDetailMode == 2 && recordMode == 1 && sysRecord) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
         recordMode = 2;
-        blinkHelper.blinkEnd(ledRecord);
-        blinkHelper.blinkEndLeds();
-        blinkHelper.blinkFastStart(ledRecord);
+        recordDetailMode = 1;
+        blinkHelper.blinkStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record');
+        blinkHelper.blinkPage(ledMain, 2);
     }
-    else if (value === 1 && recordMode == 2 && sysRecord) {
+    else if (value === 1 && recordDetailMode == 1 && recordMode == 2 && sysRecord) {
+        sysRecord = false;
+        setTimeout(function(){
+            sysRecord = true;
+        }, debounceTime1);
+        recordMode = 2;
+        recordDetailMode = 2;
+        blinkHelper.blinkStart(ledRecord);
+        httpHelper.getButtons(ledsFunction, 'Record');
+        blinkHelper.blinkPage(ledMain, 2);
+    }
+    else if (value === 1 && recordDetailMode == 2 && recordMode == 2 && sysRecord) {
+        sysRecord = false;
+        setTimeout(function(){
+            sysRecord = true;
+        }, debounceTime1);
+        recordMode = 3;
+        recordDetailMode = 1;
+        blinkHelper.blinkStart(ledRecord);
+        httpHelper.getButtons(ledsFunction, 'Record');
+        blinkHelper.blinkPage(ledMain, 3);
+    }
+    else if (value === 1 && recordDetailMode == 1 && recordMode == 3 && sysRecord) {
+        sysRecord = false;
+        setTimeout(function(){
+            sysRecord = true;
+        }, debounceTime1);
+        recordMode = 3;
+        recordDetailMode = 2;
+        blinkHelper.blinkStart(ledRecord);
+        httpHelper.getButtons(ledsFunction, 'Record');
+        blinkHelper.blinkPage(ledMain, 3);
+    }
+    else if (value === 1 && recordDetailMode == 2 && recordMode == 3 && sysRecord) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
