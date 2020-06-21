@@ -352,7 +352,7 @@ buttonRecord.watch((err, value) => {
         recordMode = 1;
         recordDetailMode = 1;
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction, 'Record');
+        httpHelper.getButtons(ledsFunction, 'Record1');
         blinkHelper.blinkPage(ledMain, 1);
     }
     else if (value === 1 && recordDetailMode == 1 && recordMode == 1 && sysRecord) {
@@ -360,10 +360,12 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
         recordMode = 1;
         recordDetailMode = 2;
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction, 'Record');
+        httpHelper.getButtons(ledsFunction, 'Record1');
         blinkHelper.blinkPage(ledMain, 1);
     }
     else if (value === 1 && recordDetailMode == 2 && recordMode == 1 && sysRecord) {
@@ -371,10 +373,12 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
         recordMode = 2;
         recordDetailMode = 1;
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction, 'Record');
+        httpHelper.getButtons(ledsFunction, 'Record2');
         blinkHelper.blinkPage(ledMain, 2);
     }
     else if (value === 1 && recordDetailMode == 1 && recordMode == 2 && sysRecord) {
@@ -382,10 +386,12 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
         recordMode = 2;
         recordDetailMode = 2;
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction, 'Record');
+        httpHelper.getButtons(ledsFunction, 'Record2');
         blinkHelper.blinkPage(ledMain, 2);
     }
     else if (value === 1 && recordDetailMode == 2 && recordMode == 2 && sysRecord) {
@@ -393,10 +399,12 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
         recordMode = 3;
         recordDetailMode = 1;
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction, 'Record');
+        httpHelper.getButtons(ledsFunction, 'Record3');
         blinkHelper.blinkPage(ledMain, 3);
     }
     else if (value === 1 && recordDetailMode == 1 && recordMode == 3 && sysRecord) {
@@ -404,10 +412,12 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
+        blinkHelper.blinkEnd(ledRecord);
+        blinkHelper.blinkEndLeds();
         recordMode = 3;
         recordDetailMode = 2;
         blinkHelper.blinkStart(ledRecord);
-        httpHelper.getButtons(ledsFunction, 'Record');
+        httpHelper.getButtons(ledsFunction, 'Record3');
         blinkHelper.blinkPage(ledMain, 3);
     }
     else if (value === 1 && recordDetailMode == 2 && recordMode == 3 && sysRecord) {
