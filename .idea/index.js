@@ -351,7 +351,7 @@ buttonRecord.watch((err, value) => {
         //httpHelper.getPages();
         recordMode = 1;
         recordDetailMode = 1;
-        //blinkHelper.blinkStart(ledRecord);
+        blinkHelper.blinkStart(ledRecord);
         //httpHelper.getButtons(ledsFunction, 'Record1');
         blinkHelper.blinkPage(ledMain, 1);
     }/*
