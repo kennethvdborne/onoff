@@ -348,7 +348,7 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
-        httpHelper.getPages();
+        //httpHelper.getPages();
         recordMode = 1;
         recordDetailMode = 1;
         //blinkHelper.blinkStart(ledRecord);
