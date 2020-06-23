@@ -370,7 +370,7 @@ buttonRecord.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Record1');
         blinkHelper.blinkPage(ledMain, 1);
     }
-    else if (value === 1 && recordDetailMode == 2 && recordMode == 1 && sysRecord) {
+    else if (value === 1 && recordDetailMode == 2 && recordMode == 1 && sysRecord && buttonPages > 1) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
@@ -383,7 +383,7 @@ buttonRecord.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Record2');
         blinkHelper.blinkPage(ledMain, 2);
     }
-    else if (value === 1 && recordDetailMode == 1 && recordMode == 2 && sysRecord) {
+    else if (value === 1 && recordDetailMode == 1 && recordMode == 2 && sysRecord && buttonPages > 1) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
@@ -396,7 +396,7 @@ buttonRecord.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Record2');
         blinkHelper.blinkPage(ledMain, 2);
     }
-    else if (value === 1 && recordDetailMode == 2 && recordMode == 2 && sysRecord) {
+    else if (value === 1 && recordDetailMode == 2 && recordMode == 2 && sysRecord && buttonPages > 2) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
@@ -409,7 +409,7 @@ buttonRecord.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Record3');
         blinkHelper.blinkPage(ledMain, 3);
     }
-    else if (value === 1 && recordDetailMode == 1 && recordMode == 3 && sysRecord) {
+    else if (value === 1 && recordDetailMode == 1 && recordMode == 3 && sysRecord && buttonPages > 2) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
@@ -422,7 +422,7 @@ buttonRecord.watch((err, value) => {
         httpHelper.getButtons(ledsFunction, 'Record3');
         blinkHelper.blinkPage(ledMain, 3);
     }
-    else if (value === 1 && recordDetailMode == 2 && recordMode == 3 && sysRecord) {
+    else if (value === 1 && sysRecord) {
         sysRecord = false;
         setTimeout(function(){
             sysRecord = true;
