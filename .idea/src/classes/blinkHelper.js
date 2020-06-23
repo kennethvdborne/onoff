@@ -141,7 +141,6 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
             }
         }
     }
-    console.log(ledsSelected);
     blinkStartLeds(ledsSelected);
 }
 

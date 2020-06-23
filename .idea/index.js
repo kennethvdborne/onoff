@@ -354,7 +354,7 @@ buttonRecord.watch((err, value) => {
         blinkHelper.blinkStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record1');
         blinkHelper.blinkPage(ledMain, 1);
-    }/*
+    }
     else if (value === 1 && recordDetailMode == 1 && recordMode == 1 && sysRecord) {
         sysRecord = false;
         setTimeout(function(){
@@ -428,7 +428,7 @@ buttonRecord.watch((err, value) => {
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         recordMode = false;
-    };*/
+    };
 });
 
 //Shutdown the device
