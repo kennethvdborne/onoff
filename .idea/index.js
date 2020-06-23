@@ -270,6 +270,8 @@ function allModes() {
 
 //Play
 buttonPlay.watch((err, value) => {
+    console.log('playmode= '+playMode);
+    console.log('buttonpages= '+buttonPages);
     if (err) {
         throw err;
     }
