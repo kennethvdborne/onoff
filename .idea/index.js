@@ -364,7 +364,7 @@ buttonRecord.watch((err, value) => {
         blinkHelper.blinkEndLeds();
         recordMode = 1;
         recordDetailMode = 2;
-        blinkHelper.blinkStart(ledRecord);
+        blinkHelper.blinkFastStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record1');
         blinkHelper.blinkPage(ledMain, 1);
     }
@@ -390,7 +390,7 @@ buttonRecord.watch((err, value) => {
         blinkHelper.blinkEndLeds();
         recordMode = 2;
         recordDetailMode = 2;
-        blinkHelper.blinkStart(ledRecord);
+        blinkHelper.blinkFastStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record2');
         blinkHelper.blinkPage(ledMain, 2);
     }
@@ -416,7 +416,7 @@ buttonRecord.watch((err, value) => {
         blinkHelper.blinkEndLeds();
         recordMode = 3;
         recordDetailMode = 2;
-        blinkHelper.blinkStart(ledRecord);
+        blinkHelper.blinkFastStart(ledRecord);
         httpHelper.getButtons(ledsFunction, 'Record3');
         blinkHelper.blinkPage(ledMain, 3);
     }
@@ -425,6 +425,8 @@ buttonRecord.watch((err, value) => {
         setTimeout(function(){
             sysRecord = true;
         }, debounceTime1);
+        recordMode = 0;
+        recordDetailMode = 0;
         blinkHelper.blinkEnd(ledRecord);
         blinkHelper.blinkEndLeds();
         recordMode = false;
