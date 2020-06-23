@@ -121,7 +121,7 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
         }
     }
     if (mode === 'Record1'){
-        for (let i = 0; i < input.length; i++) {
+        for (let i = 0; i < input.length - 18; i++) {
             if (input[i]) {
                 ledsSelected.push(leds[i]);
             }
@@ -130,14 +130,14 @@ function blinkSpecificLedsStart(input, ledsInput, mode) {
     if (mode === 'Record2'){
         for (let i = 9; i < (input.length - 9); i++) {
             if (input[i]) {
-                ledsSelected.push(leds[i]);
+                ledsSelected.push(leds[i - 9]);
             }
         }
     }
     if (mode === 'Record3'){
         for (let i = 18; i < input.length; i++) {
             if (input[i]) {
-                ledsSelected.push(leds[i]);
+                ledsSelected.push(leds[i - 18]);
             }
         }
     }
